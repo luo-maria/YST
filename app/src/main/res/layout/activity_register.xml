@@ -48,7 +48,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:background="@null"
-                    android:hint="@string/account_hint"
+                    android:hint="请输入手机号"
                     android:inputType="textNoSuggestions"
                     android:textColor="#000000"
                     android:textColorHint="#bcbcbc"
@@ -178,17 +178,20 @@
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:layout_weight="3"
-                    android:hint="请输入4位验证码"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1.5"
+                    android:hint=""
                     android:textSize="16sp" />
 
-                <ImageView
-                    android:id="@+id/iv_registeractivity_showCode"
+                <Button
+                    android:id="@+id/iv_registeractivity_getCode"
                     android:layout_width="0dp"
-                    android:layout_height="70dp"
-                    android:layout_marginTop="-10dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
                     android:layout_weight="1.5"
                     android:clickable="true"
+                    android:text="获取验证码"
+                    android:background="#E3E0E0"
                     android:onClick="onClick" />
             </LinearLayout>
 

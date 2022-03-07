@@ -11,13 +11,13 @@ public class Student extends BmobObject {
     private String Student_signature;
     private String Student_gender;
     private String Student_realname;
-    private  int Student_phone;
+    private  String Student_phone;
     public Student() {
         super();
         // TODO Auto-generated constructor stub
     }
     public Student(int Student_id,String Student__username, String Student_number, String Student_password,String Student_class,
-                String Student_signature,String Student_gender, String Student_realname,int Student_phone ) {
+                String Student_signature,String Student_gender, String Student_realname,String Student_phone ) {
         super();
         this.Student_id=Student_id;
         this.Student__username = Student__username;
@@ -85,11 +85,11 @@ public class Student extends BmobObject {
         this.Student_password = Student_password;
     }
 
-    public int getStudent_phone() {
+    public String getStudent_phone() {
         return Student_phone;
     }
 
-    public void setStudent_phone(int Student_phone) {
+    public void setStudent_phone(String Student_phone) {
         this.Student_phone = Student_phone;
     }
     public String getStudent_realname() {

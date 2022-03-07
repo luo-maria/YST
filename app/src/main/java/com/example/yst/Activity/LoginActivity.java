@@ -2,6 +2,7 @@ package com.example.yst.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.yst.R;
+import com.example.yst.bean.Student;
+
+import java.util.List;
+
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 
 
 public class LoginActivity  extends BaseActivity  implements View.OnClickListener {
@@ -44,7 +53,7 @@ public class LoginActivity  extends BaseActivity  implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        Bmob.initialize(LoginActivity.this,"f84563e89fdb95cdc3c135df0c5ffc25");
         initView();
 
     }
@@ -90,46 +99,53 @@ public class LoginActivity  extends BaseActivity  implements View.OnClickListene
                 String number = mEtLoginactivitynumber.getText().toString().trim();
                 String password = mEtLoginactivityPassword.getText().toString().trim();
                 if (number.equals("") || password.equals("")) {
-                    Toast.makeText(this, "学号或密码不能为空", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "手机号或密码不能为空", Toast.LENGTH_LONG).show();
                     return;
                 }
-//                BmobQuery<Student> bmobQuery = new BmobQuery<Student>();
-//                bmobQuery.addWhereEqualTo("number", number);
-//                bmobQuery.addWhereEqualTo("password", password);
-//                final Student student = new Student();
-//                student.setStudent_number(number);
-//                student.setStudent_password(password);
-//                student.login(new SaveListener<Student>() {
-//                    @Override
-//                    public void done(Student bmobUser, BmobException e) {
-//                        if (e == null) {
-//                            Student user = BmobUser.getCurrentUser(Student.class);
-//                            Snackbar.make(view, "登录成功：" + user.getUsername(), Snackbar.LENGTH_LONG).show();
-//                        } else {
-//                            Snackbar.make(view, "登录失败：" + e.getMessage(), Snackbar.LENGTH_LONG).show();
-//                        }
-//                    }
-//                });
-//                /**
-//                 * 账号密码登录
-//                 */
-//                private void login(final View view) {
-//                final User user = new User();
-//                //此处替换为你的用户名
-//                user.setUsername("username");
-//                //此处替换为你的密码
-//                user.setPassword("password");
-//                user.login(new SaveListener<User>() {
-//                    @Override
-//                    public void done(User bmobUser, BmobException e) {
-//                        if (e == null) {
-//                            User user = BmobUser.getCurrentUser(User.class);
-//                            Snackbar.make(view, "登录成功：" + user.getUsername(), Snackbar.LENGTH_LONG).show();
-//                        } else {
-//                            Snackbar.make(view, "登录失败：" + e.getMessage(), Snackbar.LENGTH_LONG).show();
-//                        }
-//                    }
-//                });
+                //账号(Account)、密码(Password)
+                final String Account = mEtLoginactivitynumber.getText().toString().trim();
+                System.out.println("这是account：：："+Account);
+                final String Password = mEtLoginactivityPassword.getText().toString().trim();
+                if (TextUtils.isEmpty(Account)) {
+                    Toast.makeText(LoginActivity.this, "请填写手机号码", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(Password)) {
+                    Toast.makeText(LoginActivity.this, "请填写密码", Toast.LENGTH_SHORT).show();
+                } else {
+                    BmobQuery<Student> bmobQuery = new BmobQuery<>();
+                    bmobQuery.findObjects(new FindListener<Student>() {
+                        @Override
+                        public void done(List<Student> object, BmobException e) {
+                            if (e == null) {
+                                //判断信号量，若查找结束count和object长度相等，则没有查找到该账号
+                                int count=0;
+                                for (Student student: object) {
+                                    String username=student.getStudent_phone();
+                                    System.out.println("This is the phone:"+username);
+                                    if (student.getStudent_phone().equals(Account)) {
+                                        //已查找到该账号，检测密码是否正确
+                                        if (student.getStudent_password().equals(Password)) {
+                                            //密码正确，跳转（Home是登陆后跳转的页面）
+                                            Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
+                                            startActivity(intent);
+                                            break;
+                                        }else {
+                                            Toast.makeText(LoginActivity.this, "密码错误", Toast.LENGTH_SHORT).show();
+                                            break;
+                                        }
+                                    }
+                                    count++;
+                                }
+                                if (count >= object.size()){
+                                    Toast.makeText(LoginActivity.this,"该账号不存在",Toast.LENGTH_SHORT).show();
+                                }
+                            }else {
+                                Toast.makeText(LoginActivity.this,"该账号不存在",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
+
             }
         }
     }

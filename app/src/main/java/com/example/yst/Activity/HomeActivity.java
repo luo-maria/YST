@@ -1,12 +1,11 @@
 package com.example.yst.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.yst.R;
-
-
 
 public class HomeActivity extends AppCompatActivity {
 

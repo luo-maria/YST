@@ -3,7 +3,7 @@
     <string name="login">登 录</string>
     <string name="register">注 册</string>
     <string name="account_hint">请输入用户名</string>
-    <string name="number_hint">请输入学号</string>
+    <string name="number_hint">请输入手机号</string>
     <string name="pwd_hint">请输入密码</string>
     <string name="pwd_hint1">请再次确认密码</string>
     <string name="create_hint1">请输入名称</string>

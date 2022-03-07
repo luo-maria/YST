@@ -1,15 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
+    android:orientation="vertical"
     tools:context="Activity.HomeActivity">
+    <!--ViewPage————视图翻页工具，提供了多页面切换的效果Viewpager使用起来就是我们通过创建adapter给它填充多个view
+    左右滑动时，切换不同的view。Google官方是建议我们使用Fragment来填充ViewPager的，这样 可以更加方便的生成每个Page
+    ，以及管理每个Page的生命周期。-->
 
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="210px"
-        android:layout_height="200px"
-        android:text="登录成功" />
-</RelativeLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider" />
+
+    <!--    底部tab-->
+    <com.flyco.tablayout.CommonTabLayout
+        android:id="@+id/commonTabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:background="#ffffff"
+        tl:tl_iconHeight="30dp"
+        tl:tl_iconWidth="30dp"
+        tl:tl_indicator_color="#2C97DE"
+        tl:tl_indicator_height="0dp"
+        tl:tl_textSelectColor="#2196F3"
+        tl:tl_textUnselectColor="#454544"
+        tl:tl_textsize="14sp"
+        tl:tl_underline_color="#DDDDDD"
+        tl:tl_underline_height="1dp" />
+
+
+</LinearLayout>
