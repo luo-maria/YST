@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="skin_text_white_night">#000000</color>
+    <color name="skin_topbar_bg_color_night">#00bfff</color>
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="divider">#D9D6D6</color>
+    <color name="skin_text_white">#ffffff</color>
+    <color name="skin_topbar_bg_color">#2196F3</color>
+    <color name="gary">#B4B4B4</color>
+</resources>

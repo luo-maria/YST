@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">myapp</string>
+    <string name="login">登 录</string>
+    <string name="register">注 册</string>
+    <string name="account_hint">请输入用户名</string>
+    <string name="number_hint">请输入学号</string>
+    <string name="pwd_hint">请输入密码</string>
+    <string name="pwd_hint1">请再次确认密码</string>
+    <string name="create_hint1">请输入名称</string>
+    <string name="create_hint2">请输入内容</string>
+    <string name="create_hint3">预设内容</string>
+    <string name="create_hint4">文字介绍（不超过200字）</string>
+    <!-- TODO: Remove or chacreate_hint1nge this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="edit1">取消</string>
+    <string name="edit2">编辑个人资料</string>
+    <string name="edit3">保存</string>
+    <dimen name="commontext">20sp</dimen>
+
+
+    <string name="exit_hint">再按一次退出程序</string>
+</resources>
