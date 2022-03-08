@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".fragment.HomePageFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:background="#2196F3"
+        android:padding="5dp">
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="@dimen/dimen_100dp"
+            android:layout_height="30dp"
+            android:text="个人中心"
+            android:textSize="21sp"
+            android:layout_margin="5dp"
+            android:textColor="@color/white"
+            android:background="#2196F3"/>
+
+    </LinearLayout>
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:background="@color/colorPrimary">
+
+        <com.example.yst.util.XCRoundImageView
+            android:id="@+id/portraittxt"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:src="@mipmap/poy" />
+
+        <TextView
+            android:id="@+id/my_name"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="135dp"
+                android:layout_marginTop="10dp"
+            android:background="@null"
+            android:hint="昵称"
+            android:textAlignment="gravity"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/signature"
+            android:layout_width="100dp"
+            android:layout_height="22dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="135dp"
+            android:layout_marginTop="70dp"
+            android:background="@null"
+            android:hint="个性签名"
+            android:textAlignment="gravity"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/message1"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="325dp"
+            android:layout_marginTop="30dp"
+            android:background="@mipmap/text"
+            android:clickable="true"
+            android:focusable="true" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+        <LinearLayout
+
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/club"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="75dp"
+                android:layout_marginTop="10dp"
+                android:background="@mipmap/flag"
+                android:clickable="true"
+                android:focusable="true" />
+            <TextView
+                android:id="@+id/my_club"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginLeft="52dp"
+                android:layout_marginTop="5dp"
+                android:background="@null"
+                android:hint="我的社团"
+                android:textAlignment="gravity"
+                android:textSize="18sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/mymyinfo"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="80dp"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/info"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="75dp"
+                android:layout_marginTop="10dp"
+                android:background="@mipmap/information"
+                android:clickable="true"
+                android:focusable="true" />
+            <TextView
+                android:id="@+id/my_info"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="5dp"
+                android:background="@null"
+                android:hint="我的档案"
+                android:textAlignment="gravity"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </LinearLayout>
+    <View  android:layout_height="1dp"
+        android:layout_width="match_parent"
+        android:background="#c8c8c8"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        />
+
+    <ListView
+        android:id="@+id/list_simple"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginTop="5dp"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.53" />
+
+</LinearLayout>

@@ -8,15 +8,11 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 
 import com.example.yst.R;
 import com.example.yst.bean.Student;
-import com.example.yst.util.Code;
 
 import java.util.List;
 
@@ -57,7 +53,12 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 //        realCode = Code.getInstance().getCode().toLowerCase();
     }
 
-    private void initView(){
+    @Override
+    protected int initLayout() {
+        return 0;
+    }
+
+    protected void initView(){
         mBtRegisteractivityLogin = findViewById(R.id.bt_registeractivity_login);
         mBtRegisteractivityRegister = findViewById(R.id.bt_registeractivity_register);
 //        mLlRegisteractivityBody = findViewById(R.id.ll_registeractivity_body);
@@ -78,6 +79,10 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         mBtRegisteractivityRegister.setOnClickListener(this);
     }
 
+    @Override
+    protected void initData() {
+
+    }
 
 
     public void onClick(View view) {

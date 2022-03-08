@@ -58,11 +58,16 @@ public class LoginActivity  extends BaseActivity  implements View.OnClickListene
 
     }
 
+    @Override
+    protected int initLayout() {
+        return 0;
+    }
+
     /**
      * onCreae()中布局已经摆放好了，接下来就该把layout里的东西声明、实例化对象然后有行为的赋予其行为
      * 这样就可以把视图层View也就是layout 与 控制层 Java 结合起来了
      */
-    private void initView() {
+    public void initView() {
         // 初始化控件
         mBtLoginactivityLogin = findViewById(R.id.bt_loginactivity_login);
         mTvLoginactivityRegister = findViewById(R.id.tv_loginactivity_register);
@@ -74,6 +79,11 @@ public class LoginActivity  extends BaseActivity  implements View.OnClickListene
         // 设置点击事件监听器
         mBtLoginactivityLogin.setOnClickListener(this);
         mTvLoginactivityRegister.setOnClickListener(this);
+    }
+
+    @Override
+    protected void initData() {
+
     }
 
     public void onClick(View view) {
