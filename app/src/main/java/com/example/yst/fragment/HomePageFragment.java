@@ -37,7 +37,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 public class HomePageFragment extends Fragment {
     public static HomePageFragment newInstance() {
         HomePageFragment fragment = new HomePageFragment();
