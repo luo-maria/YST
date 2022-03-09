@@ -53,7 +53,9 @@ public class EditUserActivity extends AppCompatActivity {
                                 String phone=student.getStudent_phone();
                                 System.out.println("This is the edit phone:"+phone);
                                 if (phone.equals(EditUserActivity_number)) {
+                                    System.out.println("this is the rename1:"+reusername);
                                     student.setStudent__username(reusername);
+                                    System.out.println("this is the rename2:"+reusername);
                                     student.setStudent_password(repassword);
                                     student.setStudent_class(reclass);
                                     student.setStudent_Gender(regender);

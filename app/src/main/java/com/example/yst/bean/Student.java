@@ -1,8 +1,9 @@
 package com.example.yst.bean;
 
 import cn.bmob.v3.BmobObject;
+import cn.bmob.v3.BmobUser;
 
-public class Student extends BmobObject {
+public class Student extends BmobUser {
     private int Student_id;
     private String Student__username;            //用户名
     private String Student_number;

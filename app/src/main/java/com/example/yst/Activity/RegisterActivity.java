@@ -1,16 +1,19 @@
 package com.example.yst.Activity;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 
+import com.example.yst.MainActivity;
 import com.example.yst.R;
 import com.example.yst.bean.Student;
 
@@ -19,13 +22,14 @@ import java.util.List;
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobSMS;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.QueryListener;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 
-public class RegisterActivity extends BaseActivity implements View.OnClickListener {
+public class RegisterActivity extends Activity implements View.OnClickListener {
     private String realCode;
 
     private Button mBtRegisteractivityRegister;
@@ -42,20 +46,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        Bmob.initialize(RegisterActivity.this,"f84563e89fdb95cdc3c135df0c5ffc25");
+        Bmob.initialize(RegisterActivity.this, "f84563e89fdb95cdc3c135df0c5ffc25");
         initView();
-
-//        mDBOpenHelper = new DBOpenHelper(this);
-
-
-//        //将验证码用图片的形式显示出来
-//        mIvRegisteractivityShowcode.setImageBitmap(Code.getInstance().createBitmap());
-//        realCode = Code.getInstance().getCode().toLowerCase();
-    }
-
-    @Override
-    protected int initLayout() {
-        return 0;
     }
 
     protected void initView(){
@@ -79,11 +71,6 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         mBtRegisteractivityRegister.setOnClickListener(this);
     }
 
-    @Override
-    protected void initData() {
-
-    }
-
 
     public void onClick(View view) {
 
@@ -102,28 +89,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 } else if (Check.PhoneCheck(Account.trim()) != true) {
                     Toast.makeText(RegisterActivity.this, "请填写正确的手机号码", Toast.LENGTH_SHORT).show();
                 } else {
-                    BmobQuery<Student> bmobQuery = new BmobQuery<>();
-                    bmobQuery.findObjects(new FindListener<Student>() {
-                        @Override
-                        public void done(List<Student> object, BmobException e) {
-                            if (e == null) {
-                                int count = 0;    //判断是否查询到尾
-                                for (Student student : object) {
-                                    if (student.getStudent__username().equals(Account)) {
-                                        Toast.makeText(RegisterActivity.this, "该账号已注册过", Toast.LENGTH_SHORT).show();
-                                        break;
-                                    }
-                                    count++;
-                                }
-                                //查询到尾，说明没有重复账号
-                                if (count == object.size()) {
-                                    SendSMS(Account);
-                                }
-                            } else {
-                                SendSMS(Account);
-                            }
-                        }
-                    });
+                    SendSMS(Account);
                 }
 
 
@@ -159,24 +125,26 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                         @Override
                         public void done(BmobException e) {
                             if (e == null) {
-                                //将用户信息存储到Bmob云端数据
-                                final Student user = new Student();
-                                user.setStudent_phone(phone);
-                                user.setStudent_password(password);
-                                user.save(new SaveListener<String>() {
+
+                                //
+                                Student user = new Student();
+                                user.setUsername(phone);
+                                user.setPassword(password);
+                                user.signUp(new SaveListener<Student>() {
                                     @Override
-                                    public void done(String s, BmobException e) {
-                                        if (e == null) {
-                                            //注册成功，回到登录页面
-                                            Toast.makeText(RegisterActivity.this,"注册成功",Toast.LENGTH_SHORT).show();
+                                    public void done(Student user, BmobException e) {
+                                        if(e==null)
+                                        {
+                                            Toast.makeText(RegisterActivity.this,"验证通过，注册成功",Toast.LENGTH_SHORT).show();
                                             Intent intent2 = new Intent(RegisterActivity.this, LoginActivity.class);
                                             startActivity(intent2);
-//                                            finish();
-                                            Toast.makeText(RegisterActivity.this,  "验证通过，注册成功", Toast.LENGTH_SHORT).show();
                                             finish();
-                                        }else {
-                                            Toast.makeText(RegisterActivity.this,"注册失败",Toast.LENGTH_SHORT).show();
+
+                                        }else
+                                        {
+                                            Log.e("注册失败", "原因: ",e );
                                         }
+
                                     }
                                 });
                             }else {
@@ -187,11 +155,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                     });
                 }
         }
-
-
-        }
-
-
+    }
 
 
     /**
