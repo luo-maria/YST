@@ -11,7 +11,7 @@ import com.example.yst.R;
 import com.example.yst.adapter.MyPagerAdapter;
 import com.example.yst.bean.ImageBean;
 import com.example.yst.entity.TabEntity;
-import com.example.yst.fragment.HomeFragment1;
+import com.example.yst.fragment.HomeFragment;
 import com.example.yst.fragment.HomePageFragment;
 import com.example.yst.fragment.OrganizationFragment;
 import com.flyco.tablayout.CommonTabLayout;
@@ -69,7 +69,7 @@ public class HomeActivity extends BaseActivity {
         mList.add(new ImageBean(R.mipmap.a));
         mList.add(new ImageBean(R.mipmap.b));
         mList.add(new ImageBean(R.mipmap.a));
-        mFragments.add(HomeFragment1.newInstance());
+        mFragments.add(HomeFragment.newInstance());
         mFragments.add(OrganizationFragment.newInstance());
         mFragments.add(HomePageFragment.newInstance());
         for (int i = 0; i < mTitles.length; i++) {
