@@ -16,7 +16,6 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -38,7 +37,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 
 public class HomePageFragment extends Fragment {
     public static HomePageFragment newInstance() {
@@ -75,7 +73,7 @@ public class HomePageFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //创建Fragment的布局
-        final View view = inflater.inflate(R.layout.fragment_homepage, container, false);
+        final View view = inflater.inflate(R.layout.fragment_my, container, false);
         listView = view.findViewById(R.id.list_simple);
         club=view.findViewById(R.id.club);
         my_club=view.findViewById(R.id.my_club);
