@@ -1,6 +1,7 @@
 package com.example.yst.Activity;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -25,7 +26,7 @@ import cn.bmob.v3.listener.QueryListener;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 
-public class RegisterActivity extends BaseActivity implements View.OnClickListener {
+public class RegisterActivity extends Activity implements View.OnClickListener {
     private String realCode;
 
     private Button mBtRegisteractivityRegister;
@@ -42,20 +43,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        Bmob.initialize(RegisterActivity.this,"f84563e89fdb95cdc3c135df0c5ffc25");
+        Bmob.initialize(RegisterActivity.this, "f84563e89fdb95cdc3c135df0c5ffc25");
         initView();
-
-//        mDBOpenHelper = new DBOpenHelper(this);
-
-
-//        //将验证码用图片的形式显示出来
-//        mIvRegisteractivityShowcode.setImageBitmap(Code.getInstance().createBitmap());
-//        realCode = Code.getInstance().getCode().toLowerCase();
-    }
-
-    @Override
-    protected int initLayout() {
-        return 0;
     }
 
     protected void initView(){
@@ -77,11 +66,6 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         mBtRegisteractivityLogin.setOnClickListener(this);
         mIvRegisteractivityGetcode.setOnClickListener(this);
         mBtRegisteractivityRegister.setOnClickListener(this);
-    }
-
-    @Override
-    protected void initData() {
-
     }
 
 
