@@ -30,6 +30,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 
+import com.example.yst.Activity.EditUserActivity;
 import com.example.yst.R;
 
 import java.io.ByteArrayOutputStream;
@@ -94,36 +95,22 @@ public class HomePageFragment extends Fragment {
             item.put("head", heads[0]);
             list.add(item);
             Intent intent=getActivity().getIntent();
-            String username=intent.getStringExtra("username");
-            System.out.println("这里是HomePageFragment的username："+username);
-//            myhelper = new DatabaseHelper(HomePageFragment.this.getContext());
-//            SQLiteDatabase sdb=myhelper.getReadableDatabase();
-//            Cursor cursor = sdb.rawQuery("select * from user where username=?", new String[]{username});
-//            if (cursor != null && cursor.getColumnCount() > 0) {
-//                while (cursor.moveToNext()) {
-//                    myusername = cursor.getString(1);
-//                    mysig=cursor.getString(5);
-//                    byte[] por = cursor.getBlob(7);
-//                    if(por!=null){
-//                        imagebm = BitmapFactory.decodeByteArray(por, 0, por.length);
-//                        portraittxt.setImageBitmap(imagebm);
-//                    }
-//                }
-//                    cursor.close();}
-//            my_name.setText(myusername);
-//            signature.setText(mysig);
+            String homepagefragment_number=intent.getStringExtra("input_number");
+            intent.putExtra("input_number",homepagefragment_number);
+            System.out.println("这里是homepagefragment_number的number：" + homepagefragment_number);
 
         }
-//        linearLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent1 = new Intent(HomePageFragment.this.getActivity(), EditUser.class);
-//                Intent intent=getActivity().getIntent();
-//                String username=intent.getStringExtra("username");
-//                intent1.putExtra("username",username);
-//                startActivity(intent1);
-//            }
-//        });
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(HomePageFragment.this.getActivity(), EditUserActivity.class);
+                Intent intent=getActivity().getIntent();
+                String homepagefragment_number=intent.getStringExtra("input_number");
+                intent1.putExtra("input_number",homepagefragment_number);
+                System.out.println("这里是homepagefragment_number的number：" + homepagefragment_number);
+                startActivity(intent1);
+            }
+        });
 
         portraittxt.setOnClickListener(new View.OnClickListener() {
             @Override

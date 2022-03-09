@@ -149,7 +149,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                     Toast.makeText(RegisterActivity.this,"密码不得少于6位数",Toast.LENGTH_SHORT).show();
                 }else if (password.length()>16){
                     Toast.makeText(RegisterActivity.this,"密码不得多于16位数",Toast.LENGTH_SHORT).show();
-                }else if (password!=password2){
+                }else if (!password.equals(password2)){
                     Toast.makeText(RegisterActivity.this,"密码不一致，请重新输入",Toast.LENGTH_SHORT).show();
                 }else if (TextUtils.isEmpty(smEtRegisteractivityPhonecode.getText().toString().trim())){
                     Toast.makeText(RegisterActivity.this,"请填写验证码",Toast.LENGTH_SHORT).show();

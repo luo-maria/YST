@@ -2,11 +2,9 @@ package com.example.yst.Activity;
 
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.yst.R;
@@ -25,11 +23,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeActivity extends BaseActivity {
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//    initView();
+//    initData();
+//    initLayout();}
     private Banner mBanner;
-    //    DatabaseHelper myhelper;
+
     private List<ImageBean> mList = new ArrayList<>();
     private String[] mTitles = {"社团活动", "校园社团", "个人中心"};
-    private int stu_id;
     //未选中（一 一对应）
     private int[] mIconUnselectIds = {
             R.mipmap.home_unselect, R.mipmap.collect_unselect,
@@ -55,18 +57,9 @@ public class HomeActivity extends BaseActivity {
         viewPager = findViewById(R.id.viewpager);
         commonTabLayout = findViewById(R.id.commonTabLayout);
         Intent intent = getIntent();
-        String username = intent.getStringExtra("username");
-        System.out.println("这里是HomeActivity的username：" + username);
-//        myhelper = new DatabaseHelper(HomeActivity.this);
-//        SQLiteDatabase sdb1=myhelper.getWritableDatabase();
-//        Cursor cursor1 = sdb1.rawQuery("select * from user where username=?", new String[]{username});
-//        if (cursor1 != null && cursor1.getColumnCount() > 0) {
-//            while (cursor1.moveToNext()) {
-//                stu_id = cursor1.getInt(0);
-//                cursor1.close();
-//            }
-//            sdb1.close();}
-        System.out.println("this is HomeActivityid+++++++++=" + stu_id);
+        String homeactivity_number = intent.getStringExtra("input_number");
+        System.out.println("这里是HomeActivity的number：" + homeactivity_number);
+
     }
 
     @Override
