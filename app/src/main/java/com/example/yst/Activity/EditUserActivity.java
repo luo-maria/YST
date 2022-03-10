@@ -36,48 +36,65 @@ public class EditUserActivity extends AppCompatActivity {
         Intent intent=getIntent();
         String EditUserActivity_number=intent.getStringExtra("input_number");
         System.out.println("这里是homepagefragment_number的number：" + EditUserActivity_number);
-
         savetxt=findViewById(R.id.savetxt);
         cancel=findViewById(R.id.cancel);
-        BmobQuery<Student> bmobQuery = new BmobQuery<>();
-        savetxt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bmobQuery.findObjects(new FindListener<Student>() {
-                    @Override
-                    public void done(List<Student> object, BmobException e) {
-                        if (e == null) {
-                            //判断信号量，若查找结束count和object长度相等，则没有查找到该账号
-                            int count=0;
-                            for (Student student: object) {
-                                String phone=student.getStudent_phone();
-                                System.out.println("This is the edit phone:"+phone);
-                                if (phone.equals(EditUserActivity_number)) {
-                                    System.out.println("this is the rename1:"+reusername);
-                                    student.setStudent__username(reusername);
-                                    System.out.println("this is the rename2:"+reusername);
-                                    student.setStudent_password(repassword);
-                                    student.setStudent_class(reclass);
-                                    student.setStudent_Gender(regender);
-                                    student.setStudent_realname(rerealname);
-                                    student.setStudent_signature(resig);
-                                    student.setStudent_college(recollege);
-                                }
-                                count++;
-                            }
-                            Toast.makeText(EditUserActivity.this,"修改成功",Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(EditUserActivity.this, HomeActivity.class);
-                            startActivity(intent);
-                        }else {
-                            Toast.makeText(EditUserActivity.this,"该账号不存在",Toast.LENGTH_SHORT).show();
-                        }
+        setMyUser();
 
-                    }   });
-            }
-        });
+//        savetxt.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//               Student student = BmobUser.getCurrentUser(Student.class);
+//
+//                reusername=stuusernametxt1.getText().toString();
+//
+//                rerealname=stunametxt.getText().toString();
+//                recollege=stucollegetxt.getText().toString();
+//                resig=stusigtxt.getText().toString();
+//                reclass=stuclasstxt.getText().toString();
+//                repassword=stupasstxt.getText().toString();
+//                student.setStudent__username(reusername);
+//
+//                student.setStudent_password(repassword);
+//                student.setStudent_class(reclass);
+//                student.setStudent_Gender(regender);
+//                student.setStudent_realname(rerealname);
+//                student.setStudent_signature(resig);
+//                student.setStudent_college(recollege);
+//                Toast.makeText(EditUserActivity.this,"修改成功",Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(EditUserActivity.this, HomeActivity.class);
+//                startActivity(intent);
+//
+//            }
+//        });
 
 
     }
+
+    private void setMyUser() {
+        Student userInfo = BmobUser.getCurrentUser(Student.class);
+        Student student=new Student();
+        String username=student.getStudent_phone();
+        System.out.println("this is username::::::"+userInfo );
+        if (userInfo.getStudent_username() != null) {
+            stuusernametxt1.setText(userInfo.getStudent_username());
+        }else {
+            System.out.println("this is null no user");
+        }
+        if (userInfo.getStudent_realname() != null) {
+            stunametxt.setText(userInfo.getStudent_realname());
+        }
+        if (userInfo.getStudent_college() != null) {
+            stucollegetxt.setText(userInfo.getStudent_college());
+        }
+        if (userInfo.getStudent_class() != null) {
+            stuclasstxt.setText(userInfo.getStudent_class());
+        }
+        if (userInfo.getStudent_password() != null) {
+            stupasstxt.setText(userInfo.getStudent_password());
+        }
+
+    }
+
     private void initView() {
         stuusernametxt1=findViewById(R.id.stuusernametxt);
         stupasstxt=findViewById(R.id.stupasstxt);
@@ -87,12 +104,7 @@ public class EditUserActivity extends AppCompatActivity {
         stunametxt=findViewById(R.id.stunametxt);
         stucollegetxt=findViewById(R.id.stucollegetxt);
 
-        reusername=stuusernametxt1.getText().toString();
-        rerealname=stunametxt.getText().toString();
-        recollege=stucollegetxt.getText().toString();
-        resig=stusigtxt.getText().toString();
-        reclass=stuclasstxt.getText().toString();
-        repassword=stupasstxt.getText().toString();
+
     }
     private void selectRadioBtn(){
         radioButton = findViewById(rg.getCheckedRadioButtonId());

@@ -5,7 +5,7 @@ import cn.bmob.v3.BmobUser;
 
 public class Student extends BmobUser {
     private int Student_id;
-    private String Student__username;            //用户名
+    private String Student_username;            //用户名
     private String Student_number;
     private String Student_password;
     private String Student_class;
@@ -22,7 +22,7 @@ public class Student extends BmobUser {
                 String Student_signature,String Student_gender, String Student_realname,String Student_phone,String Student_college ) {
         super();
         this.Student_id=Student_id;
-        this.Student__username = Student__username;
+        this.Student_username = Student__username;
         this.Student_number = Student_number;
         this.Student_password = Student_password;
         this.Student_class=Student_class;
@@ -40,12 +40,12 @@ public class Student extends BmobUser {
         this.Student_id = Student_id;
     }
 
-    public String getStudent__username() {
-        return Student__username;
+    public String getStudent_username() {
+        return Student_username;
     }
 
-    public void setStudent__username(String Student__username) {
-        this.Student__username = Student__username;
+    public void setStudent_username(String Student_username) {
+        this.Student_username = Student_username;
     }
 
     public String getStudent_number() {
