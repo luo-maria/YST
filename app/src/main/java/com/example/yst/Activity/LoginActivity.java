@@ -48,7 +48,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
     }
 
-
     public void initView() {
         // 初始化控件
         mBtLoginactivityLogin = findViewById(R.id.bt_loginactivity_login);
@@ -97,7 +96,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                             if(e==null){
                                 Toast.makeText(LoginActivity.this,bmobUser.getUsername()+"登录成功",Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
-                                intent.putExtra("这是用户的信息！！！！！！！"+Account,Password);
+                                intent.putExtra("Account",Account);
+//                                intent.putExtra("Account",Account)
                                 startActivity(intent);
 //                                break;
                             }else {

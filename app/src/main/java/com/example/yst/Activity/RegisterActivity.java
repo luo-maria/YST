@@ -92,12 +92,6 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                     SendSMS(Account);
                 }
 
-
-
-//
-//                mIvRegisteractivity_getcode.setImageBitmap(Code.getInstance().createBitmap());
-//                realCode = Code.getInstance().getCode().toLowerCase();
-//                break;
             case R.id.bt_registeractivity_register:    //注册按钮
                 //获取用户输入的用户名、学号、密码、验证码
                 final String phone = mEtRegisteractivityUsername.getText().toString().trim();

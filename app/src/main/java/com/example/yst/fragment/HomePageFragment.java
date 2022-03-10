@@ -1,6 +1,7 @@
 package com.example.yst.fragment;
 
 import android.Manifest;
+import android.accounts.Account;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -47,7 +48,7 @@ public class HomePageFragment extends Fragment {
     ListView listView;
     ImageView club,message1;
     TextView my_club;
-    LinearLayout linearLayout;
+    LinearLayout myInfo;
     private SQLiteDatabase db;
 
     Bitmap imagebm;
@@ -55,7 +56,7 @@ public class HomePageFragment extends Fragment {
     private int[] heads = new int[]{R.mipmap.cal};
 
     private ImageView mImage,portraittxt,edittxt;
-    private String myusername,mysig;
+//    private String myusername,mysig;
     private TextView my_name,signature;
     public void sendBroadcast(Intent intent) {
         Context mBase=HomePageFragment.this.getContext();
@@ -79,33 +80,35 @@ public class HomePageFragment extends Fragment {
         my_club=view.findViewById(R.id.my_club);
         portraittxt=view.findViewById(R.id.portraittxt);
         message1=view.findViewById(R.id.message1);
-        linearLayout=view.findViewById(R.id.mymyinfo);
-        my_name=view.findViewById(R.id.my_name);
+        myInfo=view.findViewById(R.id.myInfo);
+        my_name =view.findViewById(R.id.my_name);
         signature=view.findViewById(R.id.signature);
         initView();
         return view;
     }
     private void initView() {
+
+        Intent intent=getActivity().getIntent();
+        String Account =intent.getStringExtra("Account");
+        System.out.println("这里是homepagefragment显示的账户手机号：：：：：" + Account);
         List<Map<String, Object>> list = new ArrayList();
         for (int i = 0; i < names.length; i++) {
             Map<String, Object> item = new HashMap<>();
             item.put("name", names[i]);
             item.put("head", heads[0]);
             list.add(item);
-            Intent intent=getActivity().getIntent();
-            String homepagefragment_number=intent.getStringExtra("input_number");
-            intent.putExtra("input_number",homepagefragment_number);
-            System.out.println("这里是homepagefragment_number的number：" + homepagefragment_number);
-
         }
-        linearLayout.setOnClickListener(new View.OnClickListener() {
+
+        my_name.setText(Account);
+
+        myInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent(HomePageFragment.this.getActivity(), EditUserActivity.class);
                 Intent intent=getActivity().getIntent();
-                String homepagefragment_number=intent.getStringExtra("input_number");
-                intent1.putExtra("input_number",homepagefragment_number);
-                System.out.println("这里是homepagefragment_number的number：" + homepagefragment_number);
+                String Account =intent.getStringExtra("Account");
+                intent1.putExtra("input_number",Account);
+                System.out.println("这里是homepagefragment_number的number：" + Account);
                 startActivity(intent1);
             }
         });
@@ -217,7 +220,8 @@ public class HomePageFragment extends Fragment {
     //加载图片
     private void showImage(String imaePath) {
         Intent intent=getActivity().getIntent();
-        String username=intent.getStringExtra("username");
+        String username=intent.getStringExtra("Account");
+
         System.out.println("hpageusername+++++####"+username);
         Bitmap bm = BitmapFactory.decodeFile(imaePath);
         System.out.println("这是图片路径——+++++++++++++"+imaePath);
