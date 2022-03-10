@@ -62,26 +62,7 @@ public class OrganizationFragment extends Fragment {
         // 为列表项设置监听器
         Map<String, Object> item;
         final List<Map<String, Object>> data = new ArrayList<Map<String, Object>>();
-//        Cursor cursor = db.rawQuery("select * from club",null);
-//        if (cursor.moveToFirst()){
-//            while (!cursor.isAfterLast()){
-//                item = new HashMap<String, Object>();  // 为列表项赋值
-//                item.put("club_id",cursor.getInt(0));
-//                item.put("club_name",cursor.getString(1));
-//                item.put("club_create_id",cursor.getInt(2));
-//                item.put("level",cursor.getString(4));
-//                item.put("campus",cursor.getString(5));
-//                item.put("kind",cursor.getString(6));
-//                item.put("club_intro",cursor.getString(8));
-//                logo = cursor.getBlob(3);
-//                imagebm = BitmapFactory.decodeByteArray(logo, 0, logo.length);
-//                //kind1.setImageBitmap(imagebm);
-//                item.put("logo",imagebm);
-//                cursor.moveToNext();
-//                data.add(item); // 加入到列表中
-//            }
 
-//        }
         SimpleAdapter simpleAdapter = new SimpleAdapter(OrganizationFragment.this.getContext(), data, R.layout.club_lists, new String[]{"logo", "club_name", "level", "campus", "kind", "club_intro"},
                 new int[]{R.id.logo, R.id.clubname, R.id.clublevel, R.id.clubcampus, R.id.clubkind, R.id.clubintos});
         simpleAdapter.setViewBinder(new SimpleAdapter.ViewBinder() {
@@ -143,10 +124,8 @@ public class OrganizationFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view,
                                        int position, long id) {
-                //获取选中值
-                Spinner spinner1 = (Spinner) adapterView;
-                data1 = spinner1.getItemAtPosition(position).toString();
-                System.out.println("这里的data1是:" + data1);
+
+
             }
 
             @Override
@@ -159,10 +138,8 @@ public class OrganizationFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view,
                                        int position, long id) {
-                //获取选中值
-                Spinner spinner2 = (Spinner) adapterView;
-                data2 = spinner2.getItemAtPosition(position).toString();
-                System.out.println("这里的data2是:" + data2);
+
+
             }
 
             @Override
@@ -206,8 +183,7 @@ public class OrganizationFragment extends Fragment {
 
                     }
                 });
-                System.out.println("这里的data11是:"+data1);
-//                sp1.setAdapter(adapter1);
+
                 sp1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> adapterView2, View view,

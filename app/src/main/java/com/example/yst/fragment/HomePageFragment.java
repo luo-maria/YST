@@ -22,6 +22,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,12 +33,15 @@ import androidx.fragment.app.Fragment;
 
 import com.example.yst.Activity.EditUserActivity;
 import com.example.yst.R;
+import com.example.yst.bean.Student;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import cn.bmob.v3.BmobUser;
 
 public class HomePageFragment extends Fragment {
     public static HomePageFragment newInstance() {
@@ -49,14 +53,13 @@ public class HomePageFragment extends Fragment {
     ImageView club,message1;
     TextView my_club;
     LinearLayout myInfo;
-    private SQLiteDatabase db;
+
 
     Bitmap imagebm;
     private String[] names = new String[]{"活动日程", "我的荣誉", "社团入驻",  "退出"};
     private int[] heads = new int[]{R.mipmap.cal};
 
-    private ImageView mImage,portraittxt,edittxt;
-//    private String myusername,mysig;
+    private ImageView portraittxt;
     private TextView my_name,signature;
     public void sendBroadcast(Intent intent) {
         Context mBase=HomePageFragment.this.getContext();
@@ -87,10 +90,9 @@ public class HomePageFragment extends Fragment {
         return view;
     }
     private void initView() {
-
-        Intent intent=getActivity().getIntent();
-        String Account =intent.getStringExtra("Account");
-        System.out.println("这里是homepagefragment显示的账户手机号：：：：：" + Account);
+        Student userInfo = BmobUser.getCurrentUser(Student.class);
+        my_name.setText(userInfo.getNickname());
+        signature.setText(userInfo.getSignature());
         List<Map<String, Object>> list = new ArrayList();
         for (int i = 0; i < names.length; i++) {
             Map<String, Object> item = new HashMap<>();
@@ -98,8 +100,6 @@ public class HomePageFragment extends Fragment {
             item.put("head", heads[0]);
             list.add(item);
         }
-
-        my_name.setText(Account);
 
         myInfo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -229,11 +229,7 @@ public class HomePageFragment extends Fragment {
         bm.compress(Bitmap.CompressFormat.PNG, 100, baos);
         image = baos.toByteArray();
         portraittxt.setImageBitmap(bm);
-//        myhelper = new DatabaseHelper(HomePageFragment.this.getContext());
-//        db=myhelper.getReadableDatabase();
-//        db.execSQL("update user set portrait=?where username=?",
-//                new Object[]{image,username});
-//        db.close();
+
     }
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

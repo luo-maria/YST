@@ -119,8 +119,6 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                         @Override
                         public void done(BmobException e) {
                             if (e == null) {
-
-                                //
                                 Student user = new Student();
                                 user.setUsername(phone);
                                 user.setPassword(password);

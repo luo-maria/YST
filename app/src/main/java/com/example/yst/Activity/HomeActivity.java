@@ -23,12 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeActivity extends BaseActivity {
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//    initView();
-//    initData();
-//    initLayout();}
-    private Banner mBanner;
+
 
     private List<ImageBean> mList = new ArrayList<>();
     private String[] mTitles = {"社团活动", "校园社团", "个人中心"};
@@ -56,9 +51,6 @@ public class HomeActivity extends BaseActivity {
     protected void initView() {
         viewPager = findViewById(R.id.viewpager);
         commonTabLayout = findViewById(R.id.commonTabLayout);
-        Intent intent = getIntent();
-        String homeactivity_number = intent.getStringExtra("input_number");
-        System.out.println("这里是HomeActivity的number：" + homeactivity_number);
 
     }
 

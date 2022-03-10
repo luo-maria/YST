@@ -39,33 +39,13 @@ public class HomeFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_home, container, false);
         mBanner = (Banner) view.findViewById(R.id.banner);
         ListView activitys = view.findViewById(R.id.activitys);
-        Intent intent1=getActivity().getIntent();
-        String username=intent1.getStringExtra("username");
-        System.out.println("这里是HomeFragment1的username:"+username);
-//        DatabaseHelper dbtest = new DatabaseHelper(HomeFragment1.this.getContext());
-//        final SQLiteDatabase db = dbtest.getWritableDatabase();
+
+
 
         // 为列表项设置监听器
         Map<String, Object> item;
         final List<Map<String, Object>> data = new ArrayList<Map<String, Object>>();
-//        Cursor cursor = db.rawQuery("select * from activity",null);
-//        if (cursor.moveToFirst()){
-//            while (!cursor.isAfterLast()){
-//                item = new HashMap<String, Object>();  // 为列表项赋值
-//                item.put("activity_id",cursor.getInt(0));
-//                item.put("club_name",cursor.getString(2));
-//                item.put("activity_name",cursor.getString(4));
-//                item.put("activity_kind",cursor.getString(5));
-//                item.put("activity_intro",cursor.getString(9));
-//                images = cursor.getBlob(3);
-//                imagebm = BitmapFactory.decodeByteArray(images, 0, images.length);
-//                //kind1.setImageBitmap(imagebm);
-//                item.put("activity_images",imagebm);
-//                cursor.moveToNext();
-//                data.add(item); // 加入到列表中
-//            }
-//
-//        }
+
         SimpleAdapter simpleAdapter = new SimpleAdapter(HomeFragment.this.getContext(), data, R.layout.activity_lists, new String[] { "activity_images","club_name", "activity_name" ,"activity_intro"},
                 new int[] { R.id.image,R.id.activity_create_name, R.id.activity_name,R.id.activity_intro  });
         simpleAdapter.setViewBinder(new SimpleAdapter.ViewBinder() {
