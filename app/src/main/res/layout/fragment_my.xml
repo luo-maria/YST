@@ -54,9 +54,9 @@
             android:id="@+id/my_name"
             android:layout_width="100dp"
             android:layout_height="30dp"
-            android:layout_marginBottom="0dp"
             android:layout_marginLeft="135dp"
-                android:layout_marginTop="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="0dp"
             android:background="@null"
             android:hint="昵称"
             android:textAlignment="gravity"
@@ -120,7 +120,7 @@
                 android:textSize="18sp" />
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/mymyinfo"
+            android:id="@+id/myInfo"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="80dp"
