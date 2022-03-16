@@ -42,7 +42,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         Bmob.initialize(LoginActivity.this,"f84563e89fdb95cdc3c135df0c5ffc25");
         initView();
 

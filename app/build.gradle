@@ -51,7 +51,11 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
     implementation 'com.youth.banner:banner:2.1.0'
-
     implementation 'de.hdodenhof:circleimageview:2.0.0'
+    /**fresco 图片加载**/
+    implementation 'com.facebook.fresco:fresco:2.1.0'
+    /**butterknife**/
+    implementation 'com.jakewharton:butterknife:10.2.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
 
 }

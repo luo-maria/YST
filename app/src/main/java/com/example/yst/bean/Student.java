@@ -2,6 +2,7 @@ package com.example.yst.bean;
 
 import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.datatype.BmobFile;
 
 public class Student extends BmobUser {
 
@@ -12,6 +13,7 @@ public class Student extends BmobUser {
     private  String college;
     private  String university;
     private String nickname;
+    private BmobFile photoImage;
     public Student() {
         super();
         // TODO Auto-generated constructor stub
@@ -72,5 +74,13 @@ public class Student extends BmobUser {
 
     public void setUniversity(String university) {
         this.university = university;
+    }
+
+    public BmobFile getPhotoImage() {
+        return photoImage;
+    }
+
+    public void setPhotoImage(BmobFile photoImage) {
+        this.photoImage = photoImage;
     }
 }

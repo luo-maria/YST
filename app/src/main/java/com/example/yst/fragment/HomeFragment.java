@@ -61,18 +61,6 @@ public class HomeFragment extends Fragment {
             }
         });
         activitys.setAdapter(simpleAdapter);
-        // 为列表项设置监听器
-//        activitys.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                intent = new Intent(HomeFragment1.this.getActivity(), Activity_detail_Activity.class);
-//                intent.putExtra("id", data.get(position).get("activity_id").toString());
-//                //
-//                intent.putExtra("username",username);
-//                startActivity(intent);
-//            }
-//        });
-
         initView();
         initData();
         return view;
