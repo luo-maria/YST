@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.example.yst.Activity.CreateClubActivity;
 import com.example.yst.Activity.EditUserActivity;
 import com.example.yst.Activity.SelectPhotoActivity;
 import com.example.yst.R;
@@ -26,9 +29,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-
-import butterknife.BindView;
 import cn.bmob.v3.BmobUser;
 public class HomePageFragment extends Fragment {
     public static HomePageFragment newInstance() {
@@ -113,6 +113,40 @@ public class HomePageFragment extends Fragment {
                     new String[]{"name", "head"},
                     new int[]{R.id.tv_name, R.id.imageView1});
             listView.setAdapter(simpleAdapter);//绑定listView和simpleAdapter
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    toNewActivity(position);
+                }
+                private void toNewActivity(int position) {
+                    Intent i;
+                    switch (position) {
+                        case 0:
+                            i = new Intent(HomePageFragment.this.getActivity(), CreateClubActivity.class);
+                            startActivity(i);
+                            break;
+                        case 1:
+                            i = new Intent(HomePageFragment.this.getActivity(), CreateClubActivity.class);
+                            startActivity(i);
+                            break;
+                        case 2:
+                            i = new Intent(HomePageFragment.this.getActivity(), CreateClubActivity.class);
+                            Intent intent=getActivity().getIntent();
+                            String username=intent.getStringExtra("username");
+                            i.putExtra("username",username);
+                            startActivity(i);
+                            break;
+                        case 3:
+                            loginOut();
+                            break;
+                        default:
+                            i = new Intent(HomePageFragment.this.getActivity(), HomePageFragment.class);
+                            startActivity(i);
+                            break;
+                    }
+
+                }
+            });
         }
 
 
@@ -122,12 +156,10 @@ public class HomePageFragment extends Fragment {
         if (userInfo.getPhotoImage() == null) {
             return;
         }
-        System.out.println("这是路径："+userInfo.getPhotoImage().getUrl());
-        System.out.println("这是imghead："+imgHead);
-        System.out.println("这是context："+getContext());
+//        System.out.println("这是路径："+userInfo.getPhotoImage().getUrl());
+//        System.out.println("这是imghead："+imgHead);
+//        System.out.println("这是context："+getContext());
         ImageUtils.setRoundImage(getContext(), imgHead, userInfo.getPhotoImage().getUrl());
-
-
 
     }
 

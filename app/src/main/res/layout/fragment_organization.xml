@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_height="match_parent"
+<LinearLayout
+    android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
@@ -102,17 +103,11 @@
         android:descendantFocusability="blocksDescendants"
         android:padding="5dp">
 
-        <ListView
-            android:id="@+id/clubs"
-            android:focusable="false"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_club"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.53" />
+            />
     </LinearLayout>
 
 </LinearLayout>

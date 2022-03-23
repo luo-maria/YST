@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.yst.R;
 import com.example.yst.bean.Student;
+import com.example.yst.bean.UriEvent;
 import com.example.yst.util.ConstantConfig;
 
 import java.io.File;
@@ -33,7 +34,7 @@ import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadFileListener;
-
+import org.greenrobot.eventbus.EventBus;
 public class SelectPhotoActivity extends Activity implements View.OnClickListener {
     public static final String TAG = "SelectPhotoActivity";
     private Uri imageUri;
@@ -152,10 +153,10 @@ public class SelectPhotoActivity extends Activity implements View.OnClickListene
                         case ConstantConfig.UPDATE_HEAD_IMAGES:
                             cropPhoto(imageUri);
                             break;
-//                        case ConstantConfig.SELECT_CAMPUS_IMAGES:
-//                            EventBus.getDefault().post(new UriEvent(ConstantConfig.SELECT_CAMPUS_IMAGES, imageUri));
-//                            finish();
-//                            break;
+                        case ConstantConfig.SELECT_CAMPUS_IMAGES:
+                            EventBus.getDefault().post(new UriEvent(ConstantConfig.SELECT_CAMPUS_IMAGES, imageUri));
+                            finish();
+                            break;
 
                         default:
                     }
@@ -181,10 +182,10 @@ public class SelectPhotoActivity extends Activity implements View.OnClickListene
                             case ConstantConfig.UPDATE_HEAD_IMAGES:
                                 cropPhoto(uri);
                                 break;
-//                            case ConstantConfig.SELECT_CAMPUS_IMAGES:
-//                                EventBus.getDefault().post(new UriEvent(ConstantConfig.SELECT_CAMPUS_IMAGES, uri));
-//                                finish();
-//                                break;
+                            case ConstantConfig.SELECT_CAMPUS_IMAGES:
+                                EventBus.getDefault().post(new UriEvent(ConstantConfig.SELECT_CAMPUS_IMAGES, uri));
+                                finish();
+                                break;
                             default:
                         }
                     } catch (Exception e) {

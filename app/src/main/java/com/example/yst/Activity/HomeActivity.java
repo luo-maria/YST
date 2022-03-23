@@ -1,9 +1,6 @@
 package com.example.yst.Activity;
 
 
-import android.content.Intent;
-import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -17,7 +14,6 @@ import com.example.yst.fragment.OrganizationFragment;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
-import com.youth.banner.Banner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,6 +59,7 @@ public class HomeActivity extends BaseActivity {
         mList.add(new ImageBean(R.mipmap.a));
         mFragments.add(HomeFragment.newInstance());
         mFragments.add(OrganizationFragment.newInstance());
+//        mFragments.add(test.newInstance());
         mFragments.add(HomePageFragment.newInstance());
         for (int i = 0; i < mTitles.length; i++) {
             mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));

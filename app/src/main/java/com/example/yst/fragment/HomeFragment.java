@@ -25,9 +25,6 @@ import java.util.Map;
 
 public class HomeFragment extends Fragment {
 
-    byte[] images;
-    Bitmap imagebm;
-    Intent intent;
 
     public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
