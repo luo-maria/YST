@@ -85,7 +85,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 } else if (TextUtils.isEmpty(Password)) {
                     Toast.makeText(LoginActivity.this, "请填写密码", Toast.LENGTH_SHORT).show();
                 } else {
-
                     Student userLogin = new Student();
                     userLogin.setUsername(Account);
                     userLogin.setPassword(Password);
@@ -101,6 +100,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 //                                break;
                             }else {
                                 Log.e("登录失败", "原因: ", e);
+                                Toast.makeText(LoginActivity.this,"登录失败",Toast.LENGTH_SHORT).show();
+
                             }
                         }
                     });

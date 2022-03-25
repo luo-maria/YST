@@ -27,7 +27,7 @@ import cn.bmob.v3.listener.UpdateListener;
 
 public class Club_detailActivity extends AppCompatActivity {
     Button app_btn;
-    String club_id1,img_url;
+    String club_id1,img_url,club_state;
 
     SimpleDraweeView imglogo;
     @Override
@@ -46,6 +46,7 @@ public class Club_detailActivity extends AppCompatActivity {
 
         Intent intent1=getIntent();
         club_id1=intent1.getStringExtra("clubid");
+        club_state=intent1.getStringExtra("club_state");
 //        System.out.println("this is clubiddetail:"+club_id1);
         BmobQuery<Club> bmobQuery = new BmobQuery<Club>();
         bmobQuery.getObject(club_id1, new QueryListener<Club>() {
@@ -68,20 +69,22 @@ public class Club_detailActivity extends AppCompatActivity {
                 }
             }
         });
-
-
         app_btn = (Button) findViewById(R.id.apply);
 
         app_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(Club_detailActivity.this, Apply_aclub.class);
-//
-//                startActivity(intent);
+                if(club_state.equals("非招募")){
+                    Toast.makeText(Club_detailActivity.this, "该社团目前不在招募期，欢迎在招募期申请！", Toast.LENGTH_SHORT).show();
+                    finish();
+                }else{
+                Intent intent = new Intent(Club_detailActivity.this,ApplyclubActivity.class);
+                System.out.println("this is 11111111111clubid:"+club_id1);
+                intent.putExtra("clubid",club_id1);
+                startActivity(intent);
+                }
             }
         });}
-
-
 
 }
 

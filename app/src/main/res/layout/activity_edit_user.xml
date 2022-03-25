@@ -95,7 +95,7 @@
             android:layout_height="30dp"
             android:layout_gravity="center"
             android:background="@null"
-            android:text="学号"
+            android:text="姓名"
             android:textAlignment="gravity"
             android:textColor="@color/gary"
             android:textSize="20sp" />

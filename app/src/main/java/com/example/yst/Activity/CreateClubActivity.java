@@ -85,7 +85,6 @@ public class CreateClubActivity extends AppCompatActivity {
                 //获取选中值
                 Spinner spinner1 = (Spinner) adapterView;
                 campus=spinner1.getItemAtPosition(position).toString();
-//                System.out.println("这里的级别是:"+level);
             }
 
             @Override
@@ -134,6 +133,8 @@ public class CreateClubActivity extends AppCompatActivity {
         btncreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Student userInfo = BmobUser.getCurrentUser(Student.class);
+                stu_id=userInfo.getObjectId();
                 Club club = new Club();
                 club.setClub_name(et_club_name.getText().toString());
                 club.setClub_campus(campus);
@@ -142,12 +143,11 @@ public class CreateClubActivity extends AppCompatActivity {
                 club.setClub_president(et_leader_name.getText().toString());
                 club.setPre_number(et_leader_call.getText().toString());
                 club.setClub_intro(et_club_intro.getText().toString());
+                club.setStu_id(stu_id);
                 club.save(new SaveListener<String>() {
                     @Override
                     public void done(String objectId, BmobException e) {
                         if(e==null){
-                            club_id=objectId;
-                            System.out.println("这里的club_id3333是:"+ club_id);
                             Toast.makeText(CreateClubActivity.this,"添加数据成功，返回objectId为："+objectId,Toast.LENGTH_SHORT).show();
                         }else{
                             Toast.makeText(CreateClubActivity.this,"创建数据失败：" + e.getMessage(),Toast.LENGTH_SHORT).show();
@@ -155,22 +155,22 @@ public class CreateClubActivity extends AppCompatActivity {
                     }
                 });
 
-                Student userInfo = BmobUser.getCurrentUser(Student.class);
-                stu_id=userInfo.getObjectId();
-                Stu_Club stuClub=new Stu_Club();
-                System.out.println("这里的club_id2222是:"+ club_id);
-                stuClub.setClub_id(club_id);
-                stuClub.setStu_id(stu_id);
-                stuClub.save(new SaveListener<String>() {
-                    @Override
-                    public void done(String objectId, BmobException e) {
-                        if(e==null){
-                            Toast.makeText(CreateClubActivity.this,"添加数据成功，返回objectId为："+objectId,Toast.LENGTH_SHORT).show();
-                        }else{
-                            Toast.makeText(CreateClubActivity.this,"创建数据失败：" + e.getMessage(),Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+//                Student userInfo = BmobUser.getCurrentUser(Student.class);
+//                stu_id=userInfo.getObjectId();
+//                Stu_Club stuClub=new Stu_Club();
+//                System.out.println("这里的club_id2222是:"+ club_id);
+//                stuClub.setClub_id(club_id);
+//                stuClub.setStu_id(stu_id);
+//                stuClub.save(new SaveListener<String>() {
+//                    @Override
+//                    public void done(String objectId, BmobException e) {
+//                        if(e==null){
+//                            Toast.makeText(CreateClubActivity.this,"添加数据成功，返回objectId为："+objectId,Toast.LENGTH_SHORT).show();
+//                        }else{
+//                            Toast.makeText(CreateClubActivity.this,"创建数据失败：" + e.getMessage(),Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                });
 
                 Toast.makeText(CreateClubActivity.this,"创建成功",Toast.LENGTH_SHORT).show();
                 //刷新本页面

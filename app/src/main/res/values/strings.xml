@@ -6,6 +6,9 @@
     <string name="number_hint">请输入手机号</string>
     <string name="pwd_hint">请输入密码</string>
     <string name="pwd_hint1">请再次确认密码</string>
+    <string name="create_hintName">请输入姓名</string>
+    <string name="create_hintClass">请输入班级</string>
+    <string name="create_hintNumber">请输入联系方式</string>
     <string name="create_hint1">请输入名称</string>
     <string name="create_hint2">请输入内容</string>
     <string name="create_hint3">预设内容</string>

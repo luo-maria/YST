@@ -20,6 +20,7 @@ public class Club extends BmobObject implements Serializable {
     private String club_campus;
     private String pre_number;
     private String club_intro;
+    private String stu_id;
 
     public Club () {
         super();
@@ -123,5 +124,12 @@ public class Club extends BmobObject implements Serializable {
     }
 
 
+    public String getStu_id() {
+        return stu_id;
+    }
+
+    public void setStu_id(String stu_id) {
+        this.stu_id = stu_id;
+    }
 }
 

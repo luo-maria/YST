@@ -295,7 +295,6 @@
             android:layout_marginTop="15dp"
             android:background="@drawable/shape_register_login_btn"
             android:text="点击创建"
-
             android:layout_centerHorizontal="true"
             android:textColor="@color/white"
             android:textSize="20sp" />

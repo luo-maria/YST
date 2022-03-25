@@ -48,7 +48,7 @@ public class EditUserActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Student userInfo = BmobUser.getCurrentUser(Student.class);
                 reusername=stuusernametxt1.getText().toString();
-                renumber=stunametxt.getText().toString();
+                rerealname=stunametxt.getText().toString();
                 recollege=stucollegetxt.getText().toString();
                 resig=stusigtxt.getText().toString();
                 reclass=stuclasstxt.getText().toString();
@@ -60,7 +60,7 @@ public class EditUserActivity extends AppCompatActivity {
                 new_stu.setSclass(reclass);
                 new_stu.setUniversity(reuni);
                 new_stu.setGender(regender);
-                new_stu.setNumber(renumber);
+                new_stu.setRealname(rerealname);
                 new_stu.update(userInfo.getObjectId(), new UpdateListener() {
                     @Override
                     public void done(BmobException e) {
@@ -100,8 +100,8 @@ public class EditUserActivity extends AppCompatActivity {
         if (userInfo.getSignature()!= null) {
             stusigtxt.setText(userInfo.getSignature());
         }
-        if (userInfo.getNumber()!= null) {
-            stunametxt.setText(userInfo.getNumber());
+        if (userInfo.getRealname()!= null) {
+            stunametxt.setText(userInfo.getRealname());
         }
 
 

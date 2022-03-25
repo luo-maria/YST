@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--  申请加入社团页面  -->
+
+    <LinearLayout
+        android:layout_height="160dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_height="130dp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@mipmap/blue_bg"
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="20dp">
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_height="30dp"
+                    app:srcCompat="@android:drawable/ic_media_rew" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="300dp"
+                android:layout_height="80dp"
+                android:background="@drawable/shape_rounded"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="25dp"
+                    android:text="欢迎加入我们！">
+
+                </TextView>
+            </RelativeLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--表单-->
+    <ScrollView
+        android:id="@+id/scrollView"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        >
+        <LinearLayout android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <LinearLayout android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:orientation="vertical">
+
+                <!-- 姓名  -->
+                <LinearLayout
+                    android:layout_width="280dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="姓 名"
+                    android:textSize="@dimen/commontext" />
+                    <TextView
+                        android:id="@+id/xing"
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-5dp"
+                        android:layout_gravity="center"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="10dp" />
+                    <TextView
+                        android:id="@+id/name0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text=":"
+                        android:textSize="@dimen/commontext" />
+
+
+                    <EditText
+                        android:id="@+id/apply_club_name_et"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="40dp"
+                        android:background="@null"
+                        android:hint="@string/create_hintName"
+                        android:inputType="textNoSuggestions"
+                        android:textColor="#000000"
+                        android:textColorHint="#bcbcbc"
+                        android:textSize="@dimen/commontext" />
+
+                </LinearLayout>
+
+                <!-- 性别 -->
+                <LinearLayout
+                    android:layout_width="280dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/sex"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="性 别"
+                        android:textSize="@dimen/commontext" />
+                    <TextView
+                        android:id="@+id/xing2"
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-5dp"
+                        android:layout_gravity="center"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="10dp" />
+                    <TextView
+                        android:id="@+id/sex3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text=":"
+                        android:textSize="@dimen/commontext" />
+                    <LinearLayout
+                        android:id="@+id/checklist_club"
+                        android:layout_width="180dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="40dp"
+                        android:orientation="horizontal">
+
+                        <RadioGroup
+                            android:id="@+id/rg1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_horizontal"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/male"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="5dp"
+                                android:text="男"
+                                android:textSize="@dimen/commontext" />
+
+                            <RadioButton
+                                android:id="@+id/femle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="5dp"
+
+                                android:text="女"
+                                android:textSize="@dimen/commontext" />
+                        </RadioGroup>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <!-- 班级  -->
+                <LinearLayout
+                    android:layout_width="280dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/className"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="班 级"
+                        android:textSize="@dimen/commontext" />
+                    <TextView
+                        android:id="@+id/xing3"
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-5dp"
+                        android:layout_gravity="center"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="10dp" />
+                    <TextView
+                        android:id="@+id/name3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text=":"
+                        android:textSize="@dimen/commontext" />
+
+
+                    <EditText
+                        android:id="@+id/apply_club_class_et"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="40dp"
+                        android:background="@null"
+                        android:hint="@string/create_hintClass"
+                        android:inputType="textNoSuggestions"
+                        android:textColor="#000000"
+                        android:textColorHint="#bcbcbc"
+                        android:textSize="@dimen/commontext" />
+
+                </LinearLayout>
+                <View
+                    android:layout_width="280dp"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="15dp"
+                    android:background="#c8c8c8"
+                    />
+                <!-- 联系方式  -->
+                <LinearLayout
+                    android:layout_width="280dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/phoneNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="联系方式"
+                        android:textSize="@dimen/commontext" />
+                    <TextView
+                        android:id="@+id/xing4"
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-5dp"
+                        android:layout_gravity="center"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="10dp" />
+                    <TextView
+                        android:id="@+id/name4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text=":"
+                        android:textSize="@dimen/commontext" />
+
+
+                    <EditText
+                        android:id="@+id/apply_phoneNumber"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:background="@null"
+                        android:hint="@string/create_hintNumber"
+                        android:inputType="textNoSuggestions"
+                        android:textColor="#000000"
+                        android:textColorHint="#bcbcbc"
+                        android:textSize="@dimen/commontext" />
+
+                </LinearLayout>
+
+                <!-- 联系方式  -->
+                <LinearLayout
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/reason"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="加入理由"
+                        android:textSize="@dimen/commontext" />
+                    <TextView
+                        android:id="@+id/xing5"
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-5dp"
+                        android:layout_gravity="center"
+                        android:text="*"
+                        android:textColor="@color/red"
+                        android:textSize="10dp" />
+                    <TextView
+                        android:id="@+id/name5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text=":"
+                        android:textSize="@dimen/commontext" />
+
+
+
+                </LinearLayout>
+                <EditText
+                    android:id="@+id/apply_reason_club"
+                    android:layout_width="260dp"
+                    android:layout_height="200dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/border"
+                    android:layout_weight="1"
+                    android:hint="@string/create_hint4"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:inputType="textMultiLine" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp">
+
+                    <Button
+                        android:id="@+id/applybutton"
+                        android:layout_width="150dp"
+                        android:layout_height="50dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="190dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/shape_register_login_btn"
+                        android:text="点击申请"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout android:layout_height="match_parent"
+                android:layout_width="20dp"
+                android:orientation="vertical">
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.yst.Activity.CreateClubActivity;
 import com.example.yst.Activity.EditUserActivity;
+import com.example.yst.Activity.MyclubsActivity;
 import com.example.yst.Activity.SelectPhotoActivity;
 import com.example.yst.R;
 import com.example.yst.bean.Student;
@@ -39,7 +40,7 @@ public class HomePageFragment extends Fragment {
     ListView listView;
     ImageView club,message1;
     TextView my_club;
-    LinearLayout myInfo;
+    LinearLayout myInfo,myclubs;
 
     private String[] names = new String[]{"活动日程", "我的荣誉", "社团入驻",  "退出"};
     private int[] heads = new int[]{R.mipmap.cal};
@@ -70,6 +71,7 @@ public class HomePageFragment extends Fragment {
         my_club = view.findViewById(R.id.my_club);
         message1 = view.findViewById(R.id.message1);
         myInfo = view.findViewById(R.id.myInfo);
+        myclubs= view.findViewById(R.id. myclubs);
         my_name = view.findViewById(R.id.my_name);
         signature = view.findViewById(R.id.signature);
         imgHead =(SimpleDraweeView) view.findViewById(R.id.img_profile);
@@ -102,6 +104,7 @@ public class HomePageFragment extends Fragment {
         }
         startActivity(intent);
     }
+
     private void initView() {
         List<Map<String, Object>> list = new ArrayList();
         for (int i = 0; i < names.length; i++) {
@@ -147,6 +150,14 @@ public class HomePageFragment extends Fragment {
 
                 }
             });
+            myclubs.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent1 = new Intent(HomePageFragment.this.getActivity(), MyclubsActivity.class);
+                    startActivity(intent1);
+                }
+            });
+
         }
 
 
@@ -156,9 +167,6 @@ public class HomePageFragment extends Fragment {
         if (userInfo.getPhotoImage() == null) {
             return;
         }
-//        System.out.println("这是路径："+userInfo.getPhotoImage().getUrl());
-//        System.out.println("这是imghead："+imgHead);
-//        System.out.println("这是context："+getContext());
         ImageUtils.setRoundImage(getContext(), imgHead, userInfo.getPhotoImage().getUrl());
 
     }

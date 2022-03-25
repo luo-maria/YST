@@ -20,7 +20,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.Club_detailActivity"></activity>
+        <activity android:name=".Activity.ManageClubActivity"></activity>
+        <activity android:name=".Activity.ApplyInfoListActivity" />
+        <activity android:name=".Activity.ApplyclubActivity" />
+        <activity android:name=".Activity.MyclubsActivity" />
+        <activity android:name=".Activity.Club_detailActivity" />
         <activity android:name=".Activity.CreateClubActivity" />
         <activity
             android:name=".Activity.SelectPhotoActivity"

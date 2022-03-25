@@ -14,6 +14,7 @@ public class Student extends BmobUser {
     private  String university;
     private String nickname;
     private BmobFile photoImage;
+    private String realname;
     public Student() {
         super();
         // TODO Auto-generated constructor stub
@@ -82,5 +83,13 @@ public class Student extends BmobUser {
 
     public void setPhotoImage(BmobFile photoImage) {
         this.photoImage = photoImage;
+    }
+
+    public String getRealname() {
+        return realname;
+    }
+
+    public void setRealname(String realname) {
+        this.realname = realname;
     }
 }

@@ -35,8 +35,8 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ViewHolder> im
 
     }
     public ClubAdapter(Context context,List<Club> ClubList,OnRecyclerviewItemClickListener mOnRecyclerviewItemClickListener) {
-        mcontext = context;
-        mClubList=ClubList;
+        this.mcontext = context;
+        this.mClubList=ClubList;
 //        inflater = LayoutInflater.from(context);
         this.mOnRecyclerviewItemClickListener = mOnRecyclerviewItemClickListener;
     }
@@ -48,9 +48,10 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ViewHolder> im
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mcontext).inflate(R.layout.club_lists,parent,false);
         ViewHolder mholder = new ViewHolder(view);
+        //这里 我们可以拿到点击的item的view 对象，所以在这里给view设置点击监听，
+        view.setOnClickListener(this);
         return mholder;
     }
-    String club_id1;
 
     @Override
     public void onBindViewHolder(ViewHolder mholder, int position) {
@@ -60,20 +61,21 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ViewHolder> im
         mholder.clubcampus.setText(club.getClub_campus());
         mholder.clubkind.setText(club.getClub_category());
         mholder.clubintos.setText(club.getClub_intro());
-        mholder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mcontext, Club_detailActivity.class);
-                if (! mClubList.isEmpty()) {
-                    Club club = new Club();
-                    club.setObjectId( mClubList.get(position).getObjectId());
-                    club_id1=mClubList.get(position).getObjectId();
-                    intent.putExtra("clubid",club_id1);
-                }
-                mcontext.startActivity(intent);
-                ((Activity)mcontext).finish();
-            }
-        });
+        mholder.itemView.setTag(position);//给view设置tag以作为参数传递到监听回调方法中
+//        mholder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(mcontext, Club_detailActivity.class);
+//                if (! mClubList.isEmpty()) {
+//                    Club club = new Club();
+//                    club.setObjectId( mClubList.get(position).getObjectId());
+//                    club_id1=mClubList.get(position).getObjectId();
+//                    intent.putExtra("clubid",club_id1);
+//                }
+//                mcontext.startActivity(intent);
+//                ((Activity)mcontext).finish();
+//            }
+//        });
     }
 
     @Override
@@ -84,7 +86,6 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ViewHolder> im
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView club_name,clublevel,clubcampus,clubintos,clubkind;
-
         public ViewHolder(View itemView) {
             super(itemView);
             club_name = itemView.findViewById(R.id.clubname);
