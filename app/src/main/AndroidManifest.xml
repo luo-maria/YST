@@ -20,7 +20,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.ManageClubActivity"></activity>
+        <activity android:name=".Activity.CreateActivity"></activity>
+        <activity android:name=".Activity.EditClubActivity"></activity>
+        <activity android:name=".Activity.ApplyFeedbackActivity" />
+        <activity android:name=".Activity.MyApplyListActivity" />
+        <activity android:name=".Activity.ApplicationDetailsActivity" />
+        <activity android:name=".Activity.ManageClubActivity" />
         <activity android:name=".Activity.ApplyInfoListActivity" />
         <activity android:name=".Activity.ApplyclubActivity" />
         <activity android:name=".Activity.MyclubsActivity" />

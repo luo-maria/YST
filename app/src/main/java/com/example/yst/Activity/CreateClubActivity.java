@@ -155,22 +155,6 @@ public class CreateClubActivity extends AppCompatActivity {
                     }
                 });
 
-//                Student userInfo = BmobUser.getCurrentUser(Student.class);
-//                stu_id=userInfo.getObjectId();
-//                Stu_Club stuClub=new Stu_Club();
-//                System.out.println("这里的club_id2222是:"+ club_id);
-//                stuClub.setClub_id(club_id);
-//                stuClub.setStu_id(stu_id);
-//                stuClub.save(new SaveListener<String>() {
-//                    @Override
-//                    public void done(String objectId, BmobException e) {
-//                        if(e==null){
-//                            Toast.makeText(CreateClubActivity.this,"添加数据成功，返回objectId为："+objectId,Toast.LENGTH_SHORT).show();
-//                        }else{
-//                            Toast.makeText(CreateClubActivity.this,"创建数据失败：" + e.getMessage(),Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                });
 
                 Toast.makeText(CreateClubActivity.this,"创建成功",Toast.LENGTH_SHORT).show();
                 //刷新本页面

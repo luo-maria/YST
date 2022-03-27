@@ -18,10 +18,30 @@ public class ManageClubActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_club);
         initialize();
+        manage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ManageClubActivity.this,EditClubActivity.class);
+                Intent intent1=getIntent();
+                club_id3=intent1.getStringExtra("clubid");
+                intent.putExtra("clubid",club_id3);
+                startActivity(intent);
+            }
+        });
         audit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ManageClubActivity.this,ApplyInfoListActivity.class);
+                Intent intent1=getIntent();
+                club_id3=intent1.getStringExtra("clubid");
+                intent.putExtra("clubid",club_id3);
+                startActivity(intent);
+            }
+        });
+        addActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ManageClubActivity.this,CreateActivity.class);
                 Intent intent1=getIntent();
                 club_id3=intent1.getStringExtra("clubid");
                 intent.putExtra("clubid",club_id3);

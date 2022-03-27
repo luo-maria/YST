@@ -50,7 +50,6 @@ public class OrganizationFragment extends Fragment {
     private Context mContext;
     Spinner sp, sp1, sp2;
     String kind, level, campus, search_text,club_id1,club_state;
-    Intent intent;
     ImageView arrow, search;
     EditText et_search;
 
@@ -240,40 +239,135 @@ public class OrganizationFragment extends Fragment {
     }
 
     private void queryData() {
-        BmobQuery<Club> clubBmobQuery = new BmobQuery<>();
-        System.out.println("this is kind"+kind+"this is level"+level+"this is camps"+campus);
-        System.out.println("the test is"+(!"".equals(search_text)&& !campus.equals("校区") && kind.equals("类型") && level.equals("级别")));
-        System.out.println("the test1 is"+( !campus.equals("校区") ));
-        System.out.println("the test2 is"+( kind.equals("类型") && level.equals("级别")));
-        if(!"".equals(search_text)&& campus.equals("校区")&&kind.equals("类型")&&level.equals("级别")){
-            clubBmobQuery.addWhereEqualTo("club_name", search_text);
-        }
-        if(!"".equals(search_text)&& !campus.equals("校区") && kind.equals("类型") && level.equals("级别")){
-            clubBmobQuery.addWhereEqualTo("club_campus", campus);
-        }
-        if(!"".equals(search_text)&&campus.equals("校区")&& ! kind.equals("类型")&&level.equals("级别")){
-            clubBmobQuery.addWhereEqualTo("club_category",kind);
-        }
-        if(!"".equals(search_text)&&campus.equals("校区")&&kind.equals("类型")&& ! level.equals("级别")){
-            clubBmobQuery.addWhereEqualTo("club_rank",level);
-        }
-//        if(!"".equals(search_text)&&!campus.equals("校区")&&!kind.equals("类型")&&!level.equals("级别")){
-//            clubBmobQuery.addWhereEqualTo("club_campus", campus);
-//            clubBmobQuery.addWhereEqualTo("club_category",kind);
-//            clubBmobQuery.addWhereEqualTo("club_rank",level);
-//        }
-        clubBmobQuery.findObjects(new FindListener<Club>() {
-            @Override
-            public void done(List<Club> object, BmobException e) {
-                if (e == null) {
-                    clubs = object;
-                    clubAdapter.setClubList(clubs);
-                    recyclerViewclub.setAdapter(clubAdapter);
-                } else {
-                    Log.e("查询失败", "原因: ", e);
-                }
+        if((campus.equals("校区")&&kind.equals("类型")&&level.equals("级别")) ||( !campus.equals("校区") && kind.equals("类型") && level.equals("级别"))||
+                (campus.equals("校区")&& ! kind.equals("类型")&&level.equals("级别")) || (campus.equals("校区")&&kind.equals("类型")&& ! level.equals("级别"))){
+            BmobQuery<Club> clubBmobQuery = new BmobQuery<>();
+            System.out.println("the test2 is"+( kind.equals("类型") && level.equals("级别")));
+            if(campus.equals("校区")&&kind.equals("类型")&&level.equals("级别")){
+                clubBmobQuery.addWhereEqualTo("club_name", search_text);
             }
-        });
+            if( !campus.equals("校区") && kind.equals("类型") && level.equals("级别")){
+                clubBmobQuery.addWhereEqualTo("club_campus", campus);
+            }
+            if(campus.equals("校区")&& ! kind.equals("类型")&&level.equals("级别")){
+                clubBmobQuery.addWhereEqualTo("club_category",kind);
+            }
+            if(campus.equals("校区")&&kind.equals("类型")&& ! level.equals("级别")){
+                clubBmobQuery.addWhereEqualTo("club_rank",level);
+            }
+            clubBmobQuery.findObjects(new FindListener<Club>() {
+                @Override
+                public void done(List<Club> object, BmobException e) {
+                    if (e == null) {
+                        clubs = object;
+                        clubAdapter.setClubList(clubs);
+                        recyclerViewclub.setAdapter(clubAdapter);
+                    } else {
+                        Log.e("查询失败", "原因: ", e);
+                    }
+                }
+            });
+        }
+        if(!campus.equals("校区")&& !kind.equals("类型")&&level.equals("级别")){
+            BmobQuery<Club> clubBmobQuery1 = new BmobQuery<>();
+            clubBmobQuery1.addWhereEqualTo("club_campus", campus);
+            BmobQuery<Club> clubBmobQuery2 = new BmobQuery<>();
+            clubBmobQuery2.addWhereEqualTo("club_category",kind);
+            List<BmobQuery<Club>> queries = new ArrayList<BmobQuery<Club>>();
+            queries.add(clubBmobQuery1);
+            queries.add(clubBmobQuery2);
+            BmobQuery<Club> query = new BmobQuery<Club>();
+            query.and(queries);
+            query.findObjects(new FindListener<Club>() {
+                @Override
+                public void done(List<Club> object, BmobException e) {
+                    if(e==null){
+                        Log.i("bmob","first成功");
+                        clubs = object;
+                        clubAdapter.setClubList(clubs);
+                        recyclerViewclub.setAdapter(clubAdapter);
+                    }else{
+                        Log.i("bmob","失败："+e.getMessage()+","+e.getErrorCode());
+                    }
+                }
+            });
+        }
+        if(!campus.equals("校区")&&kind.equals("类型")&& !level.equals("级别")){
+            BmobQuery<Club> clubBmobQuery1 = new BmobQuery<>();
+            clubBmobQuery1.addWhereEqualTo("club_campus", campus);
+            BmobQuery<Club> clubBmobQuery2 = new BmobQuery<>();
+            clubBmobQuery2.addWhereEqualTo("club_rank",level);
+            List<BmobQuery<Club>> queries = new ArrayList<BmobQuery<Club>>();
+            queries.add(clubBmobQuery1);
+            queries.add(clubBmobQuery2);
+            BmobQuery<Club> query = new BmobQuery<Club>();
+            query.and(queries);
+            query.findObjects(new FindListener<Club>() {
+                @Override
+                public void done(List<Club> object, BmobException e) {
+                    if(e==null){
+                        Log.i("bmob","sencond成功");
+                        clubs = object;
+                        clubAdapter.setClubList(clubs);
+                        recyclerViewclub.setAdapter(clubAdapter);
+                    }else{
+                        Log.i("bmob","失败："+e.getMessage()+","+e.getErrorCode());
+                    }
+                }
+            });
+        }
+        if(campus.equals("校区")&& !kind.equals("类型")&&!level.equals("级别")){
+            BmobQuery<Club> clubBmobQuery1 = new BmobQuery<>();
+            clubBmobQuery1.addWhereEqualTo("club_rank",level);
+            BmobQuery<Club> clubBmobQuery2 = new BmobQuery<>();
+            clubBmobQuery2.addWhereEqualTo("club_category",kind);
+            List<BmobQuery<Club>> queries = new ArrayList<BmobQuery<Club>>();
+            queries.add(clubBmobQuery1);
+            queries.add(clubBmobQuery2);
+            BmobQuery<Club> query = new BmobQuery<Club>();
+            query.and(queries);
+            query.findObjects(new FindListener<Club>() {
+                @Override
+                public void done(List<Club> object, BmobException e) {
+                    if(e==null){
+                        Log.i("bmob","third成功");
+                        clubs = object;
+                        clubAdapter.setClubList(clubs);
+                        recyclerViewclub.setAdapter(clubAdapter);
+                    }else{
+                        Log.i("bmob","失败："+e.getMessage()+","+e.getErrorCode());
+                    }
+                }
+            });
+        }
+        if(campus.equals("校区")&& kind.equals("类型")&&level.equals("级别")){
+            BmobQuery<Club> clubBmobQuery1 = new BmobQuery<>();
+            clubBmobQuery1.addWhereEqualTo("club_campus", campus);
+            BmobQuery<Club> clubBmobQuery2 = new BmobQuery<>();
+            clubBmobQuery2.addWhereEqualTo("club_category",kind);
+            BmobQuery<Club> clubBmobQuery3 = new BmobQuery<>();
+            clubBmobQuery3.addWhereEqualTo("club_rank",level);
+            List<BmobQuery<Club>> queries = new ArrayList<BmobQuery<Club>>();
+            queries.add(clubBmobQuery1);
+            queries.add(clubBmobQuery2);
+            queries.add(clubBmobQuery3);
+            BmobQuery<Club> query = new BmobQuery<Club>();
+            query.and(queries);
+            query.findObjects(new FindListener<Club>() {
+                @Override
+                public void done(List<Club> object, BmobException e) {
+                    if(e==null){
+                        Log.i("bmob","成功");
+                        clubs = object;
+                        clubAdapter.setClubList(clubs);
+                        recyclerViewclub.setAdapter(clubAdapter);
+                    }else{
+                        Log.i("bmob","失败："+e.getMessage()+","+e.getErrorCode());
+                    }
+                }
+            });
+        }
+
     }
     private void queryData1() {
         BmobQuery<Club> clubBmobQuery = new BmobQuery<>();

@@ -25,7 +25,7 @@ public class ApplyclubActivity extends AppCompatActivity {
     public EditText applyname, applyclass, applynumber,apply_reason_club;
     private RadioGroup rg1 ;
     private RadioButton radioButton1;
-    String stu_id,club_id2,applygender,stu_realname;
+    String stu_id,club_id2,applygender,stu_realname,club_name;
     Button applybutton;
     BmobFile stu_photo;
     @Override
@@ -61,13 +61,15 @@ public class ApplyclubActivity extends AppCompatActivity {
                 applyToClublnfo.setApply_club_sex(applygender);
                 applyToClublnfo.setStudent_id(stu_id);
                 applyToClublnfo.setClub_id(club_id2);
+                applyToClublnfo.setApply_club_name(club_name);
+                applyToClublnfo.setApplication_status("未审核");
                 applyToClublnfo.save(new SaveListener<String>() {
                     @Override
                     public void done(String objectId, BmobException e) {
                         if(e==null){
                             Toast.makeText(ApplyclubActivity.this,"申请成功！请耐心等待审核",Toast.LENGTH_SHORT).show();
                             //刷新本页面
-                            Intent intent=new Intent(ApplyclubActivity.this, Club_detailActivity.class);
+                            Intent intent=new Intent(ApplyclubActivity.this, HomeActivity.class);
                             startActivity(intent);
                             finish();
                         }else{
@@ -95,6 +97,7 @@ public class ApplyclubActivity extends AppCompatActivity {
         applybutton=findViewById(R.id.applybutton);
         Intent intent1=getIntent();
         club_id2=intent1.getStringExtra("clubid");
+        club_name=intent1.getStringExtra("clubname");
         System.out.println("this is Applyclub:"+club_id2);
     }
     private void selectRadioBtn(){

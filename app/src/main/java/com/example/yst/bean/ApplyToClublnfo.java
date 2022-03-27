@@ -11,8 +11,10 @@ public class ApplyToClublnfo extends BmobObject {
     private String apply_club_name;
     private String student_id;
     private String club_id;
+    private String club_name;
     private String application_status;
     private BmobFile stu_photo;
+    private String feedback;
     public String getApply_club_reason() {
         return apply_club_reason;
     }
@@ -83,5 +85,21 @@ public class ApplyToClublnfo extends BmobObject {
 
     public void setStu_photo(BmobFile stu_photo) {
         this.stu_photo = stu_photo;
+    }
+
+    public String getClub_name() {
+        return club_name;
+    }
+
+    public void setClub_name(String club_name) {
+        this.club_name = club_name;
+    }
+
+    public String getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
     }
 }

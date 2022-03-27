@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.yst.Activity.CreateClubActivity;
 import com.example.yst.Activity.EditUserActivity;
+import com.example.yst.Activity.MyApplyListActivity;
 import com.example.yst.Activity.MyclubsActivity;
 import com.example.yst.Activity.SelectPhotoActivity;
 import com.example.yst.R;
@@ -41,7 +42,7 @@ public class HomePageFragment extends Fragment {
     ImageView club,message1;
     TextView my_club;
     LinearLayout myInfo,myclubs;
-
+    String stu_id;
     private String[] names = new String[]{"活动日程", "我的荣誉", "社团入驻",  "退出"};
     private int[] heads = new int[]{R.mipmap.cal};
     private TextView my_name,signature;
@@ -92,6 +93,16 @@ public class HomePageFragment extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putString(ConstantConfig.SELECT_PHOTO, ConstantConfig.UPDATE_HEAD_IMAGES);
                 startActivity(SelectPhotoActivity.class, bundle);
+            }
+        });
+        message1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Student userInfo = BmobUser.getCurrentUser(Student.class);
+//                stu_id=userInfo.getObjectId();
+                Intent intent1 = new Intent(HomePageFragment.this.getActivity(), MyApplyListActivity.class);
+//                intent1.putExtra("stuid", stu_id);
+                startActivity(intent1);
             }
         });
         initView();

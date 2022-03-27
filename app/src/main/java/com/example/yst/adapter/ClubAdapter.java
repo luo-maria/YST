@@ -3,6 +3,7 @@ package com.example.yst.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.yst.Activity.Club_detailActivity;
 import com.example.yst.R;
 import com.example.yst.bean.Club;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
 
@@ -61,6 +63,9 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ViewHolder> im
         mholder.clubcampus.setText(club.getClub_campus());
         mholder.clubkind.setText(club.getClub_category());
         mholder.clubintos.setText(club.getClub_intro());
+        if (club.getClub_logo()!=null){
+            mholder.logo.setImageURI(Uri.parse(club.getClub_logo().getFileUrl()));
+        }
         mholder.itemView.setTag(position);//给view设置tag以作为参数传递到监听回调方法中
 //        mholder.itemView.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -86,6 +91,7 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ViewHolder> im
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView club_name,clublevel,clubcampus,clubintos,clubkind;
+        SimpleDraweeView logo;
         public ViewHolder(View itemView) {
             super(itemView);
             club_name = itemView.findViewById(R.id.clubname);
@@ -93,6 +99,7 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ViewHolder> im
             clubcampus = itemView.findViewById(R.id.clubcampus);
             clubkind = itemView.findViewById(R.id.clubkind);
             clubintos = itemView.findViewById(R.id.clubintos);
+            logo=itemView.findViewById(R.id.logo);
         }
     }
 }

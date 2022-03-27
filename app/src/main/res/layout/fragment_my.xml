@@ -33,14 +33,13 @@
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/img_profile"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="10dp"
-            fresco:placeholderImage="@drawable/ic_launcher_background"
+            android:adjustViewBounds="true"
+            fresco:placeholderImage="@mipmap/poy"
             fresco:roundAsCircle="true" />
-
-
 
         <TextView
             android:id="@+id/my_name"

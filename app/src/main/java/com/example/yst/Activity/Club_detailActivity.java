@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,8 +28,7 @@ import cn.bmob.v3.listener.UpdateListener;
 
 public class Club_detailActivity extends AppCompatActivity {
     Button app_btn;
-    String club_id1,img_url,club_state;
-
+    String club_id1,img_url,club_state,club_name;
     SimpleDraweeView imglogo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,14 +46,13 @@ public class Club_detailActivity extends AppCompatActivity {
 
         Intent intent1=getIntent();
         club_id1=intent1.getStringExtra("clubid");
-        club_state=intent1.getStringExtra("club_state");
+//        club_state=intent1.getStringExtra("club_state");
 //        System.out.println("this is clubiddetail:"+club_id1);
         BmobQuery<Club> bmobQuery = new BmobQuery<Club>();
         bmobQuery.getObject(club_id1, new QueryListener<Club>() {
             @Override
             public void done(Club object,BmobException e) {
-                if(e==null || object.getClub_logo().getUrl()!=null){
-                    System.out.println("this is clubdetail:"+object.getClub_name());
+                if(e==null && object.getClub_logo().getUrl()!=null){
                     level.setText(object.getClub_rank());
                     campus.setText(object.getClub_campus());
                     kind.setText(object.getClub_category());
@@ -63,6 +62,7 @@ public class Club_detailActivity extends AppCompatActivity {
                     call.setText(object.getPre_number());
                     time.setText(object.getCreatedAt().substring(0,10));
                     img_url=object.getClub_logo().getUrl();
+                    club_name=object.getClub_name();
                     ImageUtils.setRoundImage(Club_detailActivity.this, imglogo, img_url);
                 }else{
                     Toast.makeText(Club_detailActivity.this, "查询失败", Toast.LENGTH_SHORT).show();
@@ -70,19 +70,34 @@ public class Club_detailActivity extends AppCompatActivity {
             }
         });
         app_btn = (Button) findViewById(R.id.apply);
-
         app_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(club_state.equals("非招募")){
-                    Toast.makeText(Club_detailActivity.this, "该社团目前不在招募期，欢迎在招募期申请！", Toast.LENGTH_SHORT).show();
-                    finish();
-                }else{
-                Intent intent = new Intent(Club_detailActivity.this,ApplyclubActivity.class);
-                System.out.println("this is 11111111111clubid:"+club_id1);
-                intent.putExtra("clubid",club_id1);
-                startActivity(intent);
-                }
+                BmobQuery<Club> bmobQuery = new BmobQuery<Club>();
+                bmobQuery.getObject(club_id1, new QueryListener<Club>() {
+                    @Override
+                    public void done(Club object,BmobException e) {
+                        if(e==null || object.getClub_logo().getUrl()!=null){
+                            club_name=object.getClub_name();
+                            System.out.println("this is  String.valueOf(clubname):"+ club_name);
+                            club_state=object.getClub_state();
+                            if(club_state.equals("非招募")){
+                                Toast.makeText(Club_detailActivity.this, "该社团目前不在招募期，欢迎在招募期申请！", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }else{
+                                Intent intent = new Intent(Club_detailActivity.this,ApplyclubActivity.class);
+                                System.out.println("this is 11111111111clubid:"+club_id1);
+                                intent.putExtra("clubid",club_id1);
+                                intent.putExtra("clubname", club_name);
+                                startActivity(intent);
+                            }
+                        }else{
+                            Toast.makeText(Club_detailActivity.this, "查询失败", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+
             }
         });}
 
