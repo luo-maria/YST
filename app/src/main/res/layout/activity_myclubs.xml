@@ -9,12 +9,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:id="@+id/createclub"
+            android:id="@+id/enterclub"
             android:layout_weight="1"
             android:layout_height="40dp"
             android:background="@color/colorPrimary"
             android:textSize="20dp"
-            android:text="创建的社团"
+            android:text="加入的社团"
             android:textColor="#FFFFFF"
             android:layout_width="0dp">
         </Button>
@@ -24,12 +24,12 @@
             android:background="@color/white"/>
         <Button
             android:layout_weight="1"
-            android:id="@+id/enterclub"
+            android:id="@+id/createclub"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:background="@color/colorPrimary"
             android:textSize="20dp"
-            android:text="加入的社团"
+            android:text="创建的社团"
             android:textColor="#FFFFFF">
         </Button>
     </LinearLayout>

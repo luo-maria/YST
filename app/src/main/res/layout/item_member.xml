@@ -3,19 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:layout_width="0dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layout_columnWeight="1"
-    android:layout_height="110dp"
-    android:gravity="center">
-
-    <ImageView
+    >
+    <com.example.yst.util.XCRoundImageView
+        android:id="@+id/studentPhoto"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_row="0"
-        android:layout_column="0"
-        app:srcCompat="@mipmap/member_g" />
+        android:clickable="true"
+        android:src="@mipmap/poy" />
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/studentName"
+        android:layout_width="70dp"
         android:layout_height="30dp"
         android:gravity="center"
         android:text="小红"/>

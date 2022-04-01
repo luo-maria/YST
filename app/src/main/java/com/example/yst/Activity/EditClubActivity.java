@@ -162,7 +162,7 @@ public class EditClubActivity extends AppCompatActivity {
                 } else {
                     //打开系统相册
                     Intent intent = new Intent(Intent.ACTION_PICK,
-                            android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                            MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     startActivityForResult(intent, 1);
 
             }}

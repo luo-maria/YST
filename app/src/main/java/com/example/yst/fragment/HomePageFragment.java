@@ -33,6 +33,7 @@ import com.example.yst.Activity.CalenderSelectActivity;
 import com.example.yst.Activity.CreateClubActivity;
 import com.example.yst.Activity.EditUserActivity;
 import com.example.yst.Activity.HomeActivity;
+import com.example.yst.Activity.MyActivitiesActivity;
 import com.example.yst.Activity.MyApplyListActivity;
 import com.example.yst.Activity.MyclubsActivity;
 import com.example.yst.Activity.SelectPhotoActivity;
@@ -63,7 +64,7 @@ public class HomePageFragment extends Fragment {
     TextView my_club;
     LinearLayout myInfo,myclubs;
     String img_url;
-    private String[] names = new String[]{"活动日程", "我的荣誉", "社团入驻",  "退出"};
+    private String[] names = new String[]{"我的日程","我的活动", "我的荣誉", "社团入驻",  "退出"};
     private int[] heads = new int[]{R.mipmap.cal};
     private TextView my_name,signature;
 
@@ -161,17 +162,19 @@ public class HomePageFragment extends Fragment {
                             startActivity(i);
                             break;
                         case 1:
-                            i = new Intent(HomePageFragment.this.getActivity(), CreateClubActivity.class);
+                            i = new Intent(HomePageFragment.this.getActivity(), MyActivitiesActivity.class);
                             startActivity(i);
                             break;
                         case 2:
+
+                            break;
+                        case 3:
                             i = new Intent(HomePageFragment.this.getActivity(), CreateClubActivity.class);
                             Intent intent=getActivity().getIntent();
                             String username=intent.getStringExtra("username");
                             i.putExtra("username",username);
                             startActivity(i);
-                            break;
-                        case 3:
+                        case 4:
                             loginOut();
                             break;
                         default:

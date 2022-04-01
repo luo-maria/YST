@@ -18,8 +18,10 @@ import android.widget.Toast;
 import com.example.yst.R;
 import com.example.yst.bean.Club;
 import com.example.yst.bean.Stu_Club;
+import com.example.yst.bean.Stu_Vote;
 import com.example.yst.bean.Student;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
@@ -50,9 +52,10 @@ public class MyClubDetailActivity extends AppCompatActivity implements View.OnCl
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.Quit:
-                Quitclub();
+                QuitClub();
                 break;
             case R.id.look_activity:
+                LookActivity();
                 break;
             case R.id.look_notice:
                 break;
@@ -60,7 +63,7 @@ public class MyClubDetailActivity extends AppCompatActivity implements View.OnCl
                 findVote();
                 break;
             case R.id.exit:
-                Quitclub();
+                QuitClub();
                 break;
         }
     }
@@ -126,36 +129,44 @@ public class MyClubDetailActivity extends AppCompatActivity implements View.OnCl
             }
         });
     }
-    private void Quitclub(){
+    private void QuitClub(){
         new AlertDialog.Builder(MyClubDetailActivity.this).setTitle("退出社团")//设置对话框标题
                 .setMessage("退出社团前，请确认您和社团领导人协商好。")
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {//添加确定按钮
                     @Override
                     public void onClick(DialogInterface dialog, int which) {//确定按钮的响应事件，点击事件没写，自己添加
-                        String bql ="select * from Stu_Club where stu_id="+stu_id+" and club_id="+club_id7;
-                        BmobQuery<Stu_Club> query=new BmobQuery<>();
-                        query.setSQL(bql);
-                        query.doSQLQuery(new SQLQueryListener<Stu_Club>(){
+                        BmobQuery<Stu_Club> bmobQuery = new BmobQuery<Stu_Club>();
+                        bmobQuery.addWhereEqualTo("stu_id",stu_id);
+                        BmobQuery<Stu_Club> bmobQuery1 = new BmobQuery<Stu_Club>();
+                        bmobQuery1.addWhereEqualTo("club_id",club_id7);
+                        List<BmobQuery<Stu_Club>> queries = new ArrayList<BmobQuery<Stu_Club>>();
+                        queries.add(bmobQuery);
+                        queries.add(bmobQuery1);
+                        BmobQuery<Stu_Club> query = new BmobQuery<Stu_Club>();
+                        query.and(queries);
+                        query.findObjects(new FindListener<Stu_Club>() {
                             @Override
-                            public void done(BmobQueryResult<Stu_Club> result, BmobException e) {
-                                if(e ==null){
-                                    List<Stu_Club> list = (List<Stu_Club>) result.getResults();
-                                    if(list!=null && list.size()>0){
+                            public void done(List<Stu_Club> list, BmobException e) {
+                                if(e==null){
+                                    if (!list.isEmpty()) {
                                         for (Stu_Club stu_club :list) {
-                                            sclub_id = String.valueOf(stu_club.getStu_id());
-                                            System.out.println("this is sclub_id+1111111111111111:"+sclub_id);
-//                                                    stu_club.delete(new UpdateListener() {
-//                                                        @Override
-//                                                        public void done(BmobException e) {
-//                                                            Log.i("smile", "111111111111111111111");
-//                                                        }
-//                                                    });
+                                            stu_club.delete(new UpdateListener() {
+                                                @Override
+                                                public void done(BmobException e) {
+                                                    if(e==null){
+                                                        Toast.makeText(MyClubDetailActivity.this, "您已成功退出此社团。", Toast.LENGTH_SHORT).show();
+                                                        Intent intent = new Intent(MyClubDetailActivity.this,HomeActivity.class);
+                                                        startActivity(intent);
+                                                    }else{
+                                                        Toast.makeText(MyClubDetailActivity.this, "查询失败3", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                }
+                                            });
+
                                         }
-                                    }else{
-                                        Log.i("smile", "查询成功，无数据返回");
                                     }
                                 }else{
-                                    Log.i("smile", "错误码："+e.getErrorCode()+"，错误描述："+e.getMessage());
+                                    Toast.makeText(MyClubDetailActivity.this, "查询失败2", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
@@ -171,5 +182,12 @@ public class MyClubDetailActivity extends AppCompatActivity implements View.OnCl
 
     }
 
+    private void LookActivity (){
+        // 跳转到社团的活动列表页 传过去社团id
+
+        Intent intent = new Intent(MyClubDetailActivity.this,ActivitiesInClubsJionedActivity.class);
+        intent.putExtra("clubid",club_id7);
+        startActivity(intent);
+    }
 
 }

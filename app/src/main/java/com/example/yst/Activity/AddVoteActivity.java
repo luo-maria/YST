@@ -123,7 +123,6 @@ public class AddVoteActivity extends AppCompatActivity implements View.OnClickLi
         endTime=dayTime+" "+theTime;
         Date date = DateUtils.strToDate(dayTime+ " " +theTime);
         System.out.println("222222222222222222222222:"+date);
-        vote.setEnd_time(endTime);
         vote.setEnd(date);
         vote.save(new SaveListener<String>() {
             @Override

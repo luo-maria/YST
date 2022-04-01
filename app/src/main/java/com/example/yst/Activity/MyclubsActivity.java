@@ -101,12 +101,13 @@ public class MyclubsActivity extends AppCompatActivity {
         clubAdapter = new ClubAdapter(this,clubs,onRecyclerviewItemClickListener);
         clubAdapter1 = new ClubAdapter(this,clubs,onRecyclerviewItemClickListener1);
         recyclerViewclub.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
-        queryData();
+        queryData1();
     }
 
     private void queryData() {
         Student userInfo = BmobUser.getCurrentUser(Student.class);
         stu_id=userInfo.getObjectId();
+
         BmobQuery<Club> clubBmobQuery = new BmobQuery<>();
         clubBmobQuery.addWhereEqualTo("stu_id", stu_id);
         clubBmobQuery.findObjects(new FindListener<Club>() {

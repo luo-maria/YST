@@ -14,11 +14,18 @@ import android.widget.Toast;
 
 import com.example.yst.R;
 import com.example.yst.bean.ApplyToClublnfo;
+import com.example.yst.bean.Club;
+import com.example.yst.bean.Stu_Club;
 import com.example.yst.bean.Student;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
 
 public class ApplyclubActivity extends AppCompatActivity {
@@ -42,45 +49,52 @@ public class ApplyclubActivity extends AppCompatActivity {
         applybutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ApplyToClublnfo applyToClublnfo=new ApplyToClublnfo();
-                Student userInfo = BmobUser.getCurrentUser(Student.class);
-                stu_id=userInfo.getObjectId();
-                if(userInfo.getRealname()!=null){
-                    applyToClublnfo.setApply_club_name(userInfo.getRealname());
-                }else {
-                    applyToClublnfo.setApply_club_name(applyname.getText().toString());
-                }
-                if(userInfo.getPhotoimageurl()!=null){
-                    applyToClublnfo.setStu_photo(userInfo.getPhotoimageurl());
-                }
-                applyToClublnfo.setStu_photo(userInfo.getPhotoimageurl());
-                applyToClublnfo.setApply_club_name(applyname.getText().toString());
-                applyToClublnfo.setApply_club_class(applyclass.getText().toString());
-                applyToClublnfo.setApply_club_phone(applynumber.getText().toString());
-                applyToClublnfo.setApply_club_reason(apply_reason_club.getText().toString());
-                applyToClublnfo.setApply_club_sex(applygender);
-                applyToClublnfo.setStudent_id(stu_id);
-                applyToClublnfo.setClub_id(club_id2);
-                applyToClublnfo.setClub_name(club_name);
-                applyToClublnfo.setApplication_status("未审核");
-                applyToClublnfo.save(new SaveListener<String>() {
-                    @Override
-                    public void done(String objectId, BmobException e) {
-                        if(e==null){
-                            Toast.makeText(ApplyclubActivity.this,"申请成功！请耐心等待审核",Toast.LENGTH_SHORT).show();
-                            //刷新本页面
-                            Intent intent=new Intent(ApplyclubActivity.this, HomeActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }else{
-                            Toast.makeText(ApplyclubActivity.this,"创建数据失败：" + e.getMessage(),Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+
+
             }
         });
 
     }
+
+    private void applyTheClub() {
+        ApplyToClublnfo applyToClublnfo=new ApplyToClublnfo();
+        Student userInfo = BmobUser.getCurrentUser(Student.class);
+        stu_id=userInfo.getObjectId();
+        if(userInfo.getRealname()!=null){
+            applyToClublnfo.setApply_club_name(userInfo.getRealname());
+        }else {
+            applyToClublnfo.setApply_club_name(applyname.getText().toString());
+            userInfo.setRealname(applyname.getText().toString());
+        }
+        if(userInfo.getPhotoimageurl()!=null){
+            applyToClublnfo.setStu_photo(userInfo.getPhotoimageurl());
+        }
+        applyToClublnfo.setStu_photo(userInfo.getPhotoimageurl());
+        applyToClublnfo.setApply_club_name(applyname.getText().toString());
+        applyToClublnfo.setApply_club_class(applyclass.getText().toString());
+        applyToClublnfo.setApply_club_phone(applynumber.getText().toString());
+        applyToClublnfo.setApply_club_reason(apply_reason_club.getText().toString());
+        applyToClublnfo.setApply_club_sex(applygender);
+        applyToClublnfo.setStudent_id(stu_id);
+        applyToClublnfo.setClub_id(club_id2);
+        applyToClublnfo.setClub_name(club_name);
+        applyToClublnfo.setApplication_status("未审核");
+        applyToClublnfo.save(new SaveListener<String>() {
+            @Override
+            public void done(String objectId, BmobException e) {
+                if(e==null){
+                    Toast.makeText(ApplyclubActivity.this,"申请成功！请耐心等待审核",Toast.LENGTH_SHORT).show();
+                    //刷新本页面
+                    Intent intent=new Intent(ApplyclubActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                }else{
+                    Toast.makeText(ApplyclubActivity.this,"创建数据失败：" + e.getMessage(),Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
 
     private void setInfo() {
         Student userInfo = BmobUser.getCurrentUser(Student.class);

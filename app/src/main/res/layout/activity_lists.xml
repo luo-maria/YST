@@ -7,7 +7,7 @@
     android:descendantFocusability="blocksDescendants"
     android:padding="10dp"
     android:layout_marginBottom="10dp"
-    android:background="@drawable/shape_login_form">
+    android:background="@drawable/shape_popup">
 
     <ImageView
         android:id="@+id/activityImage"
@@ -15,6 +15,7 @@
         android:layout_height="100dp"
         android:layout_gravity="center"
         android:src="@mipmap/moren"
+        android:scaleType="fitXY"
         android:clickable="true"
         android:focusable="false" />
     <LinearLayout

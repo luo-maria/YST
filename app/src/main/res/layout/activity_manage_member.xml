@@ -59,7 +59,7 @@
             android:textColor="#042F51"
             android:textSize="18dp" />
         <TextView
-            android:id="@+id/applicantGender"
+            android:id="@+id/President"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
@@ -120,7 +120,7 @@
                     android:layout_marginLeft="13dp"
                     android:src="@mipmap/search" />
                 <EditText
-                    android:id="@+id/et_search"
+                    android:id="@+id/searchmen"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="11dp"
@@ -147,87 +147,11 @@
                 android:orientation="vertical">
 
                 <!--    展示效果： Demo    -->
-                <GridLayout
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/clubmembers"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:columnCount="4"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal"  >
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_columnWeight="1"
-                        android:layout_height="110dp"
-                        android:gravity="center"
-                        android:layout_rowWeight="1"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            app:srcCompat="@mipmap/member_g" />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:gravity="center"
-                            android:text="小红"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_columnWeight="1"
-                        android:layout_height="110dp"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            app:srcCompat="@mipmap/member_boy" />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:gravity="center"
-                            android:text="小红"/>
-
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_columnWeight="1"
-                        android:layout_height="110dp"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            app:srcCompat="@mipmap/member_g" />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:gravity="center"
-                            android:text="小红"/>
-
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_columnWeight="1"
-                        android:layout_height="110dp"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            app:srcCompat="@mipmap/member_boy" />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:gravity="center"
-                            android:text="小红"/>
-                    </LinearLayout>
-                </GridLayout>
+                    android:layout_height="match_parent"
+                    android:focusable="false" />
 
                 <!--
                     对应每一项 item_member.xml文件

@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.yst.Activity.Activity_detailActivity;
 import com.example.yst.R;
 import com.example.yst.adapter.ImageAdapter;
-import com.example.yst.adapter.ActivityAdapter;
+import com.example.yst.adapter.HomeActivityAdapter;
 import com.example.yst.bean.Activities;
 import com.example.yst.bean.ImageBean;
 import com.youth.banner.Banner;
@@ -36,7 +36,7 @@ import cn.bmob.v3.listener.FindListener;
 public class HomeFragment extends Fragment {
 
     RecyclerView recyclerviewActivities;
-    ActivityAdapter activityAdapter;
+    HomeActivityAdapter homeActivityAdapter;
     List<Activities> activities;
     private Unbinder mUnbinder;
     private View mView;
@@ -77,7 +77,7 @@ public class HomeFragment extends Fragment {
     }
 
 
-    public ActivityAdapter.OnRecyclerviewItemClickListener onRecyclerviewItemClickListener = new ActivityAdapter.OnRecyclerviewItemClickListener() {
+    public HomeActivityAdapter.OnRecyclerviewItemClickListener onRecyclerviewItemClickListener = new HomeActivityAdapter.OnRecyclerviewItemClickListener() {
         @Override
         public void onItemClickListener(View v, int position) {
             //这里的view就是我们点击的view  position就是点击的position
@@ -94,7 +94,7 @@ public class HomeFragment extends Fragment {
         }
     };
     private void initialize() {
-        activityAdapter = new ActivityAdapter(getActivity(),activities, onRecyclerviewItemClickListener);
+        homeActivityAdapter = new HomeActivityAdapter(getActivity(),activities, onRecyclerviewItemClickListener);
         recyclerviewActivities.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         queryActivityData();
     }
@@ -122,8 +122,8 @@ public class HomeFragment extends Fragment {
             public void done(List<Activities> object, BmobException e) {
                 if (e == null) {
                     activities = object;
-                    activityAdapter.setActivityLists(activities);
-                    recyclerviewActivities.setAdapter(activityAdapter);
+                    homeActivityAdapter.setActivityLists(activities);
+                    recyclerviewActivities.setAdapter(homeActivityAdapter);
                 } else {
                     Log.e("查询失败", "原因: ", e);
                 }

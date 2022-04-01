@@ -32,7 +32,8 @@ public class ManageClubActivity extends AppCompatActivity {
         manage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ManageClubActivity.this,EditClubActivity.class);
+//                Intent intent = new Intent(ManageClubActivity.this,EditClubActivity.class);
+                Intent intent = new Intent(ManageClubActivity.this,AllMembersActivity.class);
                 intent.putExtra("clubid",club_id3);
                 startActivity(intent);
             }

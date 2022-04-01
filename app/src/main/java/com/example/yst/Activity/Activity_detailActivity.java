@@ -13,15 +13,19 @@ import android.widget.Toast;
 
 import com.example.yst.R;
 import com.example.yst.bean.Activities;
+import com.example.yst.bean.Stu_Vote;
+import com.example.yst.bean.Stu_activity;
+import com.example.yst.bean.Student;
 
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.QueryListener;
+import cn.bmob.v3.listener.SaveListener;
 
 public class Activity_detailActivity extends AppCompatActivity {
     ImageView image;
     TextView activity_name,activity_create_name,activity_place,start_time,end_time,activity_intro;
-    String act_id;
+    String act_id,stu_id;
     Button appacbut;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +35,26 @@ public class Activity_detailActivity extends AppCompatActivity {
         appacbut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Stu_activity stu_activity=new Stu_activity();
+                stu_activity.setActivity_id(act_id);
+                stu_activity.setStu_id(stu_id);
+                stu_activity.save(new SaveListener<String>() {
+                    @Override
+                    public void done(String s, BmobException e) {
+                        if(e==null){
+                            Toast.makeText(Activity_detailActivity.this,"您已加入该活动！",Toast.LENGTH_LONG);
+                        }else{
+                            Toast.makeText(Activity_detailActivity.this,"加入活动失败！",Toast.LENGTH_LONG);
+                        }
+                    }
+                });
             }
         });
     }
 
     private void initialize() {
+        Student student=Student.getCurrentUser(Student.class);
+        stu_id=student.getObjectId();
         image=findViewById(R.id.image);
         activity_name=findViewById(R.id.activity_name);
         activity_create_name=findViewById(R.id.activity_create_name);
@@ -65,6 +83,5 @@ public class Activity_detailActivity extends AppCompatActivity {
 
             }
         });
-
     }
 }
