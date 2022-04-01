@@ -39,14 +39,12 @@ public class ApplyInfoListActivity extends AppCompatActivity {
         recyclerViewclub.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         Intent intent1=getIntent();
         club_id4=intent1.getStringExtra("clubid");
-        System.out.println("this is club_id4::"+club_id4);
         queryData();
     }
 
     private void queryData() {
         BmobQuery<ApplyToClublnfo> clubBmobQuery = new BmobQuery<>();
         clubBmobQuery.addWhereEqualTo("club_id", club_id4);
-        System.out.println("this is BmobQuery");
         clubBmobQuery.findObjects(new FindListener<ApplyToClublnfo>() {
             @Override
             public void done(List<ApplyToClublnfo> object, BmobException e) {
@@ -54,7 +52,6 @@ public class ApplyInfoListActivity extends AppCompatActivity {
                     infos = object;
                     applyInfoAdapter.setApplyToClublnfoList(infos);
                     recyclerViewclub.setAdapter(applyInfoAdapter);
-                    System.out.println("this is BmobQuery555555555555");
                 } else {
                     Log.e("查询失败", "原因: ", e);
                 }
@@ -72,6 +69,7 @@ public class ApplyInfoListActivity extends AppCompatActivity {
                 applyToClublnfo.setObjectId( infos.get(position).getObjectId());
                 applyToClublnfo_id=infos.get(position).getObjectId();
                 intent.putExtra("applyToClublnfo_id",applyToClublnfo_id);
+
             }
             startActivity(intent);
             finish();

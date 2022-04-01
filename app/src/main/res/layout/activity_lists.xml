@@ -5,17 +5,16 @@
     android:layout_height="120dp"
     android:orientation="horizontal"
     android:descendantFocusability="blocksDescendants"
-    android:padding="3px"
+    android:padding="10dp"
+    android:layout_marginBottom="10dp"
     android:background="@drawable/shape_login_form">
 
     <ImageView
-        android:id="@+id/image"
+        android:id="@+id/activityImage"
         android:layout_width="140dp"
-        android:layout_height="110dp"
-        android:layout_marginBottom="0dp"
-        android:layout_marginTop="0dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
         android:src="@mipmap/moren"
-        android:layout_marginLeft="10dp"
         android:clickable="true"
         android:focusable="false" />
     <LinearLayout
@@ -30,41 +29,41 @@
             android:descendantFocusability="blocksDescendants"
             android:layout_width="match_parent">
             <TextView
-                android:id="@+id/activity_name"
+                android:id="@+id/activityName"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:focusable="false"
-                android:layout_height="30dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="8dp"
-                android:background="@null"
                 android:text="名称"
                 android:layout_alignParentLeft="true"
                 android:textColor="@color/skin_topbar_bg_color"
                 android:textAlignment="gravity"
                 android:textSize="18sp" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="15dp"
+                android:layout_marginRight="5dp"
                 android:layout_height="wrap_content">
-            <ImageView
-                android:layout_marginTop="5dp"
-                android:layout_width="20dp"
-                android:layout_height="23dp"
-                android:focusable="false"
-                android:src="@mipmap/club1"/>
-            <TextView
-                android:id="@+id/activity_create_name"
-                android:layout_width="50dp"
-                android:layout_height="25dp"
-                android:layout_marginLeft="5dp"
-                android:focusable="false"
-                android:text="发布人"
-                android:layout_marginTop="5dp"
-                android:textSize="14sp"
-                android:textColor="@color/gary">
-            </TextView></LinearLayout>
+                <ImageView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:focusable="false"
+                    android:src="@mipmap/club1"/>
+                <TextView
+                    android:id="@+id/activityLeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:focusable="false"
+                    android:text="发布人"
+                    android:layout_marginTop="5dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/gary"/>
+            </LinearLayout>
         </RelativeLayout>
         <LinearLayout
             android:layout_height="wrap_content"
@@ -73,15 +72,26 @@
             android:layout_width="match_parent">
         </LinearLayout>
         <TextView
-            android:id="@+id/activity_intro"
+            android:id="@+id/activityStartTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:paddingTop="5dp"
+            android:background="@null"
+            android:text="活动时间"
+            android:textColor="@color/sex"
+            android:textSize="12sp" />
+        <TextView
+            android:id="@+id/activityIntro"
             android:focusable="false"
             android:layout_width="match_parent"
-            android:layout_height="65dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:textSize="14dp"
-            android:text="详细介绍"
-            android:textColor="@color/black"/>
+            android:lineSpacingExtra="2dp"
+            android:text="\u3000详细介绍这是该活动的详细介绍，点击查看详情信息"
+            android:textColor="@color/color_606060"/>
     </LinearLayout>
 </LinearLayout>

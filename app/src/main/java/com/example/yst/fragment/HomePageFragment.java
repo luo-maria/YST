@@ -1,8 +1,17 @@
 package com.example.yst.fragment;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +21,18 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.example.yst.Activity.CalenderSelectActivity;
 import com.example.yst.Activity.CreateClubActivity;
 import com.example.yst.Activity.EditUserActivity;
+import com.example.yst.Activity.HomeActivity;
 import com.example.yst.Activity.MyApplyListActivity;
 import com.example.yst.Activity.MyclubsActivity;
 import com.example.yst.Activity.SelectPhotoActivity;
@@ -27,11 +42,16 @@ import com.example.yst.util.ConstantConfig;
 import com.example.yst.util.ImageUtils;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
+
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.UpdateListener;
+
 public class HomePageFragment extends Fragment {
     public static HomePageFragment newInstance() {
         HomePageFragment fragment = new HomePageFragment();
@@ -39,15 +59,13 @@ public class HomePageFragment extends Fragment {
     }
     private byte[] image;
     ListView listView;
-    ImageView club,message1;
+    ImageView club,message1,imgHead;
     TextView my_club;
     LinearLayout myInfo,myclubs;
-    String stu_id;
+    String img_url;
     private String[] names = new String[]{"活动日程", "我的荣誉", "社团入驻",  "退出"};
     private int[] heads = new int[]{R.mipmap.cal};
     private TextView my_name,signature;
-//    @BindView(R.id.img_profile)
-    SimpleDraweeView imgHead;
 
     public void sendBroadcast(Intent intent) {
         Context mBase=HomePageFragment.this.getContext();
@@ -75,7 +93,7 @@ public class HomePageFragment extends Fragment {
         myclubs= view.findViewById(R.id. myclubs);
         my_name = view.findViewById(R.id.my_name);
         signature = view.findViewById(R.id.signature);
-        imgHead =(SimpleDraweeView) view.findViewById(R.id.img_profile);
+        imgHead = view.findViewById(R.id.img_profile);
         myInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,18 +108,21 @@ public class HomePageFragment extends Fragment {
         imgHead.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putString(ConstantConfig.SELECT_PHOTO, ConstantConfig.UPDATE_HEAD_IMAGES);
-                startActivity(SelectPhotoActivity.class, bundle);
+                if (ContextCompat.checkSelfPermission(HomePageFragment.this.getContext(),
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(HomePageFragment.this.getActivity(), new
+                            String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                } else {
+                    Intent intent = new Intent(Intent.ACTION_PICK, null);//返回被选中项的URI
+                    intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");//得到所有图片的URI
+                    startActivityForResult(intent, 1);
+                }
             }
         });
         message1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Student userInfo = BmobUser.getCurrentUser(Student.class);
-//                stu_id=userInfo.getObjectId();
                 Intent intent1 = new Intent(HomePageFragment.this.getActivity(), MyApplyListActivity.class);
-//                intent1.putExtra("stuid", stu_id);
                 startActivity(intent1);
             }
         });
@@ -136,7 +157,7 @@ public class HomePageFragment extends Fragment {
                     Intent i;
                     switch (position) {
                         case 0:
-                            i = new Intent(HomePageFragment.this.getActivity(), CreateClubActivity.class);
+                            i = new Intent(HomePageFragment.this.getActivity(), CalenderSelectActivity.class);
                             startActivity(i);
                             break;
                         case 1:
@@ -158,7 +179,6 @@ public class HomePageFragment extends Fragment {
                             startActivity(i);
                             break;
                     }
-
                 }
             });
             myclubs.setOnClickListener(new View.OnClickListener() {
@@ -175,12 +195,65 @@ public class HomePageFragment extends Fragment {
         Student userInfo = BmobUser.getCurrentUser(Student.class);
         my_name.setText(userInfo.getNickname());
         signature.setText(userInfo.getSignature());
-        if (userInfo.getPhotoImage() == null) {
-            return;
+        if(userInfo.getPhotoimageurl()!=null){
+            img_url=userInfo.getPhotoimageurl();
+            Bitmap bm = BitmapFactory.decodeFile(img_url);
+            System.out.println("这是图片路径-------------"+img_url);
+            imgHead.setImageBitmap(bm);
         }
-        ImageUtils.setRoundImage(getContext(), imgHead, userInfo.getPhotoImage().getUrl());
-
     }
-
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //获取图片路径
+        if (requestCode == 1 && resultCode == Activity.RESULT_OK && data != null) {
+            Uri selectedImage = data.getData();
+            String[] filePathColumns = {MediaStore.Images.Media.DATA};
+            Cursor c = getContentResolver().query(selectedImage, filePathColumns, null, null, null);
+            c.moveToFirst();
+            int columnIndex = c.getColumnIndex(filePathColumns[0]);
+            String imagePath = c.getString(columnIndex);
+            showImage(imagePath);
+            c.close();
+        }else if(data==null){
+        }
+    }
+    public ContentResolver getContentResolver() {
+        return HomePageFragment.this.getActivity().getContentResolver();
+    }
+    //加载图片
+    private void showImage(String imaePath) {
+        Bitmap bm = BitmapFactory.decodeFile(imaePath);
+        imgHead.setImageBitmap(bm);
+        Student userInfo = BmobUser.getCurrentUser(Student.class);
+        Student new_stu =new Student();
+        new_stu.setPhotoimageurl(imaePath);
+        new_stu.update(userInfo.getObjectId(), new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                if (e == null) {
+                    Toast.makeText(HomePageFragment.this.getActivity(),"修改成功",Toast.LENGTH_SHORT).show();
+                    Intent intent1 = new Intent(HomePageFragment.this.getActivity(), HomeActivity.class);
+                    startActivity(intent1);
+                } else {
+                    Toast.makeText(HomePageFragment.this.getActivity(),"修改失败",Toast.LENGTH_SHORT).show();
+                    Intent intent1 = new Intent(HomePageFragment.this.getActivity(), HomeActivity.class);
+                    startActivity(intent1);
+                }
+            }
+        });
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case 1:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                } else {
+                    System.out.println("错误");
+                }
+                break;
+            default:
+        }
+    }
 
 }

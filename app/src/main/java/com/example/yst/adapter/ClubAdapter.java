@@ -3,11 +3,14 @@ package com.example.yst.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,7 +42,6 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ViewHolder> im
     public ClubAdapter(Context context,List<Club> ClubList,OnRecyclerviewItemClickListener mOnRecyclerviewItemClickListener) {
         this.mcontext = context;
         this.mClubList=ClubList;
-//        inflater = LayoutInflater.from(context);
         this.mOnRecyclerviewItemClickListener = mOnRecyclerviewItemClickListener;
     }
     public void setClubList(List<Club> clubList) {
@@ -63,35 +65,18 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ViewHolder> im
         mholder.clubcampus.setText(club.getClub_campus());
         mholder.clubkind.setText(club.getClub_category());
         mholder.clubintos.setText(club.getClub_intro());
-        if (club.getClub_logo()!=null){
-            mholder.logo.setImageURI(Uri.parse(club.getClub_logo().getFileUrl()));
-        }
+        mholder.logo.setImageBitmap(BitmapFactory.decodeFile(club.getLogo_url()));
         mholder.itemView.setTag(position);//给view设置tag以作为参数传递到监听回调方法中
-//        mholder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(mcontext, Club_detailActivity.class);
-//                if (! mClubList.isEmpty()) {
-//                    Club club = new Club();
-//                    club.setObjectId( mClubList.get(position).getObjectId());
-//                    club_id1=mClubList.get(position).getObjectId();
-//                    intent.putExtra("clubid",club_id1);
-//                }
-//                mcontext.startActivity(intent);
-//                ((Activity)mcontext).finish();
-//            }
-//        });
     }
 
     @Override
     public int getItemCount() {
         return mClubList.size() == 0 ? 0 : mClubList.size();
-//        return arr2.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView club_name,clublevel,clubcampus,clubintos,clubkind;
-        SimpleDraweeView logo;
+        ImageView logo;
         public ViewHolder(View itemView) {
             super(itemView);
             club_name = itemView.findViewById(R.id.clubname);

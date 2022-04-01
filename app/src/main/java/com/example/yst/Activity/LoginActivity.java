@@ -95,11 +95,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                                 Toast.makeText(LoginActivity.this,bmobUser.getUsername()+"登录成功",Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
                                 intent.putExtra("Account",Account);
-//                                intent.putExtra("Account",Account)
                                 startActivity(intent);
-//                                break;
                             }else {
-                                Log.e("登录失败", "原因: ", e);
                                 Toast.makeText(LoginActivity.this,"登录失败",Toast.LENGTH_SHORT).show();
 
                             }

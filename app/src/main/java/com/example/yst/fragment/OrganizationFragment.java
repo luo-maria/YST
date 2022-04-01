@@ -88,8 +88,6 @@ public class OrganizationFragment extends Fragment {
     public ClubAdapter.OnRecyclerviewItemClickListener onRecyclerviewItemClickListener = new ClubAdapter.OnRecyclerviewItemClickListener() {
         @Override
         public void onItemClickListener(View v, int position) {
-            //这里的view就是我们点击的view  position就是点击的position
-            Toast.makeText(getContext()," 点击了 "+position,Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(OrganizationFragment.this.getActivity(), Club_detailActivity.class);
             if (! clubs.isEmpty()) {
                 Club club = new Club();
@@ -242,7 +240,6 @@ public class OrganizationFragment extends Fragment {
         if((campus.equals("校区")&&kind.equals("类型")&&level.equals("级别")) ||( !campus.equals("校区") && kind.equals("类型") && level.equals("级别"))||
                 (campus.equals("校区")&& ! kind.equals("类型")&&level.equals("级别")) || (campus.equals("校区")&&kind.equals("类型")&& ! level.equals("级别"))){
             BmobQuery<Club> clubBmobQuery = new BmobQuery<>();
-            System.out.println("the test2 is"+( kind.equals("类型") && level.equals("级别")));
             if(campus.equals("校区")&&kind.equals("类型")&&level.equals("级别")){
                 clubBmobQuery.addWhereEqualTo("club_name", search_text);
             }

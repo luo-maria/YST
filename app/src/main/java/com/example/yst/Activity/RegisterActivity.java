@@ -91,7 +91,6 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                 } else {
                     SendSMS(Account);
                 }
-
             case R.id.bt_registeractivity_register:    //注册按钮
                 //获取用户输入的用户名、学号、密码、验证码
                 final String phone = mEtRegisteractivityUsername.getText().toString().trim();
@@ -100,9 +99,6 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                 String password2 = mEtRegisteractivityPassword2.getText().toString().trim();
                 String phoneCode = smEtRegisteractivityPhonecode.getText().toString().toLowerCase();
                 //注册验证
-                //账号(Account)、密码(Password)
-//                final String Account = AccountText.getText().toString().trim();
-//                final String Password = PasswordText.getText().toString().trim();
                 if (TextUtils.isEmpty(password)){
                     Toast.makeText(RegisterActivity.this,"请填写密码",Toast.LENGTH_SHORT).show();
                 }else if (password.length()<6){
@@ -126,18 +122,12 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                                     @Override
                                     public void done(Student user, BmobException e) {
                                         if(e==null)
-                                        {
-                                            Toast.makeText(RegisterActivity.this,"验证通过，注册成功",Toast.LENGTH_SHORT).show();
+                                        { Toast.makeText(RegisterActivity.this,"验证通过，注册成功",Toast.LENGTH_SHORT).show();
                                             Intent intent2 = new Intent(RegisterActivity.this, LoginActivity.class);
                                             startActivity(intent2);
-                                            finish();
-
-                                        }else
-                                        {
-                                            Log.e("注册失败", "原因: ",e );
-                                        }
-
-                                    }
+                                            finish(); }
+                                        else { Log.e("注册失败", "原因: ",e );
+                                        } }
                                 });
                             }else {
                                 smEtRegisteractivityPhonecode.setText("");

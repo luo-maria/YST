@@ -13,7 +13,8 @@ public class Student extends BmobUser {
     private  String college;
     private  String university;
     private String nickname;
-    private BmobFile photoImage;
+//    private BmobFile photoImage;
+    private String photoimageurl;
     private String realname;
     public Student() {
         super();
@@ -77,13 +78,13 @@ public class Student extends BmobUser {
         this.university = university;
     }
 
-    public BmobFile getPhotoImage() {
-        return photoImage;
-    }
-
-    public void setPhotoImage(BmobFile photoImage) {
-        this.photoImage = photoImage;
-    }
+//    public BmobFile getPhotoImage() {
+//        return photoImage;
+//    }
+//
+//    public void setPhotoImage(BmobFile photoImage) {
+//        this.photoImage = photoImage;
+//    }
 
     public String getRealname() {
         return realname;
@@ -91,5 +92,13 @@ public class Student extends BmobUser {
 
     public void setRealname(String realname) {
         this.realname = realname;
+    }
+
+    public String getPhotoimageurl() {
+        return photoimageurl;
+    }
+
+    public void setPhotoimageurl(String photoimageurl) {
+        this.photoimageurl = photoimageurl;
     }
 }

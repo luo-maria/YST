@@ -10,7 +10,7 @@ import cn.bmob.v3.datatype.BmobFile;
 public class Club extends BmobObject implements Serializable {
     private String club_name;
     private String club_category;
-    private BmobFile club_logo;
+//    private BmobFile club_logo;
     private String club_rank;
     private String club_president;
     private String club_colle;
@@ -21,6 +21,7 @@ public class Club extends BmobObject implements Serializable {
     private String pre_number;
     private String club_intro;
     private String stu_id;
+    private String logo_url;
 
     public Club () {
         super();
@@ -43,13 +44,13 @@ public class Club extends BmobObject implements Serializable {
         this.club_category = club_category;
     }
 
-    public BmobFile getClub_logo() {
-        return club_logo;
-    }
-
-    public void setClub_logo(BmobFile club_logo) {
-        this.club_logo = club_logo;
-    }
+//    public BmobFile getClub_logo() {
+//        return club_logo;
+//    }
+//
+//    public void setClub_logo(BmobFile club_logo) {
+//        this.club_logo = club_logo;
+//    }
 
     public String getClub_rank() {
         return club_rank;
@@ -130,6 +131,14 @@ public class Club extends BmobObject implements Serializable {
 
     public void setStu_id(String stu_id) {
         this.stu_id = stu_id;
+    }
+
+    public String getLogo_url() {
+        return logo_url;
+    }
+
+    public void setLogo_url(String logo_url) {
+        this.logo_url = logo_url;
     }
 }
 

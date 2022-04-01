@@ -38,24 +38,15 @@
             android:layout_alignParentLeft="true"
             android:layout_gravity="center"
             />
-        <com.facebook.drawee.view.SimpleDraweeView
+
+        <com.example.yst.util.XCRoundImageView
             android:id="@+id/clublogo"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginLeft="360dp"
-            android:layout_marginTop="5dp"
-            fresco:placeholderImage="@drawable/ic_launcher_background"
-            fresco:roundAsCircle="true" />
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            app:srcCompat="@mipmap/jiantou"  />
-
+            android:layout_marginLeft="340dp"
+            android:src="@mipmap/san" />
 
     </RelativeLayout>
 

@@ -3,38 +3,28 @@ package com.example.yst.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.yst.R;
 import com.example.yst.bean.Club;
-import com.example.yst.util.ImageUtils;
-import com.facebook.drawee.view.SimpleDraweeView;
-
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.QueryListener;
-import cn.bmob.v3.listener.UpdateListener;
 
 public class Club_detailActivity extends AppCompatActivity {
     Button app_btn;
     String club_id1,img_url,club_state,club_name;
-    SimpleDraweeView imglogo;
+    ImageView imglogo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_club_detail);
-        imglogo = (SimpleDraweeView)findViewById(R.id.logophoto);
+        imglogo =findViewById(R.id.logophoto);
         TextView level = (TextView)findViewById(R.id.level1);
         TextView campus = (TextView)findViewById(R.id.campus1) ;
         TextView kind = (TextView)findViewById(R.id.kind1);
@@ -46,13 +36,11 @@ public class Club_detailActivity extends AppCompatActivity {
 
         Intent intent1=getIntent();
         club_id1=intent1.getStringExtra("clubid");
-//        club_state=intent1.getStringExtra("club_state");
-//        System.out.println("this is clubiddetail:"+club_id1);
         BmobQuery<Club> bmobQuery = new BmobQuery<Club>();
         bmobQuery.getObject(club_id1, new QueryListener<Club>() {
             @Override
             public void done(Club object,BmobException e) {
-                if(e==null && object.getClub_logo().getUrl()!=null){
+                if(e==null){
                     level.setText(object.getClub_rank());
                     campus.setText(object.getClub_campus());
                     kind.setText(object.getClub_category());
@@ -61,9 +49,8 @@ public class Club_detailActivity extends AppCompatActivity {
                     club_intro .setText(object.getClub_intro());
                     call.setText(object.getPre_number());
                     time.setText(object.getCreatedAt().substring(0,10));
-                    img_url=object.getClub_logo().getUrl();
                     club_name=object.getClub_name();
-                    ImageUtils.setRoundImage(Club_detailActivity.this, imglogo, img_url);
+                    imglogo.setImageBitmap(BitmapFactory.decodeFile(object.getLogo_url()));
                 }else{
                     Toast.makeText(Club_detailActivity.this, "查询失败", Toast.LENGTH_SHORT).show();
                 }
@@ -77,16 +64,14 @@ public class Club_detailActivity extends AppCompatActivity {
                 bmobQuery.getObject(club_id1, new QueryListener<Club>() {
                     @Override
                     public void done(Club object,BmobException e) {
-                        if(e==null || object.getClub_logo().getUrl()!=null){
+                        if(e==null){
                             club_name=object.getClub_name();
-                            System.out.println("this is  String.valueOf(clubname):"+ club_name);
                             club_state=object.getClub_state();
                             if(club_state.equals("非招募")){
                                 Toast.makeText(Club_detailActivity.this, "该社团目前不在招募期，欢迎在招募期申请！", Toast.LENGTH_SHORT).show();
                                 finish();
                             }else{
                                 Intent intent = new Intent(Club_detailActivity.this,ApplyclubActivity.class);
-                                System.out.println("this is 11111111111clubid:"+club_id1);
                                 intent.putExtra("clubid",club_id1);
                                 intent.putExtra("clubname", club_name);
                                 startActivity(intent);

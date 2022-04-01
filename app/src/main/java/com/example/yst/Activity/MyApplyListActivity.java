@@ -83,7 +83,7 @@ public class MyApplyListActivity extends AppCompatActivity {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {//确定按钮的响应事件，点击事件没写，自己添加
                                             }
-                                        }).show();//在按键响应事件中显示此对话框
+                                        }).show();
                             }else{
                                 applyToClublnfo.setObjectId( myinfos.get(position).getObjectId());
                                 applyToClublnfo_id=myinfos.get(position).getObjectId();

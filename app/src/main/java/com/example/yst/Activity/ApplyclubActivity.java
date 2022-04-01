@@ -27,7 +27,6 @@ public class ApplyclubActivity extends AppCompatActivity {
     private RadioButton radioButton1;
     String stu_id,club_id2,applygender,stu_realname,club_name;
     Button applybutton;
-    BmobFile stu_photo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,22 +45,23 @@ public class ApplyclubActivity extends AppCompatActivity {
                 ApplyToClublnfo applyToClublnfo=new ApplyToClublnfo();
                 Student userInfo = BmobUser.getCurrentUser(Student.class);
                 stu_id=userInfo.getObjectId();
-                if(userInfo.getPhotoImage()!=null){
-                    stu_photo=userInfo.getPhotoImage();
-                }
                 if(userInfo.getRealname()!=null){
                     applyToClublnfo.setApply_club_name(userInfo.getRealname());
                 }else {
                     applyToClublnfo.setApply_club_name(applyname.getText().toString());
                 }
-                applyToClublnfo.setStu_photo(stu_photo);
+                if(userInfo.getPhotoimageurl()!=null){
+                    applyToClublnfo.setStu_photo(userInfo.getPhotoimageurl());
+                }
+                applyToClublnfo.setStu_photo(userInfo.getPhotoimageurl());
+                applyToClublnfo.setApply_club_name(applyname.getText().toString());
                 applyToClublnfo.setApply_club_class(applyclass.getText().toString());
                 applyToClublnfo.setApply_club_phone(applynumber.getText().toString());
                 applyToClublnfo.setApply_club_reason(apply_reason_club.getText().toString());
                 applyToClublnfo.setApply_club_sex(applygender);
                 applyToClublnfo.setStudent_id(stu_id);
                 applyToClublnfo.setClub_id(club_id2);
-                applyToClublnfo.setApply_club_name(club_name);
+                applyToClublnfo.setClub_name(club_name);
                 applyToClublnfo.setApplication_status("未审核");
                 applyToClublnfo.save(new SaveListener<String>() {
                     @Override
@@ -98,7 +98,6 @@ public class ApplyclubActivity extends AppCompatActivity {
         Intent intent1=getIntent();
         club_id2=intent1.getStringExtra("clubid");
         club_name=intent1.getStringExtra("clubname");
-        System.out.println("this is Applyclub:"+club_id2);
     }
     private void selectRadioBtn(){
         radioButton1 = findViewById(rg1.getCheckedRadioButtonId());

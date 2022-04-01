@@ -33,9 +33,9 @@ public class MyclubsActivity extends AppCompatActivity {
     List<Club> clubs;
     List<Club> clubs1=new ArrayList<Club>();
     List<Stu_Club> stu_clubs;
-    String stu_id,club_id1,club_id5,club_id6;
+    String stu_id,club_id1,club_id5,club_id2;
     RecyclerView recyclerViewclub;
-    ClubAdapter clubAdapter;
+    ClubAdapter clubAdapter,clubAdapter1 ;
     Button club_created,club_entered;
     List<String> club_ids= new ArrayList<String>();
     @Override
@@ -55,7 +55,12 @@ public class MyclubsActivity extends AppCompatActivity {
         club_entered.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                queryData1();
+                if(clubs1.isEmpty()){
+                    queryData1();
+                }else{
+                    System.out.println(clubs1);
+                }
+
             }
         });
 
@@ -76,8 +81,25 @@ public class MyclubsActivity extends AppCompatActivity {
             finish();
         }
     };
+    public ClubAdapter.OnRecyclerviewItemClickListener onRecyclerviewItemClickListener1 = new ClubAdapter.OnRecyclerviewItemClickListener() {
+        @Override
+        public void onItemClickListener(View v, int position) {
+            Intent intent = new Intent(MyclubsActivity.this,MyClubDetailActivity.class);
+            Toast.makeText(MyclubsActivity.this," 点击了 "+position,Toast.LENGTH_SHORT).show();
+            if (! clubs1.isEmpty()) {
+                Club club = new Club();
+                club.setObjectId( clubs1.get(position).getObjectId());
+                club_id2=clubs1.get(position).getObjectId();
+                System.out.println("this is myclubsid:"+club_id2);
+                intent.putExtra("clubid",club_id2);
+            }
+            startActivity(intent);
+            finish();
+        }
+    };
     private void initialize() {
         clubAdapter = new ClubAdapter(this,clubs,onRecyclerviewItemClickListener);
+        clubAdapter1 = new ClubAdapter(this,clubs,onRecyclerviewItemClickListener1);
         recyclerViewclub.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         queryData();
     }
@@ -115,29 +137,27 @@ public class MyclubsActivity extends AppCompatActivity {
                             club_ids.add(club_id5);
                         }
                         }
-                    Iterator it=club_ids.iterator();
-                    while (it.hasNext()){
-                        club_id6= (String) it.next();
-                        System.out.println("this is clubid6:"+club_id6);
+                    for(String clubid:club_ids){
                         BmobQuery<Club> bmobQuery = new BmobQuery<Club>();
-                        bmobQuery.getObject(club_id6, new QueryListener<Club>() {
+                        bmobQuery.getObject(clubid, new QueryListener<Club>() {
                             @Override
                             public void done(Club object,BmobException e) {
                                 if(e==null){
                                     clubs1.add(object);
+                                    clubAdapter1.setClubList(clubs1);
+                                    recyclerViewclub.setAdapter(clubAdapter1);
                                 }else{
                                     Toast.makeText(MyclubsActivity.this, "查询失败", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
                     }
-                    System.out.println("this is clubs888888888:"+clubs1);
-                    clubAdapter.setClubList(clubs1);
-                    recyclerViewclub.setAdapter(clubAdapter);
+
                 } else {
                     Log.e("查询失败", "原因: ", e);
                 }
             }
         });
+
     }
 }

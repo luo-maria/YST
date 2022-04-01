@@ -2,6 +2,6 @@
 <resources>
     <dimen name="dimen_100dp">100dp</dimen>
     <dimen name="dimen_54dp">54dp</dimen>
-
+    <dimen name="createTxt">20dp</dimen>
     <dimen name="size_22sp">22sp</dimen>
 </resources>

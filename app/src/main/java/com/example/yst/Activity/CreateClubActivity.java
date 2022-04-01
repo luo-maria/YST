@@ -1,12 +1,22 @@
 package com.example.yst.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -23,6 +33,7 @@ import com.example.yst.bean.Student;
 import com.example.yst.util.ConstantConfig;
 import com.facebook.drawee.view.SimpleDraweeView;
 
+import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -34,11 +45,12 @@ import cn.bmob.v3.listener.SaveListener;
 public class CreateClubActivity extends AppCompatActivity {
     Button btncreate;
     EditText et_club_name,et_leader_name,et_leader_call,et_club_intro;
-    SimpleDraweeView clublogo;
+    ImageView clublogo;
     public Spinner sp,sp1,sp2;
     public String club_id,stu_id;
     private byte[] image1;
     public String kind,level,campus;
+    String imagePath;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,17 +127,18 @@ public class CreateClubActivity extends AppCompatActivity {
             }
         });
         clublogo.setOnClickListener(new View.OnClickListener() {
-            private Object SelectPhotoActivity;
-
             @Override
             public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putString(ConstantConfig.SELECT_PHOTO, ConstantConfig.UPDATE_HEAD_IMAGES);
-                Intent intent = new Intent();
-                intent.putExtras(bundle);
-                intent.setClass(CreateClubActivity.this , SelectPhotoActivity.class);
-                startActivity(intent);
-
+                if (ContextCompat.checkSelfPermission(CreateClubActivity.this,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(CreateClubActivity.this, new
+                            String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                } else {
+                    //打开系统相册
+                    Intent intent = new Intent(Intent.ACTION_PICK,
+                            android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(intent, 1);
+                }
             }
         });
 
@@ -144,6 +157,7 @@ public class CreateClubActivity extends AppCompatActivity {
                 club.setPre_number(et_leader_call.getText().toString());
                 club.setClub_intro(et_club_intro.getText().toString());
                 club.setStu_id(stu_id);
+                club.setLogo_url(imagePath);
                 club.save(new SaveListener<String>() {
                     @Override
                     public void done(String objectId, BmobException e) {
@@ -165,5 +179,40 @@ public class CreateClubActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //获取图片路径
+        if (requestCode == 1 && resultCode == Activity.RESULT_OK && data != null) {
+            Uri selectedImage = data.getData();
+            String[] filePathColumns = {MediaStore.Images.Media.DATA};
+            Cursor c = getContentResolver().query(selectedImage, filePathColumns, null, null, null);
+            c.moveToFirst();
+            int columnIndex = c.getColumnIndex(filePathColumns[0]);
+            imagePath = c.getString(columnIndex);
+            showImage(imagePath);
+            c.close();
+        }
+    }
 
+    //加载图片
+    private void showImage(String imaePath) {
+        Bitmap bm = BitmapFactory.decodeFile(imaePath);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bm.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        clublogo.setImageBitmap(bm);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case 1:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                } else {
+                    Toast.makeText(this, "You denied the permission", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            default:
+        }
+    }
 }

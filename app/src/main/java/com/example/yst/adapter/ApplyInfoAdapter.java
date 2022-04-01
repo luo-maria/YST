@@ -1,6 +1,7 @@
 package com.example.yst.adapter;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,12 +26,10 @@ public class ApplyInfoAdapter extends RecyclerView.Adapter<ApplyInfoAdapter.View
     @Override
     public void onClick(View v) {
         mOnRecyclerviewItemClickListener1.onItemClickListener(v, ((int) v.getTag()));
-
     }
     public ApplyInfoAdapter(Context context, List<ApplyToClublnfo> ApplyToClublnfoList, OnRecyclerviewItemClickListener mOnRecyclerviewItemClickListener) {
         this.mcontext = context;
         this.mapplyToClublnfoList=ApplyToClublnfoList;
-//        inflater = LayoutInflater.from(context);
         this.mOnRecyclerviewItemClickListener1 = mOnRecyclerviewItemClickListener;
     }
     public void setApplyToClublnfoList(List<ApplyToClublnfo> ApplyToClublnfoList) {
@@ -52,8 +51,11 @@ public class ApplyInfoAdapter extends RecyclerView.Adapter<ApplyInfoAdapter.View
         holder.infoname.setText(applyToClublnfo.getApply_club_name());
         holder.infotext.setText(applyToClublnfo.getApply_club_reason());
         holder.infotime.setText(applyToClublnfo.getCreatedAt());
+        if(!applyToClublnfo.getApplication_status().equals("未审核")){
+            holder.redpoint.setVisibility(View.GONE);
+        }
         if(applyToClublnfo.getStu_photo()!=null){
-//            holder.img_profile.setImageURI(Uri.parse(applyToClublnfo.getStu_photo().getFileUrl()));
+            holder.img_profile.setImageBitmap(BitmapFactory.decodeFile(applyToClublnfo.getStu_photo()));
         }
         holder.itemView.setTag(position);//给view设置tag以作为参数传递到监听回调方法中
 
@@ -63,8 +65,6 @@ public class ApplyInfoAdapter extends RecyclerView.Adapter<ApplyInfoAdapter.View
     public int getItemCount() {
         return mapplyToClublnfoList.size() == 0 ? 0 : mapplyToClublnfoList.size();
 }
-
-
     public interface OnRecyclerviewItemClickListener {
         void onItemClickListener(View v,int position);
 
@@ -72,13 +72,13 @@ public class ApplyInfoAdapter extends RecyclerView.Adapter<ApplyInfoAdapter.View
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView infoname,infotime,infotext,redpoint;
-        SimpleDraweeView img_profile;
+       ImageView img_profile;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             infoname = itemView.findViewById(R.id.infoName);
             infotime = itemView.findViewById(R.id.infoTime);
             infotext = itemView.findViewById(R.id.infotext);
-            img_profile = itemView.findViewById(R.id.img_profile);
+            img_profile = itemView.findViewById(R.id.logo_apply);
             redpoint=itemView.findViewById(R.id.redPoint);
         }
     }

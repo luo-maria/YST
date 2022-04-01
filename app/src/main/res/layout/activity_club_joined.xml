@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.MyClubDetailActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@color/blue">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            app:srcCompat="@android:drawable/ic_media_rew" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="10dp"
+            android:text="我的社团" />
+    </LinearLayout>
+
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fadingEdge="vertical"
+        android:padding="10dp"
+        android:background="@color/backgroundGray"
+        android:scrollbars="vertical">
+
+
+        <!-- 最外层-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/backgroundGray"
+            android:orientation="vertical">
+
+            <!-- 社团信息-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:background="@drawable/shape_popup"
+                android:padding="5dp">
+
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="70dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_height="wrap_content"
+                    fresco:srcCompat="@mipmap/orangeitem" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/myclub_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="社团名称"
+                        android:textColor="@color/text"
+                        android:textSize="18dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="现任社长："
+                            android:textSize="14dp"/>
+                        <TextView
+                            android:id="@+id/myclub_leader_name1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="刘同学"
+                            android:textSize="15dp"/>
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--社团内应用 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                android:background="@drawable/shape_popup"
+                android:padding="10dp">
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:paddingLeft="5dp"
+                    android:textSize="18dp"
+                    android:textColor="@color/color_606060"
+                    android:text="社团应用" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:id="@+id/look_activity"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:paddingLeft="10dp">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            fresco:srcCompat="@mipmap/look_activity" />
+
+                        <TextView
+                            android:layout_width="70dp"
+                            android:gravity="center"
+                            android:textColor="#353535"
+                            android:layout_height="wrap_content"
+                            android:text="查看活动" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/look_notice"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:paddingLeft="10dp">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            fresco:srcCompat="@mipmap/notice" />
+
+                        <TextView
+                            android:layout_width="70dp"
+                            android:gravity="center"
+                            android:textColor="#353535"
+                            android:layout_height="wrap_content"
+                            android:text="查看公告" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/toVote"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:paddingLeft="10dp">
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            fresco:srcCompat="@mipmap/activity_vote" />
+
+                        <TextView
+                            android:layout_width="70dp"
+                            android:gravity="center"
+                            android:textColor="#353535"
+                            android:layout_height="wrap_content"
+                            android:text="参与投票" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/exit"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:paddingLeft="10dp">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            fresco:srcCompat="@mipmap/exit" />
+
+                        <TextView
+                            android:layout_width="70dp"
+                            android:gravity="center"
+                            android:textColor="#353535"
+                            android:layout_height="wrap_content"
+                            android:text="退出社团" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:text="社团详情信息"
+                    android:textSize="15dp"
+                    android:textColor="@color/color_606060"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:background="@drawable/shape_popup"
+                    android:padding="5dp">
+
+                    <!-- 单项-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:orientation="vertical"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:layout_margin="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="社团负责人:"
+                                android:textColor="#272727"
+                                android:textSize="18dp" />
+
+                            <TextView
+                                android:id="@+id/myclub_leader"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_gravity="center"
+                                android:text="小红"
+                                android:textColor="#656464"
+                                android:textSize="19dp" />
+
+                        </RelativeLayout>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#c8c8c8" />
+
+
+                    </LinearLayout>
+                    <!-- 单项-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:orientation="vertical"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:layout_margin="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="社团类型:"
+                                android:textColor="#272727"
+                                android:textSize="18dp" />
+
+                            <TextView
+                                android:id="@+id/myclub_category"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_gravity="center"
+                                android:text="学术"
+                                android:textColor="#656464"
+                                android:textSize="19dp" />
+
+                        </RelativeLayout>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#c8c8c8" />
+
+
+                    </LinearLayout>
+                    <!-- 单项-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:orientation="vertical"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:layout_margin="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="社团所在校区:"
+                                android:textColor="#272727"
+                                android:textSize="18dp" />
+
+                            <TextView
+                                android:id="@+id/myclub_campus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_gravity="center"
+                                android:text="燕山校区"
+                                android:textColor="#656464"
+                                android:textSize="19dp" />
+
+                        </RelativeLayout>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#c8c8c8" />
+
+
+                    </LinearLayout>
+                    <!-- 单项-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:orientation="vertical"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:layout_margin="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="社团级别:"
+                                android:textColor="#272727"
+                                android:textSize="18dp" />
+
+                            <TextView
+                                android:id="@+id/myclub_rank"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_gravity="center"
+                                android:text="校级社团"
+                                android:textColor="#656464"
+                                android:textSize="19dp" />
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#c8c8c8" />
+                    </LinearLayout>
+
+                    <!-- 单项-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:orientation="vertical"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:layout_margin="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="社团现有人数:"
+                                android:textColor="#272727"
+                                android:textSize="18dp" />
+
+                            <TextView
+                                android:id="@+id/club_numbers"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="30dp"
+                                android:layout_gravity="center"
+                                android:text="100"
+                                android:textColor="#656464"
+                                android:textSize="19dp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_gravity="center"
+                                android:text="人"
+                                android:textColor="#656464"
+                                android:textSize="19dp" />
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+            <Button
+                android:id="@+id/Quit"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_register_login_btn"
+                android:text="退出社团"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

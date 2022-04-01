@@ -19,7 +19,7 @@
     <string name="edit2">编辑个人资料</string>
     <string name="edit3">保存</string>
     <dimen name="commontext">20sp</dimen>
-
+    <string name="create_hintPlace">请输入活动地点</string>
 
     <string name="exit_hint">再按一次退出程序</string>
     <string name="album">从相册</string>

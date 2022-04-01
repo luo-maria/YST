@@ -59,7 +59,6 @@ public class HomeActivity extends BaseActivity {
         mList.add(new ImageBean(R.mipmap.a));
         mFragments.add(HomeFragment.newInstance());
         mFragments.add(OrganizationFragment.newInstance());
-//        mFragments.add(test.newInstance());
         mFragments.add(HomePageFragment.newInstance());
         for (int i = 0; i < mTitles.length; i++) {
             mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));

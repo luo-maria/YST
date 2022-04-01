@@ -50,9 +50,9 @@ public class MyApplyInfoAdapter extends RecyclerView.Adapter<MyApplyInfoAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final ApplyToClublnfo applyToClublnfo= mapplyToClublnfoList.get(position);
-        holder.applyclubname.setText(applyToClublnfo.getClub_name());
         holder.applystatus.setText(applyToClublnfo.getApplication_status());
         holder.applicantTime.setText(applyToClublnfo.getCreatedAt().substring(0,10));
+        holder.applicantClubName.setText(applyToClublnfo.getClub_name());
         holder.itemView.setTag(position);//给view设置tag以作为参数传递到监听回调方法中
     }
 
@@ -68,15 +68,16 @@ public class MyApplyInfoAdapter extends RecyclerView.Adapter<MyApplyInfoAdapter.
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView applyclubname,applystatus,applicantTime,info_my;
+        TextView applyclubname,applystatus,applicantTime,info_my,applicantClubName;
         LinearLayout applicantBack;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            applyclubname = itemView.findViewById(R.id.infoName);
+//            applyclubname = itemView.findViewById(R.id.infoName);
             applystatus=itemView.findViewById(R.id.applicantState);
             applicantTime=itemView.findViewById(R.id.applicantTime);
             info_my=itemView.findViewById(R.id.info_my);
             applicantBack=itemView.findViewById(R.id.applicantBack);
+            applicantClubName=itemView.findViewById(R.id.applicantClubName);
         }
     }
 }

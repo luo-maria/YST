@@ -38,24 +38,14 @@
             android:layout_alignParentLeft="true"
             android:layout_gravity="center"
             />
-        <com.facebook.drawee.view.SimpleDraweeView
+        <com.example.yst.util.XCRoundImageView
             android:id="@+id/clublogo_edit"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginLeft="360dp"
-            android:layout_marginTop="5dp"
-            fresco:placeholderImage="@drawable/ic_launcher_background"
-            fresco:roundAsCircle="true" />
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            app:srcCompat="@mipmap/jiantou"  />
-
+            android:layout_marginLeft="360dp"
+            android:src="@mipmap/san" />
 
     </RelativeLayout>
 
@@ -98,36 +88,8 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         />
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_margin="10dp">
-        <TextView
-            android:id="@+id/clubleveltxt"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="社团级别"
-            android:textSize="@dimen/commontext"
-            android:layout_marginLeft="10dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_gravity="center"/>
-        <Spinner
-            android:id="@+id/level_edit"
-            android:layout_width="100dp"
-            android:layout_height="25dp"
-            android:layout_marginLeft="20dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true">
-        </Spinner>
 
-    </RelativeLayout>
-    <View  android:layout_height="1dp"
-        android:layout_width="match_parent"
-        android:background="#c8c8c8"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="30dp"

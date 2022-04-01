@@ -165,7 +165,8 @@
             android:layout_height="130dp"
             android:orientation="vertical"
             android:layout_gravity="center"
-            android:hint="请写下您的理由：\n\n\n"
+            android:gravity="top"
+            android:hint="请写下您的理由："
             android:background="@drawable/shape_white_shadow"
          />
 

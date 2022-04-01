@@ -32,243 +32,415 @@
             android:text="创建活动" />
 
     </LinearLayout>
-    <LinearLayout
-         android:layout_width="match_parent"
-         android:layout_height="match_parent" android:padding="10dp"
-         android:orientation="vertical">
-
-        <!--    活动展示大图    -->
-         <LinearLayout
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:padding="15dp"
-             android:background="@drawable/shape_create_portrait_bg">
-
-             <ImageView
-                 android:id="@+id/activityImage"
-                 android:layout_width="100dp"
-                 android:layout_height="100dp"
-                 android:background="@color/gary">
-
-             </ImageView>
-
-             <LinearLayout
-                 android:layout_width="match_parent"
-                 android:layout_height="match_parent"
-                 android:orientation="vertical"
-                 android:padding="20dp">
 
 
-                 <TextView
-                     android:id="@+id/logotext"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:layout_marginLeft="10dp"
-                     android:text="宣传封面图"
-                     android:textColor="#424B51"
-                     android:textSize="22dp" />
-                 <TextView
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:layout_marginTop="10dp"
-                     android:layout_marginLeft="10dp"
-                     android:text="像素要求：100px*200px"
-                     ></TextView>
+    // 外层滚动
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="vertical"
+        android:fadingEdge="vertical">
 
-
-             </LinearLayout>
-
-<!--       展示创建详情      -->
-         </LinearLayout>
-
-
-         <!--横线-->
-
-
-         <RelativeLayout
-             android:layout_width="match_parent"
-             android:layout_height="30dp"
-             android:layout_margin="10dp">
-             <TextView
-                 android:layout_width="100dp"
-                 android:layout_height="wrap_content"
-                 android:text="社团名称"
-                 android:textSize="22dp"
-                 android:layout_marginLeft="15dp"
-                 android:textColor="@color/title_text_color"
-                 android:textStyle="bold"
-                 android:layout_gravity="center"/>
-
-             <TextView
-                 android:id="@+id/clubName"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_alignParentRight="true"
-                 android:layout_marginRight="10dp"
-                 android:background="@null"
-                 android:textColor="#485560"
-                 android:text="我的公益社团"
-                 android:textSize="@dimen/commontext" />
-
-         </RelativeLayout>
-         <View  android:layout_height="1dp"
-             android:layout_width="match_parent"
-             android:background="#c8c8c8"
-             android:layout_marginLeft="10dp"
-             android:layout_marginRight="10dp"
-             />
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_margin="10dp">
-            <TextView
-                android:id="@+id/activityNameTxt"
-                android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <!--    活动展示大图    -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="活动名称"
-                android:textSize="@dimen/commontext"
+                android:background="@drawable/shape_create_portrait_bg"
+                android:padding="15dp">
+
+                <ImageView
+                    android:id="@+id/activityImage"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@color/gary">
+
+                </ImageView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+
+                    <TextView
+                        android:id="@+id/logotext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="宣传封面图"
+                        android:textColor="#424B51"
+                        android:textSize="22dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="像素要求：100px*200px"></TextView>
+
+
+                </LinearLayout>
+
+                <!--       展示创建详情      -->
+            </LinearLayout>
+
+
+            <!--横线-->
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="15dp"
+                    android:text="社团名称"
+                    android:textColor="@color/title_text_color"
+                    android:textSize="22dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/clubName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@null"
+                    android:text="我的公益社团"
+                    android:textColor="#485560"
+                    android:textSize="@dimen/commontext" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
                 android:layout_marginLeft="10dp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentLeft="true"
-                android:layout_gravity="center"/>
-            <EditText
-                android:id="@+id/activityName"
+                android:layout_marginRight="10dp"
+                android:background="#c8c8c8" />
+
+            <ScrollView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="15dp"
-                android:background="@null"
-                android:hint="请输入活动名称"
-                android:inputType="textNoSuggestions"
-                android:layout_centerVertical="true"
-                android:textColor="#000000"
-                android:layout_alignParentRight="true"
-                android:textColorHint="@color/hint_text"
-                android:textSize="@dimen/commontext" />
+                android:paddingRight="10dp"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="10dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
 
-        </RelativeLayout>
-         <View  android:layout_height="1dp"
-             android:layout_width="match_parent"
-             android:background="#c8c8c8"
-             android:layout_marginLeft="10dp"
-             android:layout_marginRight="10dp"
-             />
-         <RelativeLayout
-             android:layout_width="match_parent"
-             android:layout_height="30dp"
-             android:layout_margin="10dp">
-             <TextView
-                 android:id="@+id/activity_leader"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:text="活动负责人"
-                 android:textSize="@dimen/commontext"
-                 android:layout_marginLeft="10dp"
-                 android:layout_centerVertical="true"
-                 android:layout_alignParentLeft="true"
-                 android:layout_gravity="center"/>
-             <EditText
-                 android:id="@+id/leaderName"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:background="@null"
-                 android:hint="@string/create_hintName"
-                 android:inputType="textNoSuggestions"
-                 android:layout_centerVertical="true"
-                 android:textColor="#000000"
-                 android:layout_alignParentRight="true"
-                 android:textColorHint="@color/hint_text"
-                 android:layout_marginRight="15dp"
-                 android:textSize="@dimen/commontext" />
+                    android:layout_margin="10dp">
 
-         </RelativeLayout>
-         <View  android:layout_height="1dp"
-             android:layout_width="match_parent"
-             android:background="#c8c8c8"
-             android:layout_marginLeft="10dp"
-             android:layout_marginRight="10dp"
-             />
-         <RelativeLayout
-             android:layout_width="match_parent"
-             android:layout_height="30dp"
-             android:layout_margin="10dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_margin="10dp">
 
-             <TextView
-                 android:id="@+id/leaderCallTxt"
-                 android:layout_width="180dp"
-                 android:layout_height="wrap_content"
-                 android:layout_alignParentLeft="true"
-                 android:layout_gravity="center"
-                 android:layout_marginLeft="10dp"
-                 android:text="负责人联系方式"
-                 android:textSize="@dimen/commontext" />
-             <EditText
-                 android:id="@+id/leaderCall"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_marginLeft="20dp"
-                 android:background="@null"
-                 android:hint="@string/create_hintNumber"
-                 android:inputType="textNoSuggestions"
-                 android:layout_centerVertical="true"
-                 android:textColor="#000000"
-                 android:layout_alignParentRight="true"
-                 android:layout_marginRight="15dp"
-                 android:textColorHint="@color/hint_text"
-                 android:textSize="@dimen/commontext" />
+                        <TextView
+                            android:id="@+id/activityNameTxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:text="活动名称"
+                            android:textSize="@dimen/createTxt" />
 
-         </RelativeLayout>
-         <View  android:layout_height="1dp"
-             android:layout_width="match_parent"
-             android:background="#c8c8c8"
-             android:layout_marginLeft="10dp"
-             android:layout_marginRight="10dp"
-             />
+                        <EditText
+                            android:id="@+id/activityName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="15dp"
+                            android:gravity="center_vertical|right"
+                            android:textColor="#013E6E"
+                            android:background="@null"
+                            android:hint="请输入活动名称"
+                            android:textColorHint="@color/hint_text"
+                            android:textSize="@dimen/createTxt" />
 
-         <LinearLayout
-             android:layout_width="match_parent"
-             android:layout_height="170dp"
-             android:layout_margin="10dp"
-             android:orientation="vertical">
-             <TextView
-                 android:id="@+id/activity_intro_txt"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:text="活动介绍"
-                 android:textSize="@dimen/commontext"
-                 android:layout_marginLeft="15dp"
-                 android:padding="5dp"
-                 android:layout_alignParentLeft="true" />
+                    </RelativeLayout>
 
-             <EditText
-                 android:id="@+id/activity_intro"
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:layout_marginLeft="10dp"
-                 android:layout_marginRight="10dp"
-                 android:layout_weight="1"
-                 android:background="@drawable/border"
-                 android:ems="10"
-                 android:gravity="start|top"
-                 android:hint="@string/create_hint4"
-                 android:inputType="textMultiLine"
-                 android:padding="10dp" />
-         </LinearLayout>
-         <RelativeLayout
-             android:layout_width="match_parent"
-             android:layout_height="100dp"
-             android:padding="15dp">
-             <Button
-                 android:id="@+id/createActivity"
-                 android:layout_width="150dp"
-                 android:layout_height="50dp"
-                 android:layout_marginLeft="190dp"
-                 android:layout_marginTop="15dp"
-                 android:background="@drawable/shape_register_login_btn"
-                 android:text="点击创建"
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="#c8c8c8" />
 
-                 android:layout_centerHorizontal="true"
-                 android:textColor="@color/white"
-                 android:textSize="20sp" />
-         </RelativeLayout>
- </LinearLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_margin="10dp"
+                        >
+
+                        <TextView
+                            android:id="@+id/activity_leader"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:text="活动负责人"
+                            android:textSize="@dimen/createTxt" />
+
+                        <EditText
+                            android:id="@+id/leaderName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="15dp"
+                            android:background="@null"
+                            android:hint="@string/create_hintName"
+                            android:inputType="textNoSuggestions"
+                            android:gravity="center_vertical|right"
+                            android:textColor="#013E6E"
+                            android:textColorHint="@color/hint_text"
+                            android:textSize="@dimen/createTxt" />
+
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="#c8c8c8" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_margin="10dp">
+
+                        <TextView
+                            android:id="@+id/leaderCallTxt"
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:text="负责人联系方式"
+                            android:textSize="@dimen/createTxt" />
+
+                        <EditText
+                            android:id="@+id/leaderCall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="15dp"
+                            android:background="@null"
+                            android:hint="请输入联系方式"
+                            android:gravity="center_vertical|right"
+                            android:textColor="#013E6E"
+                            android:textColorHint="@color/hint_text"
+                            android:textSize="@dimen/createTxt"  />
+
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="#c8c8c8" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_margin="10dp">
+
+                        <TextView
+                            android:id="@+id/activity_place_txt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:text="活动地点"
+                            android:textSize="@dimen/createTxt" />
+
+                        <EditText
+                            android:id="@+id/activityPlace"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="15dp"
+                            android:background="@null"
+                            android:hint="@string/create_hintPlace"
+                            android:gravity="center_vertical|right"
+                            android:textColor="#013E6E"
+                            android:textColorHint="@color/hint_text"
+                            android:textSize="@dimen/createTxt" />
+
+                    </RelativeLayout>
+
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="#c8c8c8" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:background="@drawable/shape_white_shadow">
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="10dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:id="@+id/start"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/activity_start"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="开始时间："
+                                    android:textColor="@color/blueGray"
+                                    android:textSize="@dimen/createTxt" />
+
+                                <Button
+                                    android:id="@+id/activity_start_time"
+                                    android:layout_width="183dp"
+                                    android:layout_height="40dp"
+                                    android:layout_centerVertical="true"
+                                    android:background="@drawable/shape_wihte_blue_gradual"
+                                    android:onClick="onclickStart"
+                                    android:text="2022年2月21日"
+                                    android:textColor="#276CA3"
+                                    android:textColorHint="@color/hint_text"
+                                    android:textSize="@dimen/createTxt" />
+
+                            </LinearLayout>
+
+                            <!-- 结束时间-->
+                            <LinearLayout
+                                android:id="@+id/end"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/activity_end"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="开始时间："
+                                    android:textColor="@color/orange"
+                                    android:textSize="@dimen/createTxt" />
+
+                                <Button
+                                    android:id="@+id/activity_end_time"
+                                    android:layout_width="170dp"
+                                    android:layout_height="40dp"
+                                    android:layout_centerVertical="true"
+                                    android:background="@drawable/shape_orange_wihte_gradual"
+                                    android:text="2022年3月30日"
+                                    android:onClick="onclickEnd"
+                                    android:textColor="#7A4C08"
+
+                                    android:textColorHint="@color/hint_text"
+                                    android:textSize="@dimen/createTxt" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/selectTime"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="20dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/shape_white_shadow"
+                            android:gravity="center"
+                            android:text="选择 开始时间 和 结束时间"
+                            android:textColor="#013E6E"
+                            android:textSize="16dp" />
+                    </LinearLayout>
+<!--开始时间-->
+
+
+<!--                    活动介绍-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="170dp"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/activity_intro_txt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="15dp"
+                            android:padding="5dp"
+                            android:text="活动介绍："
+                            android:textSize="@dimen/createTxt" />
+
+                        <EditText
+                            android:id="@+id/activity_details"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/border"
+                            android:ems="10"
+                            android:gravity="start|top"
+                            android:hint="@string/create_hint4"
+                            android:inputType="textMultiLine"
+                            android:padding="10dp" />
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
+                        <Button
+                            android:id="@+id/createActivity"
+                            android:layout_width="150dp"
+                            android:layout_height="50dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="20dp"
+                            android:background="@drawable/shape_register_login_btn"
+
+                            android:text="点击创建"
+                            android:textColor="@color/white"
+                            android:textSize="22dp" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

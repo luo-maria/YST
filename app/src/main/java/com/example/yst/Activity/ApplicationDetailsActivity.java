@@ -67,7 +67,6 @@ public class ApplicationDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                     Stu_Club stuClub=new Stu_Club();
-                    System.out.println("这里的club_id2222是:"+ club_id);
                     stuClub.setClub_id(club_id);
                     stuClub.setStu_id(stu_id);
                     stuClub.save(new SaveListener<String>() {
@@ -82,13 +81,13 @@ public class ApplicationDetailsActivity extends AppCompatActivity {
                     });
                     ApplyToClublnfo applyToClublnfo=new ApplyToClublnfo();
                     applyToClublnfo.setApplication_status("通过");
-//                    applyToClublnfo.setFeedback(feedback.getText().toString());
                     applyToClublnfo.update(apply_id, new UpdateListener() {
                         @Override
                         public void done(BmobException e) {
                             if (e == null) {
                                 System.out.println("status修改成功：通过");
-//                    Toast.makeText(ApplicationDetailsActivity.this,"status修改成功",Toast.LENGTH_SHORT).show();
+                                Intent intent1 = new Intent(ApplicationDetailsActivity.this, HomeActivity.class);
+                                startActivity(intent1);
                             } else {
                                 Toast.makeText(ApplicationDetailsActivity.this,"status修改失败",Toast.LENGTH_SHORT).show();
                             }
@@ -118,8 +117,7 @@ public class ApplicationDetailsActivity extends AppCompatActivity {
                     @Override
                     public void done(BmobException e) {
                         if (e == null) {
-                            System.out.println("status修改成功：拒绝");
-//                    Toast.makeText(ApplicationDetailsActivity.this,"status修改成功",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ApplicationDetailsActivity.this,"您已拒绝该申请。",Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(ApplicationDetailsActivity.this,"status修改失败",Toast.LENGTH_SHORT).show();
                         }

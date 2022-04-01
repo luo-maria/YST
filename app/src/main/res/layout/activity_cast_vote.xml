@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@color/blue">
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            app:srcCompat="@android:drawable/ic_media_rew" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="10dp"
+            android:text="参与投票" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:orientation="vertical"
+        android:background="@color/backgroundGray"
+        android:scrollbars="vertical">
+
+
+        <!-- 最外层-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_popup"
+            android:orientation="vertical"
+            android:paddingTop="5dp">
+
+            <!-- 投票标题-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:background="@drawable/shape_popup"
+                android:padding="10dp">
+
+                <!-- 单项-->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:paddingRight="10dp">
+                    <TextView
+                        android:id="@+id/voteHead"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="这是标题"
+                        android:textSize="30dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_alignParentTop="true"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#c8c8c8"
+                        android:layout_alignParentBottom="true"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="10dp"
+                android:background="@drawable/shape_popup"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="160dp"
+                    android:layout_height="30dp"
+                    android:text="投票说明："
+                    android:paddingLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="@dimen/commontext"
+                    android:layout_alignParentLeft="true" />
+
+                <TextView
+                    android:id="@+id/voteIntro"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:text="请对投票活动以及备选选项进行详细介绍"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:textSize="18dp"
+                    android:padding="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:inputType="textMultiLine" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#c8c8c8"
+                    android:layout_alignParentBottom="true"/>
+            </LinearLayout>
+
+            <RadioGroup
+                android:id="@+id/rg2"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:layout_marginLeft="20dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content">
+                <RadioButton
+                    android:id="@+id/option1"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="男"
+                    android:textSize="20dp"/>
+                <RadioButton
+                    android:id="@+id/option2"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:text="女"/>
+                <RadioButton
+                    android:id="@+id/option3"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:text="女"
+                   />
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                >
+
+                <Button
+                    android:id="@+id/voteBut"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/shape_register_login_btn"
+                    android:text="投票"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

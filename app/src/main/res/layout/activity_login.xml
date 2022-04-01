@@ -102,18 +102,7 @@
               android:layout_height="wrap_content"
               android:layout_weight="3"
               />
-          <TextView
-              android:layout_width="0dp"
-              android:layout_height="match_parent"
-              android:layout_weight="3"/>
-          <TextView
-              android:id="@+id/tv_loginactivity_check"
-              android:layout_width="0dp"
-              android:layout_weight="3"
-              android:layout_height="wrap_content"
-              android:gravity="right"
-              android:text="短信验证码登录"
-              android:textColor="#F04E5152" />
+
       </LinearLayout>
       <Button
           android:id="@+id/bt_loginactivity_login"

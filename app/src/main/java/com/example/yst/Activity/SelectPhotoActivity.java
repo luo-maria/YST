@@ -208,7 +208,7 @@ public class SelectPhotoActivity extends Activity implements View.OnClickListene
             public void done(BmobException e) {
                 if (e == null) {
                     Student student =Student.getCurrentUser(Student.class);
-                    student.setPhotoImage(bmobFile);
+//                    student.setPhotoImage(bmobFile);
                     System.out.println("333333333333");
                     student.update(student.getObjectId(), new UpdateListener() {
                         @Override

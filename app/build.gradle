@@ -62,5 +62,7 @@ dependencies {
     implementation 'org.greenrobot:eventbus:3.2.0'
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'com.android.support:multidex:1.0.3'
-
+    implementation files('RoundedImageView ')
+    /**日历选择器**/
+    implementation 'com.prolificinteractive:material-calendarview:1.4.3'
 }
