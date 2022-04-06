@@ -42,16 +42,16 @@ import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.UpdateListener;
 
 public class OrganizationFragment extends Fragment {
-    RecyclerView recyclerViewclub;
-    ClubAdapter clubAdapter;
-    List<Club> clubs;
+    private RecyclerView recyclerViewclub;
+    private ClubAdapter clubAdapter;
+    private List<Club> clubs;
     private Unbinder mUnbinder;
     private View mView;
     private Context mContext;
-    Spinner sp, sp1, sp2;
-    String kind, level, campus, search_text,club_id1,club_state;
-    ImageView arrow, search;
-    EditText et_search;
+    private Spinner sp, sp1, sp2;
+    private String kind, level, campus, search_text,club_id1,club_state;
+    private ImageView arrow, search;
+    private EditText et_search;
 
 
     public static OrganizationFragment newInstance() {
@@ -99,6 +99,11 @@ public class OrganizationFragment extends Fragment {
             }
             OrganizationFragment.this.getActivity().startActivity(intent);
             (OrganizationFragment.this.getActivity()).finish();
+        }
+
+        @Override
+        public void onItemLongClick(View view, int pos) {
+
         }
     };
     private void initialize() {
@@ -368,6 +373,7 @@ public class OrganizationFragment extends Fragment {
     }
     private void queryData1() {
         BmobQuery<Club> clubBmobQuery = new BmobQuery<>();
+        clubBmobQuery.addWhereEqualTo("","");
         clubBmobQuery.findObjects(new FindListener<Club>() {
             @Override
             public void done(List<Club> object, BmobException e) {

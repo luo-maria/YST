@@ -34,11 +34,11 @@ import cn.bmob.v3.listener.SQLQueryListener;
 import cn.bmob.v3.listener.UpdateListener;
 
 public class MyClubDetailActivity extends AppCompatActivity implements View.OnClickListener{
-    ImageView imageView4;
-    TextView myclub_name,myclub_leader_name,myclub_leader,myclub_category,myclub_campus,myclub_rank,club_numbers;
-    String club_id7,stu_id,sclub_id;
-    Button Quit;
-    LinearLayout look_activity,look_notice,toVote,exit;
+    private ImageView imageView4;
+    private TextView myclub_name,myclub_leader_name,myclub_leader,myclub_category,myclub_campus,myclub_rank,club_numbers;
+    private String club_id7,stu_id,sclub_id;
+    private Button Quit;
+    private LinearLayout look_activity,look_notice,toVote,exit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +69,8 @@ public class MyClubDetailActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void findVote() {
-        Intent intent=new Intent(MyClubDetailActivity.this,CastVoteActivity.class);
+        Intent intent=new Intent(MyClubDetailActivity.this,MyVotesActivity.class);
+        intent.putExtra("clubid",club_id7);
         startActivity(intent);
     }
 
@@ -130,11 +131,11 @@ public class MyClubDetailActivity extends AppCompatActivity implements View.OnCl
         });
     }
     private void QuitClub(){
-        new AlertDialog.Builder(MyClubDetailActivity.this).setTitle("退出社团")//设置对话框标题
+        new AlertDialog.Builder(MyClubDetailActivity.this).setTitle("退出社团")
                 .setMessage("退出社团前，请确认您和社团领导人协商好。")
-                .setPositiveButton("确定", new DialogInterface.OnClickListener() {//添加确定按钮
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {//确定按钮的响应事件，点击事件没写，自己添加
+                    public void onClick(DialogInterface dialog, int which) {
                         BmobQuery<Stu_Club> bmobQuery = new BmobQuery<Stu_Club>();
                         bmobQuery.addWhereEqualTo("stu_id",stu_id);
                         BmobQuery<Stu_Club> bmobQuery1 = new BmobQuery<Stu_Club>();
@@ -185,7 +186,7 @@ public class MyClubDetailActivity extends AppCompatActivity implements View.OnCl
     private void LookActivity (){
         // 跳转到社团的活动列表页 传过去社团id
 
-        Intent intent = new Intent(MyClubDetailActivity.this,ActivitiesInClubsJionedActivity.class);
+        Intent intent = new Intent(MyClubDetailActivity.this,ActivitiesInClubsActivity.class);
         intent.putExtra("clubid",club_id7);
         startActivity(intent);
     }

@@ -21,7 +21,7 @@ import java.util.List;
 
 public class MyApplyInfoAdapter extends RecyclerView.Adapter<MyApplyInfoAdapter.ViewHolder> implements View.OnClickListener{
     public Context mcontext;
-    List<ApplyToClublnfo> mapplyToClublnfoList;
+    private List<ApplyToClublnfo> mapplyToClublnfoList;
     //声明自定义的监听接口
     private MyApplyInfoAdapter.OnRecyclerviewItemClickListener mOnRecyclerviewItemClickListener1 = null;
     @Override

@@ -9,16 +9,17 @@
     tools:context=".fragment.HomePageFragment">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:gravity="center"
         android:background="#2196F3"
         android:padding="5dp">
         <TextView
             android:id="@+id/title"
-            android:layout_width="@dimen/dimen_100dp"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:text="个人中心"
-            android:textSize="21sp"
+            android:textSize="22dp"
+            android:textStyle="bold"
             android:layout_margin="5dp"
             android:textColor="@color/white"
             android:background="#2196F3"/>
@@ -27,7 +28,8 @@
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="120dp"
+        android:padding="5dp"
         android:background="#2196F3"
     >
         <com.example.yst.util.XCRoundImageView
@@ -44,7 +46,7 @@
             android:layout_width="100dp"
             android:layout_height="30dp"
             android:layout_marginLeft="135dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_marginBottom="0dp"
             android:background="@null"
             android:hint="昵称"
@@ -52,13 +54,15 @@
             android:textSize="20sp" />
         <TextView
             android:id="@+id/signature"
-            android:layout_width="100dp"
+            android:layout_width="260dp"
             android:layout_height="22dp"
             android:layout_marginBottom="0dp"
             android:layout_marginLeft="135dp"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="60dp"
             android:background="@null"
             android:hint="个性签名"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:textAlignment="gravity"
             android:textSize="18sp" />
 
@@ -66,94 +70,130 @@
             android:id="@+id/message1"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_marginLeft="325dp"
+            android:layout_marginLeft="380dp"
             android:layout_marginTop="30dp"
             android:background="@mipmap/text"
             android:clickable="true"
             android:focusable="true" />
 
-
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:orientation="vertical">
         <LinearLayout
-            android:id="@+id/myclubs"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
-            <ImageView
-                android:id="@+id/club"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="75dp"
-                android:layout_marginTop="10dp"
-                android:background="@mipmap/flag"
-                android:clickable="true"
-                android:focusable="true" />
-            <TextView
-                android:id="@+id/my_club"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:layout_marginBottom="0dp"
-                android:layout_marginLeft="52dp"
-                android:layout_marginTop="5dp"
-                android:background="@null"
-                android:hint="我的社团"
-                android:textAlignment="gravity"
-                android:textSize="18sp" />
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <LinearLayout
+                    android:id="@+id/myclubs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+                        <ImageView
+                            android:id="@+id/club"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@mipmap/flag"
+                            android:clickable="true"
+                            android:focusable="true" />
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/my_club"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="0dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:background="@null"
+                        android:hint="我的社团"
+                        android:textAlignment="gravity"
+                        android:textSize="18sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <LinearLayout
+                    android:id="@+id/myInfo"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="80dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+                        <ImageView
+                            android:id="@+id/info"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@mipmap/information"
+                            android:clickable="true"
+                            android:focusable="true" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/my_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="0dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:background="@null"
+                        android:hint="我的档案"
+                        android:textAlignment="gravity"
+                        android:textSize="18sp" />
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
-        <LinearLayout
-            android:id="@+id/myInfo"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="80dp"
-            android:orientation="vertical">
-            <ImageView
-                android:id="@+id/info"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="75dp"
-                android:layout_marginTop="10dp"
-                android:background="@mipmap/information"
-                android:clickable="true"
-                android:focusable="true" />
-            <TextView
-                android:id="@+id/my_info"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:layout_marginBottom="0dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="5dp"
-                android:background="@null"
-                android:hint="我的档案"
-                android:textAlignment="gravity"
-                android:textSize="18sp" />
-        </LinearLayout>
+        <View  android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="#c8c8c8"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            />
+
+        <ListView
+            android:id="@+id/list_simple"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_marginTop="5dp"
+
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.53" />
+
+
     </LinearLayout>
-    <View  android:layout_height="1dp"
-        android:layout_width="match_parent"
-        android:background="#c8c8c8"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        />
-
-    <ListView
-        android:id="@+id/list_simple"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_marginTop="5dp"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.53" />
-
 </LinearLayout>

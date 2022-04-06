@@ -27,6 +27,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -45,27 +47,23 @@ import cn.bmob.v3.listener.SaveListener;
 
 public class CreateActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView clubName;
-    ImageView activityImage;
-    EditText activityName,leaderName,leaderCall,activityDetails,activityPlace;
-    Button createActivity,activity_end_time,activity_start_time,selectTime;
-    String club_id,start_time,end_time,imagePath,clubname,clubLogo;
+    private TextView clubName;
+    private ImageView activityImage;
+    private EditText activityName,leaderName,leaderCall,activityDetails,activityPlace;
+    private Button createActivity,activity_end_time,activity_start_time,selectTime;
+    private String club_id,start_time,end_time,imagePath,clubname,clubLogo;
 
-    private Calendar calendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_activity);
-        calendar = Calendar.getInstance();
         initView();
     }
 
     private void initView() {
         Intent intent1=getIntent();
         club_id=intent1.getStringExtra("clubid");
-        clubname=intent1.getStringExtra("clubname");
-        System.out.println("这是创建活动对应的社团ID　::"+club_id);
         // 表单信息
         clubName = findViewById(R.id.clubName);
         activityName = findViewById(R.id.activityName);
@@ -74,7 +72,6 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
         activityDetails = findViewById(R.id.activity_details);
         activityPlace = findViewById(R.id.activityPlace);
         activityImage=findViewById(R.id.activityImage);
-
         // 显示社团名称
         clubName.setText(clubname);
 
@@ -95,6 +92,7 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
             public void done(Club object,BmobException e) {
                 if(e==null){
                     clubLogo = object.getLogo_url();
+                    clubname=object.getClub_name();
                 }else{
                     Toast.makeText(CreateActivity.this, "查询失败", Toast.LENGTH_SHORT).show();
                 }
@@ -116,7 +114,6 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
                 }
             }
         });
-        calendar = Calendar.getInstance();
         selectTime.setOnClickListener(this::onClick);
 
         // 创建活动 按钮的实现
@@ -135,6 +132,7 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
                 activity.setClub_logo(clubLogo);
                 activity.setActivity_imgurl(imagePath);
                 activity.setClub_name(clubname);
+                activity.setApplynum(0);
                 activity.save(new SaveListener<String>() {
                     @Override
                     public void done(String objectId, BmobException e) {
@@ -148,6 +146,7 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
                 Toast.makeText(CreateActivity.this,"创建成功",Toast.LENGTH_SHORT).show();
                 //刷新本页面
                 Intent intent=new Intent(CreateActivity.this, ManageClubActivity.class);
+                intent.putExtra("clubid",club_id);
                 startActivity(intent);
                 finish();
             }
@@ -175,14 +174,15 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 int month = startTime.getMonth() + 1;
-                String st = "" + startTime.getYear() +"年"+ month +"月"+ startTime.getDayOfMonth()+"日";
-
+                String st1 = "" + startTime.getYear() +"年"+ month +"月"+ startTime.getDayOfMonth()+"日";
+                String st = "" + startTime.getYear() +"-"+ month +"-"+ startTime.getDayOfMonth();
                 start_time = st;
                 // 将选择的时间显示到页面中
                 activity_start_time.setText(st);
 
                 int month1 = endTime.getMonth() + 1;
-                String et = "" + endTime.getYear()+"年" + month1 +"月" + endTime.getDayOfMonth() +"日";
+                String et1 = "" + endTime.getYear()+"年" + month1 +"月" + endTime.getDayOfMonth() +"日";
+                String et = "" + endTime.getYear()+"-" + month1 +"-" + endTime.getDayOfMonth();
 
                 end_time = et;
                 activity_end_time.setText(et);

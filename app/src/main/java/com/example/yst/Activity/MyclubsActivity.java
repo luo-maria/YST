@@ -30,14 +30,14 @@ import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.QueryListener;
 
 public class MyclubsActivity extends AppCompatActivity {
-    List<Club> clubs;
-    List<Club> clubs1=new ArrayList<Club>();
-    List<Stu_Club> stu_clubs;
-    String stu_id,club_id1,club_id5,club_id2;
-    RecyclerView recyclerViewclub;
-    ClubAdapter clubAdapter,clubAdapter1 ;
-    Button club_created,club_entered;
-    List<String> club_ids= new ArrayList<String>();
+    private List<Club> clubs;
+    private List<Club> clubs1=new ArrayList<Club>();
+    private List<Stu_Club> stu_clubs;
+    private String stu_id,club_id1,club_id5,club_id2;
+    private RecyclerView recyclerViewclub;
+    private ClubAdapter clubAdapter,clubAdapter1 ;
+    private Button club_created,club_entered;
+    private List<String> club_ids= new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +80,11 @@ public class MyclubsActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
+
+        @Override
+        public void onItemLongClick(View view, int pos) {
+            System.out.println("ssssssssssssssssss");
+        }
     };
     public ClubAdapter.OnRecyclerviewItemClickListener onRecyclerviewItemClickListener1 = new ClubAdapter.OnRecyclerviewItemClickListener() {
         @Override
@@ -95,6 +100,11 @@ public class MyclubsActivity extends AppCompatActivity {
             }
             startActivity(intent);
             finish();
+        }
+
+        @Override
+        public void onItemLongClick(View view, int pos) {
+            System.out.println("ssssssssssssssssss");
         }
     };
     private void initialize() {
@@ -118,7 +128,7 @@ public class MyclubsActivity extends AppCompatActivity {
                     clubAdapter.setClubList(clubs);
                     recyclerViewclub.setAdapter(clubAdapter);
                 } else {
-                    Log.e("查询失败", "原因: ", e);
+                    Log.e("查询失败1", "原因: ", e);
                 }
             }
         });
@@ -148,14 +158,15 @@ public class MyclubsActivity extends AppCompatActivity {
                                     clubAdapter1.setClubList(clubs1);
                                     recyclerViewclub.setAdapter(clubAdapter1);
                                 }else{
-                                    Toast.makeText(MyclubsActivity.this, "查询失败", Toast.LENGTH_SHORT).show();
+                                    Log.e("查询失败2", "原因: ", e);
+//                                    Toast.makeText(MyclubsActivity.this, "查询失败", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
                     }
 
                 } else {
-                    Log.e("查询失败", "原因: ", e);
+                    Log.e("查询失败3", "原因: ", e);
                 }
             }
         });

@@ -89,10 +89,12 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="15dp"
+            android:singleLine="true"
+            android:ellipsize="end"
             android:textSize="14dp"
             android:lineSpacingExtra="2dp"
-            android:text="\u3000详细介绍这是该活动的详细介绍，点击查看详情信息"
+            android:text="详细介绍这是该活动的详细介绍，点击查看详情信息"
             android:textColor="@color/color_606060"/>
     </LinearLayout>
 </LinearLayout>

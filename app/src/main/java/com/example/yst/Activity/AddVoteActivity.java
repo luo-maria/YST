@@ -23,14 +23,15 @@ import com.example.yst.util.DateUtils;
 import java.util.Calendar;
 import java.util.Date;
 
+import cn.bmob.v3.datatype.BmobDate;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 
 public class AddVoteActivity extends AppCompatActivity implements View.OnClickListener{
-    EditText vote_title,vote_intro,vote_item1,vote_item2,vote_item3;
-    Button vote_but;
-    TextView choose_day1,choose_time1;
-    String club_id8,dayTime,theTime,endTime;
+    private EditText vote_title,vote_intro,vote_item1,vote_item2,vote_item3;
+    private Button vote_but;
+    private TextView choose_day1,choose_time1;
+    private String club_id8,dayTime,theTime,endTime;
     //选择日期Dialog
     private DatePickerDialog datePickerDialog;
     //选择时间Dialog
@@ -121,9 +122,8 @@ public class AddVoteActivity extends AppCompatActivity implements View.OnClickLi
         vote.setOption3_num(0);
         vote.setClub_id(club_id8);
         endTime=dayTime+" "+theTime;
-        Date date = DateUtils.strToDate(dayTime+ " " +theTime);
-        System.out.println("222222222222222222222222:"+date);
-        vote.setEnd(date);
+        BmobDate endTime1 = BmobDate.createBmobDate("yyyy-MM-dd HH:mm", endTime);
+        vote.setVoteEnd(endTime1);
         vote.save(new SaveListener<String>() {
             @Override
             public void done(String objectId, BmobException e) {

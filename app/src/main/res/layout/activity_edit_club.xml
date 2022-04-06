@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:background="#1E90FF"
         android:layout_gravity="center_vertical"
         >
@@ -15,248 +15,255 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="24dp"
+            android:textSize="22dp"
+            android:textStyle="bold"
             android:gravity="center"
             android:layout_centerInParent="true"
             android:textColor="#F0FFFF"
             android:text="修 改 社 团 信 息 "/>
 
     </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_margin="5dp"
-        android:background="@drawable/shape_create_portrait_bg">
-        <TextView
-            android:id="@+id/logotext"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="社团会标"
-            android:textSize="@dimen/commontext"
-            android:layout_marginLeft="10dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_gravity="center"
-            />
-        <com.example.yst.util.XCRoundImageView
-            android:id="@+id/clublogo_edit"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="360dp"
-            android:src="@mipmap/san" />
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:padding="10dp"
+       android:orientation="vertical">
 
-    </RelativeLayout>
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="60dp"
+           android:layout_margin="5dp"
+           android:background="@drawable/shape_create_portrait_bg">
+           <TextView
+               android:id="@+id/logotext"
+               android:layout_width="120dp"
+               android:layout_height="wrap_content"
+               android:text="社团会标"
+               android:textSize="@dimen/commontext"
+               android:layout_marginLeft="10dp"
+               android:layout_centerVertical="true"
+               android:layout_alignParentLeft="true"
+               android:layout_gravity="center"
+               />
+           <com.example.yst.util.XCRoundImageView
+               android:id="@+id/clublogo_edit"
+               android:layout_width="40dp"
+               android:layout_height="40dp"
+               android:layout_centerVertical="true"
+               android:layout_marginLeft="320dp"
+               android:src="@mipmap/san" />
+
+       </RelativeLayout>
+
+       <!--横线-->
 
 
-    <!--横线-->
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="30dp"
+           android:layout_margin="10dp">
+           <TextView
+               android:id="@+id/clubnametxt"
+               android:layout_width="120dp"
+               android:layout_height="wrap_content"
+               android:text="社团名称"
+               android:textSize="@dimen/commontext"
+               android:layout_marginLeft="10dp"
+               android:layout_centerVertical="true"
+               android:layout_alignParentLeft="true"
+               android:layout_gravity="center"/>
 
+           <EditText
+               android:id="@+id/clubname_edit"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_alignParentRight="true"
+               android:layout_marginLeft="20dp"
+               android:background="@null"
+               android:hint="@string/create_hint1"
+               android:inputType="textNoSuggestions"
+               android:textColor="#000000"
+               android:textColorHint="#bcbcbc"
+               android:textSize="@dimen/commontext" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_margin="10dp">
-        <TextView
-            android:id="@+id/clubnametxt"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="社团名称"
-            android:textSize="@dimen/commontext"
-            android:layout_marginLeft="10dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_gravity="center"/>
+       </RelativeLayout>
+       <View  android:layout_height="1dp"
+           android:layout_width="match_parent"
+           android:background="#c8c8c8"
+           android:layout_marginLeft="10dp"
+           android:layout_marginRight="10dp"
+           />
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="30dp"
+           android:layout_margin="10dp">
+           <TextView
+               android:id="@+id/campustxt"
+               android:layout_width="120dp"
+               android:layout_height="wrap_content"
+               android:text="所在校区"
+               android:textSize="@dimen/commontext"
+               android:layout_marginLeft="10dp"
+               android:layout_centerVertical="true"
+               android:layout_alignParentLeft="true"
+               android:layout_gravity="center"/>
 
-        <EditText
-            android:id="@+id/clubname_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="20dp"
-            android:background="@null"
-            android:hint="@string/create_hint1"
-            android:inputType="textNoSuggestions"
-            android:textColor="#000000"
-            android:textColorHint="#bcbcbc"
-            android:textSize="@dimen/commontext" />
+           <Spinner
+               android:id="@+id/campus_edit"
+               android:layout_width="100dp"
+               android:layout_height="25dp"
+               android:layout_alignParentRight="true"
+               android:layout_marginLeft="20dp"></Spinner>
 
-    </RelativeLayout>
-    <View  android:layout_height="1dp"
-        android:layout_width="match_parent"
-        android:background="#c8c8c8"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        />
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_margin="10dp">
-        <TextView
-            android:id="@+id/campustxt"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="所在校区"
-            android:textSize="@dimen/commontext"
-            android:layout_marginLeft="10dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_gravity="center"/>
+       </RelativeLayout>
+       <View  android:layout_height="1dp"
+           android:layout_width="match_parent"
+           android:background="#c8c8c8"
+           android:layout_marginLeft="10dp"
+           android:layout_marginRight="10dp"
+           />
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="30dp"
+           android:layout_margin="10dp">
+           <TextView
+               android:id="@+id/clubkindtxt"
+               android:layout_width="120dp"
+               android:layout_height="wrap_content"
+               android:text="社团类别"
+               android:textSize="@dimen/commontext"
+               android:layout_marginLeft="10dp"
+               android:layout_centerVertical="true"
+               android:layout_alignParentLeft="true"
+               android:layout_gravity="center"/>
+           <Spinner
+               android:id="@+id/kind_edit"
+               android:layout_width="100dp"
+               android:layout_height="25dp"
+               android:layout_marginLeft="20dp"
 
-        <Spinner
-            android:id="@+id/campus_edit"
-            android:layout_width="100dp"
-            android:layout_height="25dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="20dp"></Spinner>
+               android:layout_alignParentRight="true"
+               android:layout_centerVertical="true"></Spinner>
+       </RelativeLayout>
+       <View  android:layout_height="1dp"
+           android:layout_width="match_parent"
+           android:background="#c8c8c8"
+           android:layout_marginLeft="10dp"
+           android:layout_marginRight="10dp"
+           />
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="30dp"
+           android:layout_margin="10dp">
+           <TextView
+               android:id="@+id/start_fundtxt"
+               android:layout_width="160dp"
+               android:layout_height="wrap_content"
+               android:text="负责人"
+               android:textSize="@dimen/commontext"
+               android:layout_marginLeft="10dp"
+               android:layout_centerVertical="true"
+               android:layout_alignParentLeft="true"
+               android:layout_gravity="center"/>
+           <EditText
+               android:id="@+id/leadername_edit"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="20dp"
+               android:background="@null"
+               android:hint="@string/create_hint1"
+               android:inputType="textNoSuggestions"
+               android:layout_centerVertical="true"
+               android:textColor="#000000"
+               android:layout_alignParentRight="true"
+               android:textColorHint="#bcbcbc"
+               android:textSize="@dimen/commontext" />
 
-    </RelativeLayout>
-    <View  android:layout_height="1dp"
-        android:layout_width="match_parent"
-        android:background="#c8c8c8"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        />
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_margin="10dp">
-        <TextView
-            android:id="@+id/clubkindtxt"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="社团类别"
-            android:textSize="@dimen/commontext"
-            android:layout_marginLeft="10dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_gravity="center"/>
-        <Spinner
-            android:id="@+id/kind_edit"
-            android:layout_width="100dp"
-            android:layout_height="25dp"
-            android:layout_marginLeft="20dp"
+       </RelativeLayout>
+       <View  android:layout_height="1dp"
+           android:layout_width="match_parent"
+           android:background="#c8c8c8"
+           android:layout_marginLeft="10dp"
+           android:layout_marginRight="10dp"
+           />
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="30dp"
+           android:layout_margin="10dp">
 
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"></Spinner>
-    </RelativeLayout>
-    <View  android:layout_height="1dp"
-        android:layout_width="match_parent"
-        android:background="#c8c8c8"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        />
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_margin="10dp">
-        <TextView
-            android:id="@+id/start_fundtxt"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:text="负责人"
-            android:textSize="@dimen/commontext"
-            android:layout_marginLeft="10dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_gravity="center"/>
-        <EditText
-            android:id="@+id/leadername_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:background="@null"
-            android:hint="@string/create_hint1"
-            android:inputType="textNoSuggestions"
-            android:layout_centerVertical="true"
-            android:textColor="#000000"
-            android:layout_alignParentRight="true"
-            android:textColorHint="#bcbcbc"
-            android:textSize="@dimen/commontext" />
+           <TextView
+               android:id="@+id/leader_calltxt"
+               android:layout_width="180dp"
+               android:layout_height="wrap_content"
+               android:layout_alignParentLeft="true"
+               android:layout_gravity="center"
+               android:layout_marginLeft="10dp"
+               android:text="负责人联系方式"
+               android:textSize="@dimen/commontext" />
+           <EditText
+               android:id="@+id/leadercall_edit"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="20dp"
+               android:background="@null"
+               android:hint="@string/create_hint2"
+               android:inputType="textNoSuggestions"
+               android:layout_centerVertical="true"
+               android:textColor="#000000"
+               android:layout_alignParentRight="true"
+               android:textColorHint="#bcbcbc"
+               android:textSize="@dimen/commontext" />
 
-    </RelativeLayout>
-    <View  android:layout_height="1dp"
-        android:layout_width="match_parent"
-        android:background="#c8c8c8"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        />
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_margin="10dp">
+       </RelativeLayout>
+       <View  android:layout_height="1dp"
+           android:layout_width="match_parent"
+           android:background="#c8c8c8"
+           android:layout_marginLeft="10dp"
+           android:layout_marginRight="10dp"
+           />
 
-        <TextView
-            android:id="@+id/leader_calltxt"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            android:text="负责人联系方式"
-            android:textSize="@dimen/commontext" />
-        <EditText
-            android:id="@+id/leadercall_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:background="@null"
-            android:hint="@string/create_hint2"
-            android:inputType="textNoSuggestions"
-            android:layout_centerVertical="true"
-            android:textColor="#000000"
-            android:layout_alignParentRight="true"
-            android:textColorHint="#bcbcbc"
-            android:textSize="@dimen/commontext" />
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="170dp"
+           android:layout_margin="10dp"
+           android:orientation="vertical">
+           <TextView
+               android:id="@+id/club_introtxt"
+               android:layout_width="160dp"
+               android:layout_height="30dp"
+               android:text="社团介绍"
+               android:textSize="@dimen/commontext"
+               android:layout_marginLeft="10dp"
+               android:layout_alignParentLeft="true" />
 
-    </RelativeLayout>
-    <View  android:layout_height="1dp"
-        android:layout_width="match_parent"
-        android:background="#c8c8c8"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        />
+           <EditText
+               android:background="@drawable/border"
+               android:id="@+id/clubintro_edit"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:hint="@string/create_hint4"
+               android:ems="10"
+               android:gravity="start|top"
+               android:layout_marginLeft="10dp"
+               android:layout_marginRight="10dp"
+               android:inputType="textMultiLine" />
+       </LinearLayout>
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="100dp">
+           <Button
+               android:id="@+id/create_edit"
+               android:layout_width="150dp"
+               android:layout_height="50dp"
+               android:layout_marginLeft="190dp"
+               android:layout_marginTop="15dp"
+               android:background="@drawable/shape_register_login_btn"
+               android:text="点击修改"
+               android:layout_centerHorizontal="true"
+               android:textColor="@color/white"
+               android:textSize="20sp" />
+       </RelativeLayout>
+   </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:layout_margin="10dp"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/club_introtxt"
-            android:layout_width="160dp"
-            android:layout_height="30dp"
-            android:text="社团介绍"
-            android:textSize="@dimen/commontext"
-            android:layout_marginLeft="10dp"
-            android:layout_alignParentLeft="true" />
-
-        <EditText
-            android:background="@drawable/border"
-            android:id="@+id/clubintro_edit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="@string/create_hint4"
-            android:ems="10"
-            android:gravity="start|top"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:inputType="textMultiLine" />
-    </LinearLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp">
-        <Button
-            android:id="@+id/create_edit"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="190dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/shape_register_login_btn"
-            android:text="点击修改"
-            android:layout_centerHorizontal="true"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
-    </RelativeLayout>
 </LinearLayout>

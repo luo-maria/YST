@@ -10,6 +10,7 @@ import com.example.yst.bean.ImageBean;
 import com.example.yst.entity.TabEntity;
 import com.example.yst.fragment.HomeFragment;
 import com.example.yst.fragment.HomePageFragment;
+import com.example.yst.fragment.NewsFragment;
 import com.example.yst.fragment.OrganizationFragment;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
@@ -22,14 +23,14 @@ public class HomeActivity extends BaseActivity {
 
 
     private List<ImageBean> mList = new ArrayList<>();
-    private String[] mTitles = {"社团活动", "校园社团", "个人中心"};
+    private String[] mTitles = {"社团活动", "校园社团", "校园资讯","个人中心"};
     //未选中（一 一对应）
     private int[] mIconUnselectIds = {
-            R.mipmap.home_unselect, R.mipmap.collect_unselect,
+            R.mipmap.home_unselect, R.mipmap.collect_unselect,R.mipmap.iconnewsblack,
             R.mipmap.my_unselect};
     //选中显示
     private int[] mIconSelectIds = {
-            R.mipmap.home_selected0, R.mipmap.collect_selected0,
+            R.mipmap.home_selected0, R.mipmap.collect_selected0,R.mipmap.iconnewsblue,
             R.mipmap.my_selected0};
 
     //存放Fragment的集合
@@ -59,6 +60,7 @@ public class HomeActivity extends BaseActivity {
         mList.add(new ImageBean(R.mipmap.a));
         mFragments.add(HomeFragment.newInstance());
         mFragments.add(OrganizationFragment.newInstance());
+        mFragments.add(NewsFragment.newInstance());
         mFragments.add(HomePageFragment.newInstance());
         for (int i = 0; i < mTitles.length; i++) {
             mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));

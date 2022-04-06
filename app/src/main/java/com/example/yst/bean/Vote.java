@@ -12,14 +12,12 @@ public class Vote extends BmobObject {
     private String option2;
     private String option3;
     private String club_id;
-    private String end_time;
     private String result;
     private String vote_number;
     private Integer option1_num;
     private Integer option2_num;
     private Integer option3_num;
-    private Date end;
-//    BmobDate
+    private BmobDate voteEnd;
 
 
 
@@ -71,14 +69,6 @@ public class Vote extends BmobObject {
         this.club_id = club_id;
     }
 
-    public String getEnd_time() {
-        return end_time;
-    }
-
-    public void setEnd_time(String end_time) {
-        this.end_time = end_time;
-    }
-
     public String getResult() {
         return result;
     }
@@ -119,11 +109,11 @@ public class Vote extends BmobObject {
         this.option3_num = option3_num;
     }
 
-    public Date getEnd() {
-        return end;
+    public BmobDate getVoteEnd() {
+        return voteEnd;
     }
 
-    public void setEnd(Date end) {
-        this.end = end;
+    public void setVoteEnd(BmobDate voteEnd) {
+        this.voteEnd = voteEnd;
     }
 }

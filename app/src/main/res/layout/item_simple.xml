@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="70dp">
+    android:layout_height="70dp"
+    >
 
 
     <ImageView
@@ -12,7 +13,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_gravity="center"
-        android:layout_marginLeft="40dp"
+        android:layout_marginLeft="20dp"
         app:srcCompat="@mipmap/ic_launcher_round"  />
     <TextView
         android:id="@+id/tv_name"
@@ -28,7 +29,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_gravity="center"
-        android:layout_marginLeft="160dp"
+        android:layout_marginLeft="200dp"
         android:src="@mipmap/plane" />
 
 </LinearLayout>

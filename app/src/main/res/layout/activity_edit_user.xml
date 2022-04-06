@@ -7,16 +7,17 @@
   >
     <RelativeLayout
         android:background="@color/colorPrimary"
-        android:layout_height="30dp"
+        android:layout_height="50dp"
+        android:gravity="center"
         android:layout_width="match_parent"
 
         android:layout_marginBottom="10dp">
         <TextView
             android:id="@+id/cancel"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
-            android:layout_gravity="center"
+            android:gravity="center"
             android:background="@null"
             android:text="@string/edit1"
             android:textAlignment="gravity"
@@ -30,6 +31,7 @@
             android:layout_gravity="center"
             android:layout_centerInParent="true"
             android:background="@null"
+            android:textStyle="bold"
             android:text="@string/edit2"
             android:textColor="#ffffff"
 
@@ -38,9 +40,9 @@
         <TextView
             android:id="@+id/savetxt"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="match_parent"
             android:layout_marginRight="10dp"
-            android:layout_gravity="center"
+            android:gravity="center"
             android:background="@null"
             android:layout_alignParentRight="true"
             android:text="@string/edit3"
@@ -48,233 +50,239 @@
             android:textAlignment="gravity"
             android:textSize="20sp" />
     </RelativeLayout>
-    <View  android:layout_height="1dp"
-        android:layout_width="match_parent"
-        android:background="@color/divider" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/usernametxt"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:background="@null"
-            android:text="昵称"
-            android:textAlignment="gravity"
-            android:textColor="@color/gary"
-            android:textSize="20sp" />
-        <EditText
-            android:id="@+id/stuusernametxt"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:textAlignment="gravity"
-            android:background="@null"
-            android:textColor="#000000"
-            android:textSize="20sp" />
-    </LinearLayout>
-    <View  android:layout_height="1dp"
-        android:layout_width="match_parent"
-        android:background="@color/divider" />
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:paddingLeft="20dp"
+       android:paddingRight="20dp"
+       android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/nametxt"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:background="@null"
-            android:text="姓名"
-            android:textAlignment="gravity"
-            android:textColor="@color/gary"
-            android:textSize="20sp" />
-        <EditText
-            android:id="@+id/stunametxt"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:textAlignment="gravity"
-            android:background="@null"
-            android:inputType="textNoSuggestions"
-            android:textColor="#000000"
-            android:textColorHint="@color/black"
-            android:textSize="20sp" />
-    </LinearLayout>
-    <View  android:layout_height="1dp"
-        android:layout_width="match_parent"
-        android:background="@color/divider" />
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
-        <TableRow>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="性别"
-                android:textSize="20dp"/>
-            <RadioGroup
-                android:id="@+id/rg"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                android:layout_gravity="center_horizontal">
-                <RadioButton
-                    android:id="@+id/male"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:text="男"
-                    android:layout_marginLeft="20dp"
-                    android:textSize="20dp"/>
-                <RadioButton
-                    android:id="@+id/femle"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:textSize="20dp"
-                    android:text="女"/>
-            </RadioGroup>
-        </TableRow>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="50dp"
 
-    </TableLayout>
-    <View  android:layout_height="1dp"
-        android:layout_width="match_parent"
-        android:background="@color/divider" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
+           android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/userunitxt"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:background="@null"
-            android:text="学校"
-            android:textAlignment="gravity"
-            android:textColor="@color/gary"
-            android:textSize="20sp" />
-        <EditText
-            android:id="@+id/stuunitxt"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:textAlignment="gravity"
-            android:background="@null"
-            android:textColor="#000000"
-            android:textColorHint="@color/black"
-            android:textSize="20sp" />
-    </LinearLayout>
-    <View  android:layout_height="1dp"
-        android:layout_width="match_parent"
-        android:background="@color/divider" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
+           <TextView
+               android:id="@+id/usernametxt"
+               android:layout_width="wrap_content"
+               android:layout_height="30dp"
+               android:layout_gravity="center"
+               android:background="@null"
+               android:text="昵称"
+               android:textAlignment="gravity"
+               android:textColor="@color/gary"
+               android:textSize="20sp" />
+           <EditText
+               android:id="@+id/stuusernametxt"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginLeft="20dp"
+               android:layout_marginTop="10dp"
+               android:textAlignment="gravity"
+               android:background="@null"
+               android:textColor="#000000"
+               android:textSize="20sp" />
+       </LinearLayout>
+       <View  android:layout_height="1dp"
+           android:layout_width="match_parent"
+           android:background="@color/divider" />
 
-        <TextView
-            android:id="@+id/usernumtxt"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:background="@null"
-            android:text="学院"
-            android:textAlignment="gravity"
-            android:textColor="@color/gary"
-            android:textSize="20sp" />
-        <EditText
-            android:id="@+id/stucollegetxt"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:textAlignment="gravity"
-            android:background="@null"
-            android:inputType="textNoSuggestions"
-            android:textColor="#000000"
-            android:textSize="20sp" />
-    </LinearLayout>
-    <View  android:layout_height="1dp"
-        android:layout_width="match_parent"
-        android:background="@color/divider" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/userclasstxt"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:background="@null"
-            android:text="班级"
-            android:textAlignment="gravity"
-            android:textColor="@color/gary"
-            android:textSize="20sp" />
-        <EditText
-            android:id="@+id/stuclasstxt"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:textAlignment="gravity"
-            android:background="@null"
-            android:inputType="textNoSuggestions"
-            android:textColor="#000000"
-            android:textSize="20sp" />
-    </LinearLayout>
-    <View  android:layout_height="1dp"
-        android:layout_width="match_parent"
-        android:background="@color/divider" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:orientation="horizontal">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="50dp"
+           android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/usersigtxt"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:background="@null"
-            android:text="个性签名"
-            android:textAlignment="gravity"
-            android:textColor="@color/gary"
-            android:textSize="20sp" />
+           <TextView
+               android:id="@+id/nametxt"
+               android:layout_width="wrap_content"
+               android:layout_height="30dp"
+               android:layout_gravity="center"
+               android:background="@null"
+               android:text="姓名"
+               android:textAlignment="gravity"
+               android:textColor="@color/gary"
+               android:textSize="20sp" />
+           <EditText
+               android:id="@+id/stunametxt"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginLeft="20dp"
+               android:layout_marginTop="10dp"
+               android:textAlignment="gravity"
+               android:background="@null"
+               android:inputType="textNoSuggestions"
+               android:textColor="#000000"
+               android:textColorHint="@color/black"
+               android:textSize="20sp" />
+       </LinearLayout>
+       <View  android:layout_height="1dp"
+           android:layout_width="match_parent"
+           android:background="@color/divider" />
+       <TableLayout
+           android:layout_width="match_parent"
+           android:layout_height="50dp"
+           android:orientation="horizontal">
+           <TableRow>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="10dp"
+                   android:text="性别"
+                   android:textSize="20dp"/>
+               <RadioGroup
+                   android:id="@+id/rg"
+                   android:layout_marginTop="10dp"
+                   android:orientation="horizontal"
+                   android:layout_gravity="center_horizontal">
+                   <RadioButton
+                       android:id="@+id/male"
+                       android:layout_marginTop="10dp"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:checked="true"
+                       android:text="男"
+                       android:layout_marginLeft="20dp"
+                       android:textSize="20dp"/>
+                   <RadioButton
+                       android:id="@+id/femle"
+                       android:layout_marginTop="10dp"
+                       android:layout_marginLeft="10dp"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:checked="true"
+                       android:textSize="20dp"
+                       android:text="女"/>
+               </RadioGroup>
+           </TableRow>
 
-        <EditText
-            android:id="@+id/stusigtxt"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:inputType="textNoSuggestions"
-            android:textAlignment="gravity"
-            android:textColor="#000000"
-            android:textSize="20sp" />
-    </LinearLayout>
-    <View  android:layout_height="1dp"
-        android:layout_width="match_parent"
-        android:background="@color/divider" />
+       </TableLayout>
+       <View  android:layout_height="1dp"
+           android:layout_width="match_parent"
+           android:background="@color/divider" />
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="50dp"
+           android:orientation="horizontal">
 
+           <TextView
+               android:id="@+id/userunitxt"
+               android:layout_width="wrap_content"
+               android:layout_height="30dp"
+               android:layout_gravity="center"
+               android:background="@null"
+               android:text="学校"
+               android:textAlignment="gravity"
+               android:textColor="@color/gary"
+               android:textSize="20sp" />
+           <EditText
+               android:id="@+id/stuunitxt"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginLeft="20dp"
+               android:layout_marginTop="10dp"
+               android:textAlignment="gravity"
+               android:background="@null"
+               android:textColor="#000000"
+               android:textColorHint="@color/black"
+               android:textSize="20sp" />
+       </LinearLayout>
+       <View  android:layout_height="1dp"
+           android:layout_width="match_parent"
+           android:background="@color/divider" />
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="50dp"
+           android:orientation="horizontal">
+
+           <TextView
+               android:id="@+id/usernumtxt"
+               android:layout_width="wrap_content"
+               android:layout_height="30dp"
+               android:layout_gravity="center"
+               android:background="@null"
+               android:text="学院"
+               android:textAlignment="gravity"
+               android:textColor="@color/gary"
+               android:textSize="20sp" />
+           <EditText
+               android:id="@+id/stucollegetxt"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginLeft="20dp"
+               android:layout_marginTop="10dp"
+               android:textAlignment="gravity"
+               android:background="@null"
+               android:inputType="textNoSuggestions"
+               android:textColor="#000000"
+               android:textSize="20sp" />
+       </LinearLayout>
+       <View  android:layout_height="1dp"
+           android:layout_width="match_parent"
+           android:background="@color/divider" />
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="50dp"
+           android:orientation="horizontal">
+
+           <TextView
+               android:id="@+id/userclasstxt"
+               android:layout_width="wrap_content"
+               android:layout_height="30dp"
+               android:layout_gravity="center"
+               android:background="@null"
+               android:text="班级"
+               android:textAlignment="gravity"
+               android:textColor="@color/gary"
+               android:textSize="20sp" />
+           <EditText
+               android:id="@+id/stuclasstxt"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginLeft="20dp"
+               android:layout_marginTop="10dp"
+               android:textAlignment="gravity"
+               android:background="@null"
+               android:inputType="textNoSuggestions"
+               android:textColor="#000000"
+               android:textSize="20sp" />
+       </LinearLayout>
+       <View  android:layout_height="1dp"
+           android:layout_width="match_parent"
+           android:background="@color/divider" />
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="70dp"
+           android:orientation="horizontal">
+
+           <TextView
+               android:id="@+id/usersigtxt"
+               android:layout_width="wrap_content"
+               android:layout_height="30dp"
+               android:layout_gravity="center"
+               android:background="@null"
+               android:text="个性签名"
+               android:textAlignment="gravity"
+               android:textColor="@color/gary"
+               android:textSize="20sp" />
+
+           <EditText
+               android:id="@+id/stusigtxt"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginLeft="20dp"
+               android:layout_marginTop="10dp"
+               android:inputType="textNoSuggestions"
+               android:textAlignment="gravity"
+               android:textColor="#000000"
+               android:textSize="20sp" />
+       </LinearLayout>
+       <View  android:layout_height="1dp"
+           android:layout_width="match_parent"
+           android:background="@color/divider" />
+
+   </LinearLayout>
 </LinearLayout>

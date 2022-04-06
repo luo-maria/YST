@@ -54,8 +54,10 @@ public class ApplyInfoAdapter extends RecyclerView.Adapter<ApplyInfoAdapter.View
         if(!applyToClublnfo.getApplication_status().equals("未审核")){
             holder.redpoint.setVisibility(View.GONE);
         }
-        if(applyToClublnfo.getStu_photo()!=null){
+        if(!applyToClublnfo.getStu_photo().equals("")){
             holder.img_profile.setImageBitmap(BitmapFactory.decodeFile(applyToClublnfo.getStu_photo()));
+        }else{
+            holder.img_profile.setImageResource(R.mipmap.poy);
         }
         holder.itemView.setTag(position);//给view设置tag以作为参数传递到监听回调方法中
 

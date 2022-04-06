@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleMarginEnd="60dp"
+            app:expandedTitleMarginStart="48dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+
+            <!--  资讯新闻图   -->
+            <ImageView
+                android:id="@+id/news_image"
+                android:layout_width="wrap_content"
+                android:layout_height="220dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/honor_bg"
+                app:layout_collapseMode="pin"
+                app:layout_collapseParallaxMultiplier="0.5" />
+
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                app:layout_collapseMode="pin">
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!--   主内容   -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <ImageView
+            android:id="@+id/backPre"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="20dp"
+            app:srcCompat="@drawable/mcv_action_previous" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="190dp"
+            android:background="@drawable/shape_top_radius"
+            >
+
+            <ScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:fadingEdge="vertical"
+                android:padding="10dp"
+                android:scrollbars="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/newsTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:textSize="18dp"
+                    android:textColor="@color/skin_text_white_night"
+                    android:text="标题党标题党标题党标题党标题党标题党" />
+
+                <TextView
+                    android:id="@+id/news_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="         筹备已久的社团文化节于12月4日在桂城保利水城拉开了帷幕,一场青春的狂欢、文化的盛典在这寒冬之际带给了我们青春的热情与活力!看这群青春洋溢的小伙伴们，上演了一个个精彩的节目，有时尚活力的街舞、优雅动人的探戈，也有雄气激昂的舞狮、威武震撼的武术，更有令人陶醉的民谣民乐和幽默诙谐的小品。如此丰富的表演内容，让我们不得不感叹当下青年的多才多艺和他们对生活的那种激情!不管你我是和他们一样正值年少，还是早已过了十几二十岁的激情岁月，在这次活动中，年轻的孩子们通过社团把青春传递到了每一个人心里，我们都是青春的人。
+         除了精彩的舞台节目表演，社团文化节还在活动现场设有17个学校社团的展示摊位，其中又包含了互动型的展示摊位和静态型的展示摊位。透过展板，你可以了解到学生们看社会，看人生，看世界，看文化的眼光，欣赏到这些形形色色社团的风景和文化，体验到别样的人生。爱心义诊、公益义卖、现场手工制作、益智游戏比拼等等各种有趣互动不仅仅满足了现场参加的小伙伴们的乐趣，而且加深了大家对社团文化的认同;摄影展、绘画展、手工作品展等静态的展示则让大家看到了社团文化的沉淀，让致力于社团文化建设的师生们得到了大家的认可。这是青年学生们用激情与梦想炫动的青春，用艺术与才干成就的南海品质。
+"
+                    android:textColor="@color/text"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:id="@+id/zan"
+                            android:layout_width="20dp"
+                            android:layout_height="30dp"
+                            android:layout_marginRight="120dp"
+                            android:layout_alignParentRight="true"
+                            android:src="@mipmap/like"/>
+                        <TextView
+                            android:id="@+id/likes"
+                            android:layout_width="40dp"
+                            android:layout_height="30dp"
+                            android:layout_marginRight="80dp"
+                            android:text="1000"
+                            android:textSize="14dp"
+                            android:layout_alignParentRight="true"
+                            android:gravity="center"/>
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="30dp"
+                            android:layout_marginRight="40dp"
+                            android:layout_alignParentRight="true"
+                            android:src="@mipmap/browse"/>
+                        <TextView
+                            android:id="@+id/views"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:text="1000"
+                            android:textSize="14dp"
+                            android:layout_alignParentRight="true"
+                            android:gravity="center"/>
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            </ScrollView>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

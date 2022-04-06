@@ -36,11 +36,11 @@ import cn.bmob.v3.listener.QueryListener;
 import cn.bmob.v3.listener.UpdateListener;
 
 public class EditClubActivity extends AppCompatActivity {
-    EditText clubname_edit,leadername_edit,leadercall_edit,clubintro_edit;
-    Spinner sp,sp1,sp2;
-    Button create_edit;
-    String club_id6,level_edit,campus_edit,kind_edit,imagePath;
-    ImageView logo_edit;
+    private EditText clubname_edit,leadername_edit,leadercall_edit,clubintro_edit;
+    private Spinner sp,sp1,sp2;
+    private Button create_edit;
+    private String club_id6,level_edit,campus_edit,kind_edit,imagePath;
+    private ImageView logo_edit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +52,6 @@ public class EditClubActivity extends AppCompatActivity {
     private void setMyClub() {
         Intent intent1=getIntent();
         club_id6=intent1.getStringExtra("clubid");
-        System.out.println("this is club_id6::"+club_id6);
         BmobQuery<Club> bmobQuery = new BmobQuery<Club>();
         bmobQuery.getObject(club_id6, new QueryListener<Club>() {
             @Override
@@ -89,27 +88,6 @@ public class EditClubActivity extends AppCompatActivity {
         create_edit=findViewById(R.id.create_edit);
         logo_edit=findViewById(R.id.clublogo_edit);
         setMyClub();
-        String[] ltype = new String[]{"校级", "院级"};
-//        sp=(Spinner) super.findViewById(R.id.level_edit);
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ltype);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        sp.setAdapter(adapter);
-//        sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> adapterView, View view,
-//                                       int position, long id) {
-//                //获取选中值
-//                Spinner spinner1 = (Spinner) adapterView;
-//                level_edit=spinner1.getItemAtPosition(position).toString();
-////                System.out.println("这里的级别是:"+level);
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> arg0) {
-//                // TODO Auto-generated method stub
-//
-//            }
-//        });
         sp1 = (Spinner) super.findViewById(R.id.campus_edit);
         String[] ctype = new String[]{"燕山校区", "圣井校区","舜耕校区","莱芜校区"};
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ctype);
@@ -184,7 +162,8 @@ public class EditClubActivity extends AppCompatActivity {
                     public void done(BmobException e) {
                         if (e == null) {
                             Toast.makeText(EditClubActivity.this,"修改成功:"+clubname_edit.getText().toString(),Toast.LENGTH_SHORT).show();
-                            Intent intent1 = new Intent(EditClubActivity.this, HomeActivity.class);
+                            Intent intent1 = new Intent(EditClubActivity.this, ManageClubActivity.class);
+                           intent1.putExtra("clubid",club_id6);
                             startActivity(intent1);
                         } else {
                             Toast.makeText(EditClubActivity.this,"修改失败",Toast.LENGTH_SHORT).show();

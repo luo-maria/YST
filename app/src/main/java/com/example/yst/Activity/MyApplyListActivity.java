@@ -27,10 +27,10 @@ import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.QueryListener;
 
 public class MyApplyListActivity extends AppCompatActivity {
-    RecyclerView recyclerViewclub;
-    MyApplyInfoAdapter myapplyInfoAdapter;
-    List<ApplyToClublnfo> myinfos;
-    String applyToClublnfo_id,club_id4, stu_id,app_status;
+    private RecyclerView recyclerViewclub;
+    private MyApplyInfoAdapter myapplyInfoAdapter;
+    private List<ApplyToClublnfo> myinfos;
+    private String applyToClublnfo_id,club_id4, stu_id,app_status;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

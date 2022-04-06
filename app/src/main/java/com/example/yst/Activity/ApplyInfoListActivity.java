@@ -22,10 +22,10 @@ import cn.bmob.v3.listener.FindListener;
 
 
 public class ApplyInfoListActivity extends AppCompatActivity {
-    RecyclerView recyclerViewclub;
-    ApplyInfoAdapter applyInfoAdapter;
-    List<ApplyToClublnfo> infos;
-    String applyToClublnfo_id,club_id4;
+    private RecyclerView recyclerViewclub;
+    private ApplyInfoAdapter applyInfoAdapter;
+    private List<ApplyToClublnfo> infos;
+    private String applyToClublnfo_id,club_id4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +69,6 @@ public class ApplyInfoListActivity extends AppCompatActivity {
                 applyToClublnfo.setObjectId( infos.get(position).getObjectId());
                 applyToClublnfo_id=infos.get(position).getObjectId();
                 intent.putExtra("applyToClublnfo_id",applyToClublnfo_id);
-
             }
             startActivity(intent);
             finish();

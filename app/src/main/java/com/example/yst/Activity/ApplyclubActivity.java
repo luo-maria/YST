@@ -29,11 +29,11 @@ import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
 
 public class ApplyclubActivity extends AppCompatActivity {
-    public EditText applyname, applyclass, applynumber,apply_reason_club;
+    private EditText applyname, applyclass, applynumber,apply_reason_club;
     private RadioGroup rg1 ;
     private RadioButton radioButton1;
-    String stu_id,club_id2,applygender,stu_realname,club_name;
-    Button applybutton;
+    private String stu_id,club_id2,applygender,stu_realname,club_name;
+    private Button applybutton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +50,7 @@ public class ApplyclubActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
+                applyTheClub();
             }
         });
 

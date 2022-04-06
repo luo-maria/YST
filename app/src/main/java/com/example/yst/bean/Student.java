@@ -101,4 +101,5 @@ public class Student extends BmobUser {
     public void setPhotoimageurl(String photoimageurl) {
         this.photoimageurl = photoimageurl;
     }
+
 }

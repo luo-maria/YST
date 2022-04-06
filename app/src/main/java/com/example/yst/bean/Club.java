@@ -10,23 +10,19 @@ import cn.bmob.v3.datatype.BmobFile;
 public class Club extends BmobObject implements Serializable {
     private String club_name;
     private String club_category;
-//    private BmobFile club_logo;
     private String club_rank;
     private String club_president;
     private String club_colle;
     private String club_state;
     private String club_member;
-    private String club_number;
+    private Integer club_number;
     private String club_campus;
     private String pre_number;
     private String club_intro;
     private String stu_id;
     private String logo_url;
+    private String audit_state;
 
-    public Club () {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
     public String getClub_name() {
         return club_name;
@@ -92,11 +88,11 @@ public class Club extends BmobObject implements Serializable {
         this.club_member = club_member;
     }
 
-    public String getClub_number() {
+    public Integer getClub_number() {
         return club_number;
     }
 
-    public void setClub_number(String club_number) {
+    public void setClub_number(Integer club_number) {
         this.club_number = club_number;
     }
 
@@ -139,6 +135,14 @@ public class Club extends BmobObject implements Serializable {
 
     public void setLogo_url(String logo_url) {
         this.logo_url = logo_url;
+    }
+
+    public String getAudit_state() {
+        return audit_state;
+    }
+
+    public void setAudit_state(String audit_state) {
+        this.audit_state = audit_state;
     }
 }
 

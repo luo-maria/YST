@@ -35,13 +35,13 @@ import cn.bmob.v3.listener.FindListener;
 
 public class HomeFragment extends Fragment {
 
-    RecyclerView recyclerviewActivities;
-    HomeActivityAdapter homeActivityAdapter;
-    List<Activities> activities;
+    private RecyclerView recyclerviewActivities;
+    private HomeActivityAdapter homeActivityAdapter;
+    private List<Activities> activities;
     private Unbinder mUnbinder;
     private View mView;
     private Context mContext;
-    String activity_id ;
+    private String activity_id ;
 
     public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
@@ -108,11 +108,9 @@ public class HomeFragment extends Fragment {
 
     // 轮播图的图片来源
     private void initData(){
-        mList.add(new ImageBean(R.mipmap.a));
-        mList.add(new ImageBean(R.mipmap.b));
-        mList.add(new ImageBean(R.mipmap.xie));
-        mList.add(new ImageBean(R.mipmap.tai));
-        mList.add(new ImageBean(R.mipmap.wen));
+        mList.add(new ImageBean(R.mipmap.door));
+        mList.add(new ImageBean(R.mipmap.sdu));
+        mList.add(new ImageBean(R.mipmap.lib));
     }
 
     private void queryActivityData() {

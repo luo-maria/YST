@@ -43,14 +43,14 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 
 public class CreateClubActivity extends AppCompatActivity {
-    Button btncreate;
-    EditText et_club_name,et_leader_name,et_leader_call,et_club_intro;
-    ImageView clublogo;
-    public Spinner sp,sp1,sp2;
-    public String club_id,stu_id;
+    private Button btncreate;
+    private EditText et_club_name,et_leader_name,et_leader_call,et_club_intro;
+    private ImageView clublogo;
+    private Spinner sp,sp1,sp2;
+    private String club_id,stu_id;
     private byte[] image1;
-    public String kind,level,campus;
-    String imagePath;
+    private String kind,level,campus;
+    private String imagePath;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -158,11 +158,14 @@ public class CreateClubActivity extends AppCompatActivity {
                 club.setClub_intro(et_club_intro.getText().toString());
                 club.setStu_id(stu_id);
                 club.setLogo_url(imagePath);
+                club.setClub_state("在招募");
+                club.setAudit_state("未审核");
+                club.setClub_number(0);
                 club.save(new SaveListener<String>() {
                     @Override
                     public void done(String objectId, BmobException e) {
                         if(e==null){
-                            Toast.makeText(CreateClubActivity.this,"添加数据成功，返回objectId为："+objectId,Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CreateClubActivity.this,"申请成功，请耐心等待审核：",Toast.LENGTH_SHORT).show();
                         }else{
                             Toast.makeText(CreateClubActivity.this,"创建数据失败：" + e.getMessage(),Toast.LENGTH_SHORT).show();
                         }

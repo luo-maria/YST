@@ -16,16 +16,15 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="#2196F3"
-            android:gravity="center"
-            android:padding="5dp">
+            android:gravity="center" >
             <TextView
                 android:id="@+id/title"
                 android:layout_width="@dimen/dimen_100dp"
                 android:layout_height="30dp"
                 android:text="社团名片"
                 android:layout_marginLeft="5dp"
-                android:textSize="21sp"
-                android:layout_marginTop="5dp"
+                android:textSize="22sp"
+                android:textStyle="bold"
                 android:textColor="@color/white"
                 android:background="#2196F3"/>
         </LinearLayout>
@@ -146,7 +145,9 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="right"
                 android:layout_height="match_parent">
                 <ImageView
                     android:id="@+id/logophoto"
@@ -177,10 +178,41 @@
         android:id="@+id/apply"
         android:layout_width="300dp"
         android:layout_height="50dp"
+        android:visibility="visible"
         android:layout_gravity="center"
         android:layout_marginTop="12dp"
         android:background="@drawable/shape_big_register_btn"
         android:text="申请加入"
         android:textColor="@color/white"
         android:textSize="22sp" />
+    <LinearLayout
+        android:id="@+id/auditclub"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:padding="20dp">
+        <Button
+            android:id="@+id/pass"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:background="@drawable/shape_blue_wihte_gradual"
+            android:text="通 过" />
+        <Button
+            android:id="@+id/refuse"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:background="@drawable/shape_orange_wihte_gradual"
+            android:text="拒 绝" />
+    </LinearLayout>
+
 </LinearLayout>

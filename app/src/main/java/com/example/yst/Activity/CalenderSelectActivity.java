@@ -40,10 +40,10 @@ import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 
 public class CalenderSelectActivity extends AppCompatActivity implements OnDateSelectedListener {
-    MaterialCalendarView widget;
-    EditText message_cal;
-    TextView mess_hold,mess_del;
-    String time,time1;
+    private MaterialCalendarView widget;
+    private EditText message_cal;
+    private TextView mess_hold,mess_del;
+    private String time,time1;
     private List<CalendarDay> calendarDays = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {

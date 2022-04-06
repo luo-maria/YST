@@ -20,7 +20,7 @@ import java.util.List;
 public class HomeActivityAdapter extends RecyclerView.Adapter<HomeActivityAdapter.ViewHolder> implements View.OnClickListener{
 
     public Context context;
-    List<Activities> activityLists;
+    private List<Activities> activityLists;
 
     //声明自定义的监听接口
     private OnRecyclerviewItemClickListener mOnRecyclerviewItemClickListener = null;

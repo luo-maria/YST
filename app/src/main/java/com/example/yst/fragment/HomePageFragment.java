@@ -35,6 +35,7 @@ import com.example.yst.Activity.EditUserActivity;
 import com.example.yst.Activity.HomeActivity;
 import com.example.yst.Activity.MyActivitiesActivity;
 import com.example.yst.Activity.MyApplyListActivity;
+import com.example.yst.Activity.MyHonorActivity;
 import com.example.yst.Activity.MyclubsActivity;
 import com.example.yst.Activity.SelectPhotoActivity;
 import com.example.yst.R;
@@ -59,11 +60,11 @@ public class HomePageFragment extends Fragment {
         return fragment;
     }
     private byte[] image;
-    ListView listView;
-    ImageView club,message1,imgHead;
-    TextView my_club;
-    LinearLayout myInfo,myclubs;
-    String img_url;
+    private ListView listView;
+    private ImageView club,message1,imgHead;
+    private TextView my_club;
+    private LinearLayout myInfo,myclubs;
+    private String img_url;
     private String[] names = new String[]{"我的日程","我的活动", "我的荣誉", "社团入驻",  "退出"};
     private int[] heads = new int[]{R.mipmap.cal};
     private TextView my_name,signature;
@@ -84,7 +85,6 @@ public class HomePageFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //创建Fragment的布局
-        Fresco.initialize(HomePageFragment.this.getContext());
         final View view = inflater.inflate(R.layout.fragment_my, container, false);
         listView = view.findViewById(R.id.list_simple);
         club = view.findViewById(R.id.club);
@@ -166,7 +166,8 @@ public class HomePageFragment extends Fragment {
                             startActivity(i);
                             break;
                         case 2:
-
+                            i = new Intent(HomePageFragment.this.getActivity(), MyHonorActivity.class);
+                            startActivity(i);
                             break;
                         case 3:
                             i = new Intent(HomePageFragment.this.getActivity(), CreateClubActivity.class);

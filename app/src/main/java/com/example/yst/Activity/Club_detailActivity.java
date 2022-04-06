@@ -24,9 +24,9 @@ import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.QueryListener;
 
 public class Club_detailActivity extends AppCompatActivity {
-    Button app_btn;
-    String club_id1,stu_id,club_state,club_name,club_stu;
-    ImageView imglogo;
+    private Button app_btn;
+    private String club_id1,stu_id,club_state,club_name,club_stu;
+    private ImageView imglogo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,7 +91,9 @@ public class Club_detailActivity extends AppCompatActivity {
                     call.setText(object.getPre_number());
                     time.setText(object.getCreatedAt().substring(0,10));
                     club_name=object.getClub_name();
-                    imglogo.setImageBitmap(BitmapFactory.decodeFile(object.getLogo_url()));
+                    if(object.getLogo_url()!=null){
+                        imglogo.setImageBitmap(BitmapFactory.decodeFile(object.getLogo_url()));
+                    }
                 }else{
                     Toast.makeText(Club_detailActivity.this, "查询失败", Toast.LENGTH_SHORT).show();
                 }

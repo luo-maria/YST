@@ -27,8 +27,8 @@ public class EditUserActivity extends AppCompatActivity {
     private EditText stuusernametxt1, stuunitxt, stunametxt, stucollegetxt, stuclasstxt, stusigtxt;
     private TextView savetxt,cancel;
     private RadioGroup rg;
-    RadioButton radioButton;
-    String reusername, reuni, rerealname, regender, recollege, reclass, resig,renumber,number1,password1,student_calss1,realname1,gender1,signature1,username;
+    private RadioButton radioButton;
+    private String reusername, reuni, rerealname, regender, recollege, reclass, resig,renumber,number1,password1,student_calss1,realname1,gender1,signature1,username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

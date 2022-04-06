@@ -98,7 +98,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                                 startActivity(intent);
                             }else {
                                 Toast.makeText(LoginActivity.this,"登录失败",Toast.LENGTH_SHORT).show();
-
                             }
                         }
                     });

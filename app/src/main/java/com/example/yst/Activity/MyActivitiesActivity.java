@@ -26,11 +26,11 @@ import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.QueryListener;
 
 public class MyActivitiesActivity extends AppCompatActivity {
-    String stu_id,activity_id,activity_id1;
-    List<String> activities= new ArrayList<String>();
-    List<Activities> Activities1=new ArrayList<Activities>();
-    RecyclerView recyclerViewactivity;
-    ActivityAdapter activityAdapter;
+    private String stu_id,activity_id,activity_id1;
+    private List<String> activities= new ArrayList<String>();
+    private List<Activities> Activities1=new ArrayList<Activities>();
+    private RecyclerView recyclerViewactivity;
+    private ActivityAdapter activityAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,35 +67,35 @@ public class MyActivitiesActivity extends AppCompatActivity {
         BmobQuery<Stu_activity> activityQuery = new BmobQuery<>();
         activityQuery.addWhereEqualTo("stu_id", stu_id);
         activityQuery.findObjects(new FindListener<Stu_activity>() {
-            @Override
-            public void done(List<Stu_activity> list, BmobException e) {
-                if(e==null){
-                    if (!list.isEmpty()) {
-                        for (Stu_activity stu_activity :list) {
-                            activity_id=String.valueOf(stu_activity.getActivity_id());
-                            activities.add(activity_id);
-                        }
+        @Override
+        public void done(List<Stu_activity> list, BmobException e) {
+            if(e==null){
+                if (!list.isEmpty()) {
+                    for (Stu_activity stu_activity :list) {
+                        activity_id=String.valueOf(stu_activity.getActivity_id());
+                        activities.add(activity_id);
                     }
-                    for(String activity_id:activities){
-                        BmobQuery<Activities> bmobQuery = new BmobQuery<Activities>();
-                        bmobQuery.getObject(activity_id, new QueryListener<Activities>() {
-                            @Override
-                            public void done(Activities object,BmobException e) {
-                                if(e==null){
-                                    Activities1.add(object);
-                                    activityAdapter.setActivityLists(Activities1);
-                                    recyclerViewactivity.setAdapter(activityAdapter);
-                                    System.out.println("this is  Activities1:"+ Activities1);
-                                }else{
-                                    Toast.makeText(MyActivitiesActivity.this, "查询失败", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-                    }
-                }else{
-                    Log.e("我的活动查询失败", "原因: ", e);
                 }
+                for(String activity_id:activities){
+                    BmobQuery<Activities> bmobQuery = new BmobQuery<Activities>();
+                    bmobQuery.getObject(activity_id, new QueryListener<Activities>() {
+                        @Override
+                        public void done(Activities object,BmobException e) {
+                            if(e==null){
+                                Activities1.add(object);
+                                activityAdapter.setActivityLists(Activities1);
+                                recyclerViewactivity.setAdapter(activityAdapter);
+                                System.out.println("this is  Activities1:"+ Activities1);
+                            }else{
+                                Toast.makeText(MyActivitiesActivity.this, "查询失败", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
+            }else{
+                Log.e("我的活动查询失败", "原因: ", e);
             }
-        });
-    }
+        }
+    });
+}
 }

@@ -17,6 +17,8 @@ public class Activities extends BmobObject {
     private String club_id;
     private String club_logo;
     private String activity_imgurl;
+    private Integer applynum;
+    private String act_status;
 
     public String getActivity_name() {
         return activity_name;
@@ -112,5 +114,21 @@ public class Activities extends BmobObject {
 
     public void setClub_name(String club_name) {
         this.club_name = club_name;
+    }
+
+    public Integer getApplynum() {
+        return applynum;
+    }
+
+    public void setApplynum(Integer applynum) {
+        this.applynum = applynum;
+    }
+
+    public String getAct_status() {
+        return act_status;
+    }
+
+    public void setAct_status(String act_status) {
+        this.act_status = act_status;
     }
 }

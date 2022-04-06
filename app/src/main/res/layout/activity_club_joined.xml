@@ -216,7 +216,7 @@
                             android:gravity="center"
                             android:textColor="#353535"
                             android:layout_height="wrap_content"
-                            android:text="退出社团" />
+                            android:text="社团成员" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

@@ -24,10 +24,10 @@ import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 
 public class ApplicationDetailsActivity extends AppCompatActivity {
-    TextView applicantName,applicantGender,applicantNumber,applicantReason;
-    EditText feedback;
-    Button pass,refuse;
-    String apply_id,stu_id,club_id;
+    private TextView applicantName,applicantGender,applicantNumber,applicantReason;
+    private EditText feedback;
+    private Button pass,refuse;
+    private String apply_id,stu_id,club_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,7 +86,8 @@ public class ApplicationDetailsActivity extends AppCompatActivity {
                         public void done(BmobException e) {
                             if (e == null) {
                                 System.out.println("status修改成功：通过");
-                                Intent intent1 = new Intent(ApplicationDetailsActivity.this, HomeActivity.class);
+                                Intent intent1 = new Intent(ApplicationDetailsActivity.this, ManageClubActivity.class);
+                                intent1.putExtra("clubid",club_id);
                                 startActivity(intent1);
                             } else {
                                 Toast.makeText(ApplicationDetailsActivity.this,"status修改失败",Toast.LENGTH_SHORT).show();
@@ -117,7 +118,10 @@ public class ApplicationDetailsActivity extends AppCompatActivity {
                     @Override
                     public void done(BmobException e) {
                         if (e == null) {
-                            Toast.makeText(ApplicationDetailsActivity.this,"您已拒绝该申请。",Toast.LENGTH_SHORT).show();
+                            System.out.println("status修改成功：拒绝");
+                            Intent intent1 = new Intent(ApplicationDetailsActivity.this, ManageClubActivity.class);
+                            intent1.putExtra("clubid",club_id);
+                            startActivity(intent1);
                         } else {
                             Toast.makeText(ApplicationDetailsActivity.this,"status修改失败",Toast.LENGTH_SHORT).show();
                         }

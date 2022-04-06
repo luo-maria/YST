@@ -32,11 +32,13 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ViewHolder> im
     public void onClick(View v) {
         //将监听传递给自定义接口
         mOnRecyclerviewItemClickListener.onItemClickListener(v, ((int) v.getTag()));
+
     }
 
 
     public interface OnRecyclerviewItemClickListener {
         void onItemClickListener(View v,int position);
+        void onItemLongClick(View view , int pos);
 
     }
     public ClubAdapter(Context context,List<Club> ClubList,OnRecyclerviewItemClickListener mOnRecyclerviewItemClickListener) {
@@ -65,8 +67,19 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ViewHolder> im
         mholder.clubcampus.setText(club.getClub_campus());
         mholder.clubkind.setText(club.getClub_category());
         mholder.clubintos.setText(club.getClub_intro());
-        mholder.logo.setImageBitmap(BitmapFactory.decodeFile(club.getLogo_url()));
+        if(!club.getLogo_url().equals("")){
+            mholder.logo.setImageBitmap(BitmapFactory.decodeFile(club.getLogo_url()));
+        }else{
+            mholder.logo.setImageResource(R.mipmap.san);
+        }
         mholder.itemView.setTag(position);//给view设置tag以作为参数传递到监听回调方法中
+        mholder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                mOnRecyclerviewItemClickListener.onItemLongClick(mholder.itemView,position);
+                return false;
+            }
+        });
     }
 
     @Override

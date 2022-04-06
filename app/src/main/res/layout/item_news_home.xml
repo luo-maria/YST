@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_height="110dp"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+    >
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+           <LinearLayout
+               android:layout_width="0dp"
+               android:layout_weight="1"
+               android:layout_marginBottom="15dp"
+               android:layout_height="wrap_content"
+               android:orientation="vertical">
+               <TextView
+                   android:id="@+id/news_title"
+                   android:layout_width="match_parent"
+                   android:layout_height="55dp"
+                   android:layout_marginLeft="15dp"
+                   android:layout_marginTop="8dp"
+                   android:maxLines="2"
+                   android:lineSpacingExtra="8dp"
+                   android:maxEms="15"
+                   android:textColor="@color/black"
+                   android:text="今日山财今日新闻资讯资讯资讯资讯资讯消息"
+                   android:textSize="18dp" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/news_author"
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:textColor="@color/color_606060"
+                        android:textSize="14dp"
+                        android:text="社团联合会"/>
+                    <TextView
+                        android:id="@+id/news_create_time"
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:textColor="@color/color_606060"
+                        android:textSize="14dp"
+                        android:text="4月2日"/>
+                    <ImageView
+                        android:layout_marginTop="7dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:paddingLeft="5dp"
+                        android:src="@mipmap/views"
+                        android:textSize="12dp"/>
+                    <TextView
+                        android:layout_marginTop="7dp"
+                        android:id="@+id/news_heat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:paddingLeft="5dp"
+                        android:text="100"
+                        android:textSize="12dp"/>
+
+                </LinearLayout>
+
+           </LinearLayout>
+           <LinearLayout
+               android:layout_width="140dp"
+               android:layout_height="90dp"
+               android:layout_gravity="center"
+               android:layout_marginLeft="5dp"
+               android:layout_marginRight="15dp"
+               >
+               <ImageView
+                   android:id="@+id/new_image"
+                   android:layout_width="match_parent"
+                   android:layout_gravity="center"
+                   android:layout_height="match_parent"
+                   android:src="@mipmap/a"/>
+           </LinearLayout>
+
+
+       </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <!--        横线-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:background="#AEABAB"/>
+</LinearLayout>

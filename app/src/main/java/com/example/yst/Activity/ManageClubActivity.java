@@ -19,9 +19,9 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.QueryListener;
 
 public class ManageClubActivity extends AppCompatActivity {
-    LinearLayout audit,addvote,addActivity,manage;
-    String club_id3,club_name;
-    TextView button_ma;
+    private LinearLayout audit,addvote,addActivity,manage_club,manage_people,manage_news;
+    private String club_id3,club_name;
+    private TextView button_ma;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,11 +29,19 @@ public class ManageClubActivity extends AppCompatActivity {
         Intent intent1=getIntent();
         club_id3=intent1.getStringExtra("clubid");
         initialize();
-        manage.setOnClickListener(new View.OnClickListener() {
+        manage_people=findViewById(R.id.manage_people);
+        manage_people.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(ManageClubActivity.this,EditClubActivity.class);
                 Intent intent = new Intent(ManageClubActivity.this,AllMembersActivity.class);
+                intent.putExtra("clubid",club_id3);
+                startActivity(intent);
+            }
+        });
+        manage_club.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ManageClubActivity.this,EditClubActivity.class);
                 intent.putExtra("clubid",club_id3);
                 startActivity(intent);
             }
@@ -49,8 +57,7 @@ public class ManageClubActivity extends AppCompatActivity {
         addActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ManageClubActivity.this,CreateActivity.class);
-                intent.putExtra("clubname",club_name);
+                Intent intent = new Intent(ManageClubActivity.this,ActivitiesInClubsActivity.class);
                 intent.putExtra("clubid",club_id3);
                 startActivity(intent);
             }
@@ -58,7 +65,15 @@ public class ManageClubActivity extends AppCompatActivity {
         addvote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ManageClubActivity.this,AddVoteActivity.class);
+                Intent intent = new Intent(ManageClubActivity.this,MyVotesActivity.class);
+                intent.putExtra("clubid",club_id3);
+                startActivity(intent);
+            }
+        });
+        manage_news.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ManageClubActivity.this,MyNewsActivity.class);
                 intent.putExtra("clubid",club_id3);
                 startActivity(intent);
             }
@@ -66,10 +81,11 @@ public class ManageClubActivity extends AppCompatActivity {
     }
 
     private void initialize() {
+        manage_news=findViewById(R.id.manage_news);
         audit=findViewById(R.id.audit);
         addvote=findViewById(R.id.addvote);
         addActivity=findViewById(R.id.addActivity);
-        manage=findViewById(R.id.manage);
+        manage_club=findViewById(R.id.manage_club);
         button_ma=findViewById(R.id.button_ma);
         BmobQuery<Club> bmobQuery = new BmobQuery<Club>();
         bmobQuery.getObject(club_id3, new QueryListener<Club>() {

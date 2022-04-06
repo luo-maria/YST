@@ -16,7 +16,7 @@
     <!-- TODO: Remove or chacreate_hint1nge this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="edit1">取消</string>
-    <string name="edit2">编辑个人资料</string>
+    <string name="edit2">我的档案</string>
     <string name="edit3">保存</string>
     <dimen name="commontext">20sp</dimen>
     <string name="create_hintPlace">请输入活动地点</string>

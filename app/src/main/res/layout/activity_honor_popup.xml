@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.SelectPhotoActivity">
+    <LinearLayout
+        android:id="@+id/pop_layout_select_pic"
+        android:layout_width="500dp"
+        android:layout_height="700dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:background="@mipmap/pupor"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <!-- 奖章等级名称-->
+            <TextView
+                android:id="@+id/honor_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:text="萌新小白"
+                android:textColor="#2196F3"
+                android:textSize="24dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="该奖章只有在参加过"
+                    android:textColor="@color/color_606060"
+                    android:textSize="18dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingTop="10dp">
+
+                    <!-- 数量判断-->
+                    <TextView
+                        android:id="@+id/honornum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="4dp"
+                        android:text="10"
+                        android:textColor="@color/color_606060"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="个"
+                            android:textColor="@color/color_606060"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/honor_kind"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="活动"
+                            android:textColor="@color/color_606060"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="以上才可以被点亮"
+                            android:textColor="@color/color_606060"
+                            android:textSize="18dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="450dp"
+        android:layout_height="200dp">
+        <TextView
+            android:id="@+id/text_pos"
+            android:layout_width="160dp"
+            android:layout_height="45.0dip"
+            android:background="@drawable/shape_popup"
+            android:layout_marginTop="100dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:text="确 定"
+            android:textColor="#335168"
+            android:textSize="18.0sp"
+            android:textStyle="bold"/>
+    </RelativeLayout>
+</RelativeLayout>

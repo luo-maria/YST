@@ -33,30 +33,48 @@
             android:text="社团活动" />
     </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:fadingEdge="vertical"
+            android:padding="10dp"
+            android:background="@color/backgroundGray"
+            android:scrollbars="vertical"
+            >
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:fadingEdge="vertical"
-        android:padding="10dp"
-        android:background="@color/backgroundGray"
-        android:scrollbars="vertical">
+            <!-- 最外层-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:orientation="vertical">
 
-        <!-- 最外层-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:paddingTop="10dp"
-            android:orientation="vertical">
+                <!-- 循环 -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview_club_activity"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
 
-            <!-- 循环 -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerview_club_activity"
+            </LinearLayout>
+
+        </ScrollView>
+        <RelativeLayout
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="470dp">
+            <ImageView
+                android:id="@+id/addact"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                />
+                android:src="@mipmap/addact1"
+                android:visibility="invisible"/>
+        </RelativeLayout>
+    </RelativeLayout>
 
-        </LinearLayout>
-    </ScrollView>
 </LinearLayout>

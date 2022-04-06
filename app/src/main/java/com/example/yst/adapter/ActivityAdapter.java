@@ -61,7 +61,11 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.ViewHo
         holder.activityLeader.setText(activity.getActivity_leader());
         holder.activityStartTime.setText(activity.getStart_time());
         holder.activityIntro.setText(activity.getActivity_info());
-        holder.activityImage.setImageBitmap(BitmapFactory.decodeFile(activity.getActivity_imgurl()));
+        if(!activity.getActivity_imgurl().equals("")){
+            holder.activityImage.setImageBitmap(BitmapFactory.decodeFile(activity.getActivity_imgurl()));
+        }else{
+            holder.activityImage.setImageResource(R.mipmap.yi);
+        }
         holder.itemView.setTag(position);//给view设置tag以作为参数传递到监听回调方法中
     }
 
