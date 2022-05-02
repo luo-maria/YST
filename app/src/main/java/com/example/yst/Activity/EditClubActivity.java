@@ -15,6 +15,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -35,17 +36,25 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.QueryListener;
 import cn.bmob.v3.listener.UpdateListener;
 
-public class EditClubActivity extends AppCompatActivity {
+public class EditClubActivity extends BaseActivity {
     private EditText clubname_edit,leadername_edit,leadercall_edit,clubintro_edit;
     private Spinner sp,sp1,sp2;
     private Button create_edit;
     private String club_id6,level_edit,campus_edit,kind_edit,imagePath;
-    private ImageView logo_edit;
+    private ImageView logo_edit,backPre;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_club);
         initView();
+        backPre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(EditClubActivity.this,ManageClubActivity.class);
+                intent.putExtra("clubid",club_id6);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -74,13 +83,13 @@ public class EditClubActivity extends AppCompatActivity {
                     }
 
                 }else{
-                    Toast.makeText(EditClubActivity.this, "查询失败", Toast.LENGTH_SHORT).show();
-                }
+                    Log.e("查询失败","原因：",e);                }
             }
         });
     }
 
     private void initView() {
+        backPre=findViewById(R.id.backPre);
         clubname_edit=findViewById(R.id.clubname_edit);
         leadername_edit=findViewById(R.id.leadername_edit);
         leadercall_edit=findViewById(R.id.leadercall_edit);

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,7 +15,7 @@ import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.QueryListener;
 
-public class ApplyFeedbackActivity extends AppCompatActivity {
+public class ApplyFeedbackActivity extends BaseActivity {
     private String apply_id,status,feedbackinfo;
     private TextView feedback;
     @Override
@@ -40,8 +41,7 @@ public class ApplyFeedbackActivity extends AppCompatActivity {
                         feedback.setText(feedbackinfo);
                     }
                 }else{
-                    Toast.makeText(ApplyFeedbackActivity.this, "查询失败", Toast.LENGTH_SHORT).show();
-                }
+                    Log.e("查询失败","原因：",e);                }
             }
         });
     }

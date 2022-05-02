@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:layout_height="match_parent"
+<LinearLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
 
 
@@ -14,19 +14,27 @@
         android:padding="10dp">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="#2196F3"
-            android:gravity="center" >
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="@dimen/dimen_100dp"
+            android:layout_height="50dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/backPre"
+                android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:text="社团名片"
-                android:layout_marginLeft="5dp"
-                android:textSize="22sp"
-                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                app:srcCompat="@android:drawable/ic_media_rew" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="@dimen/dimenPrimary"
                 android:textColor="@color/white"
-                android:background="#2196F3"/>
+                android:layout_marginRight="40dp"
+                android:text="社团详情" />
         </LinearLayout>
 
         <LinearLayout
@@ -43,17 +51,17 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content">
                     <ImageView
-                        android:layout_marginTop="13dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="1dp"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
                         android:src="@mipmap/icon"></ImageView>
                     <TextView
                         android:id="@+id/level1"
                         android:layout_marginTop="8dp"
                         android:layout_width="50dp"
                         android:layout_height="25dp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="8dp"
                         android:textSize="16sp"
                         android:textColor="@color/gary">
                     </TextView>
@@ -81,19 +89,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="8dp"
+                    android:paddingLeft="5dp"
                     android:background="@null"
-                    android:textColor="@color/skin_topbar_bg_color"
+                    android:textColor="@color/text"
                     android:textAlignment="gravity"
                     android:textSize="25sp" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
+                    android:paddingLeft="5dp"
+                    android:layout_marginTop="5dp"
                     android:orientation="horizontal">
                     <TextView
                         android:id="@+id/timetxt"
                         android:layout_width="90dp"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="8dp"
                         android:background="@null"
                         android:textColor="@color/gary"
                         android:text="成立时间："
@@ -103,7 +113,6 @@
                         android:id="@+id/time"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="8dp"
                         android:background="@null"
                         android:textColor="@color/gary"
                         android:textAlignment="gravity"
@@ -112,12 +121,12 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
+                    android:paddingLeft="5dp"
                     android:orientation="horizontal">
                     <TextView
                         android:id="@+id/createtxt"
                         android:layout_width="90dp"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="8dp"
                         android:background="@null"
                         android:textColor="@color/gary"
                         android:textAlignment="gravity"
@@ -125,18 +134,17 @@
                         android:textSize="18sp" />
                     <TextView
                         android:id="@+id/createname"
-                        android:layout_width="60dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="8dp"
                         android:background="@null"
                         android:textColor="@color/gary"
+                        android:paddingRight="15dp"
                         android:textAlignment="gravity"
                         android:textSize="18sp" />
                     <TextView
                         android:id="@+id/call"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="8dp"
                         android:background="@null"
                         android:textColor="@color/gary"
                         android:textAlignment="gravity"
@@ -166,7 +174,7 @@
         android:layout_marginLeft="10dp"
         android:text="社团简介"
         android:textSize="20dp"
-        android:textColor="@color/black"/>
+        android:textColor="@color/gary"/>
     <TextView
         android:id="@+id/club_intro1"
         android:layout_height="260dp"
@@ -181,30 +189,30 @@
         android:visibility="visible"
         android:layout_gravity="center"
         android:layout_marginTop="12dp"
-        android:background="@drawable/shape_big_register_btn"
+        android:background="@drawable/shape_primary"
         android:text="申请加入"
         android:textColor="@color/white"
         android:textSize="22sp" />
     <LinearLayout
         android:id="@+id/auditclub"
-        android:visibility="visible"
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
         android:padding="20dp">
         <Button
-            android:id="@+id/pass"
+            android:id="@+id/passbtu"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:textSize="20dp"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:background="@drawable/shape_blue_wihte_gradual"
+            android:background="@drawable/shape_blue_blue_gradual"
             android:text="通 过" />
         <Button
-            android:id="@+id/refuse"
+            android:id="@+id/refusebtu"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"

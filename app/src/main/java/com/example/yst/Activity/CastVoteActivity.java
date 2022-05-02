@@ -33,7 +33,7 @@ import cn.bmob.v3.listener.QueryListener;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 
-public class CastVoteActivity extends AppCompatActivity {
+public class CastVoteActivity extends BaseActivity{
     private TextView voteHead,voteIntro;
     private RadioGroup rg;
     private RadioButton radioButton1,radioButton2,radioButton3,radioButton;
@@ -125,8 +125,7 @@ public class CastVoteActivity extends AppCompatActivity {
                     }else if(choice.equals(vote1.getOption3())){
                         vote1.setOption3_num(vote1.getOption3_num()+1);
                     }else{
-                        Toast.makeText(CastVoteActivity.this,"投票失败！",Toast.LENGTH_SHORT).show();
-                    }
+                        Log.e("投票失败","原因：",e);                    }
                     vote1.update(vote_id,new UpdateListener() {
                         @Override
                         public void done(BmobException e) {

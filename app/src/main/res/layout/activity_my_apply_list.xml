@@ -7,25 +7,54 @@
     android:layout_height="match_parent"
     tools:context=".Activity.MyApplyListActivity"
     android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/blue"
-        android:gravity="center_horizontal"
-        >
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/backPre"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            app:srcCompat="@android:drawable/ic_media_rew" />
         <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@color/blue"
-            android:text="我 的 申 请"
-            android:textSize="22sp"
-            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="@dimen/dimenPrimary"
             android:textColor="@color/white"
-            android:layout_marginTop="10dp"
-            android:layout_centerInParent="true"
-            android:layout_centerHorizontal="true"
-            >
-        </TextView>
+            android:layout_marginRight="40dp"
+            android:text="我的消息" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/applyclubs"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:background="@color/skin_topbar_bg_color_night"
+            android:textSize="18dp"
+            android:text="申 请 社 团"
+            android:textColor="#FFFFFF"
+            android:layout_width="0dp">
+        </Button>
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/clubapply"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:background="@color/colorPrimary"
+            android:textSize="18dp"
+            android:text="社 团 入 驻"
+            android:textColor="#FFFFFF">
+        </Button>
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/myapplys"

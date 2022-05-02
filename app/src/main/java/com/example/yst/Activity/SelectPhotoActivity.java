@@ -35,7 +35,7 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadFileListener;
 import org.greenrobot.eventbus.EventBus;
-public class SelectPhotoActivity extends Activity implements View.OnClickListener {
+public class SelectPhotoActivity extends BaseActivity implements View.OnClickListener {
     public static final String TAG = "SelectPhotoActivity";
     private Uri imageUri;
     private static final int RESULT_CODE_STARTCAMERA = 0x01;

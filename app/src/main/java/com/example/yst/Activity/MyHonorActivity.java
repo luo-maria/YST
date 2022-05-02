@@ -24,7 +24,7 @@ import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.QueryListener;
 import cn.bmob.v3.listener.UpdateListener;
 
-public class MyHonorActivity extends AppCompatActivity implements View.OnClickListener{
+public class MyHonorActivity extends BaseActivity implements View.OnClickListener{
     private ImageView my_image_honor,level1,level22,level3,level4,level5,level6,level_one,level_two,level_three;
     private String stu_id,honor_club,honor_act;
     private TextView myname,my_honor_club,my_honor_act;
@@ -144,7 +144,6 @@ public class MyHonorActivity extends AppCompatActivity implements View.OnClickLi
         level_one=findViewById(R.id.level_one);
         level_two=findViewById(R.id.level_two);
         level_three=findViewById(R.id.level_three);
-        level3.setImageResource(R.mipmap.level_3_light);
         Student userInfo = BmobUser.getCurrentUser(Student.class);
         stu_id=userInfo.getObjectId();
         getHonorAct();
@@ -178,23 +177,23 @@ public class MyHonorActivity extends AppCompatActivity implements View.OnClickLi
                         level1.setImageResource(R.mipmap.level_1_light);
                         honor_act="见习学子";
                         my_honor_act.setText(honor_act);
-                        if(2<=list.size()){
+                        if(3<=list.size()){
                             level22.setImageResource(R.mipmap.level_2_light);
                             honor_act="活动新秀";
                             my_honor_act.setText(honor_act);
-                            if(3<=list.size()){
+                            if(5<=list.size()){
                                 level3.setImageResource(R.mipmap.level_3_light);
                                 honor_act="小有名气";
                                 my_honor_act.setText(honor_act);
-                                if(4<=list.size()){
+                                if(10<=list.size()){
                                     level4.setImageResource(R.mipmap.level_4_light);
                                     honor_act="乘风破浪";
                                     my_honor_act.setText(honor_act);
-                                    if(5<=list.size()){
+                                    if(20<=list.size()){
                                         level5.setImageResource(R.mipmap.level_5_light);
                                         honor_act="荣耀黄金";
                                         my_honor_act.setText(honor_act);
-                                        if(6<=list.size()){
+                                        if(30<=list.size()){
                                             level6.setImageResource(R.mipmap.level_6_light);
                                             honor_act="最强王者";
                                             my_honor_act.setText(honor_act);

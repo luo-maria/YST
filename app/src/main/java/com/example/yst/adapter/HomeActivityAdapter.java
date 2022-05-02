@@ -58,12 +58,12 @@ public class HomeActivityAdapter extends RecyclerView.Adapter<HomeActivityAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final Activities activity= activityLists.get(position);
-
         holder.clubName.setText(activity.getClub_name());
         holder.clubLogo.setImageBitmap(BitmapFactory.decodeFile(activity.getClub_logo()));
         holder.activityName.setText(activity.getActivity_name());
         holder.activityIntro.setText(activity.getActivity_info());
         holder.activityImage.setImageBitmap(BitmapFactory.decodeFile(activity.getActivity_imgurl()));
+        holder.act_views.setText(String.valueOf(activity.getViews()));
         holder.itemView.setTag(position);
         //给view设置tag以作为参数传递到监听回调方法中
     }
@@ -74,7 +74,7 @@ public class HomeActivityAdapter extends RecyclerView.Adapter<HomeActivityAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView activityName, clubName,activityIntro;
+        TextView activityName, clubName,activityIntro,act_views;
         ImageView activityImage,clubLogo;
         public ViewHolder(View itemView) {
             super(itemView);
@@ -83,7 +83,7 @@ public class HomeActivityAdapter extends RecyclerView.Adapter<HomeActivityAdapte
             activityIntro = itemView.findViewById(R.id.activityIntro);
             activityImage=itemView.findViewById(R.id.activityImage);
             clubLogo=itemView.findViewById(R.id.clubLogo);
-
+            act_views=itemView.findViewById(R.id.act_views);
         }
     }
 }

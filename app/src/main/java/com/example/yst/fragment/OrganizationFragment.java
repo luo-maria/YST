@@ -101,10 +101,6 @@ public class OrganizationFragment extends Fragment {
             (OrganizationFragment.this.getActivity()).finish();
         }
 
-        @Override
-        public void onItemLongClick(View view, int pos) {
-
-        }
     };
     private void initialize() {
         clubAdapter = new ClubAdapter(getActivity(),clubs,onRecyclerviewItemClickListener);
@@ -245,6 +241,7 @@ public class OrganizationFragment extends Fragment {
         if((campus.equals("校区")&&kind.equals("类型")&&level.equals("级别")) ||( !campus.equals("校区") && kind.equals("类型") && level.equals("级别"))||
                 (campus.equals("校区")&& ! kind.equals("类型")&&level.equals("级别")) || (campus.equals("校区")&&kind.equals("类型")&& ! level.equals("级别"))){
             BmobQuery<Club> clubBmobQuery = new BmobQuery<>();
+            clubBmobQuery.addWhereEqualTo("audit_state","审核通过");
             if(campus.equals("校区")&&kind.equals("类型")&&level.equals("级别")){
                 clubBmobQuery.addWhereEqualTo("club_name", search_text);
             }
@@ -342,14 +339,17 @@ public class OrganizationFragment extends Fragment {
                 }
             });
         }
-        if(campus.equals("校区")&& kind.equals("类型")&&level.equals("级别")){
+        if(!campus.equals("校区")&& !kind.equals("类型")&&!level.equals("级别")){
             BmobQuery<Club> clubBmobQuery1 = new BmobQuery<>();
             clubBmobQuery1.addWhereEqualTo("club_campus", campus);
             BmobQuery<Club> clubBmobQuery2 = new BmobQuery<>();
             clubBmobQuery2.addWhereEqualTo("club_category",kind);
             BmobQuery<Club> clubBmobQuery3 = new BmobQuery<>();
             clubBmobQuery3.addWhereEqualTo("club_rank",level);
+            BmobQuery<Club> clubBmobQuery = new BmobQuery<>();
+            clubBmobQuery.addWhereEqualTo("audit_state","审核通过");
             List<BmobQuery<Club>> queries = new ArrayList<BmobQuery<Club>>();
+            queries.add(clubBmobQuery);
             queries.add(clubBmobQuery1);
             queries.add(clubBmobQuery2);
             queries.add(clubBmobQuery3);
@@ -373,7 +373,7 @@ public class OrganizationFragment extends Fragment {
     }
     private void queryData1() {
         BmobQuery<Club> clubBmobQuery = new BmobQuery<>();
-        clubBmobQuery.addWhereEqualTo("","");
+        clubBmobQuery.addWhereEqualTo("audit_state","审核通过");
         clubBmobQuery.findObjects(new FindListener<Club>() {
             @Override
             public void done(List<Club> object, BmobException e) {

@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.yst.R;
@@ -25,20 +26,29 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.QueryListener;
 
-public class MyActivitiesActivity extends AppCompatActivity {
+public class MyActivitiesActivity extends BaseActivity {
     private String stu_id,activity_id,activity_id1;
     private List<String> activities= new ArrayList<String>();
     private List<Activities> Activities1=new ArrayList<Activities>();
     private RecyclerView recyclerViewactivity;
     private ActivityAdapter activityAdapter;
+    private ImageView back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_activities);
         initView();
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(MyActivitiesActivity.this, HomeActivity.class);
+                startActivity(intent1);
+            }
+        });
     }
 
     private void initView() {
+        back=findViewById(R.id.back);
         activityAdapter=new ActivityAdapter(MyActivitiesActivity.this,Activities1,onRecyclerviewItemClickListener);
         recyclerViewactivity=findViewById(R.id.recyclerview_my_activity);
         recyclerViewactivity.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
@@ -49,7 +59,7 @@ public class MyActivitiesActivity extends AppCompatActivity {
     public ActivityAdapter.OnRecyclerviewItemClickListener onRecyclerviewItemClickListener = new ActivityAdapter.OnRecyclerviewItemClickListener() {
         @Override
         public void onItemClickListener(View v, int position) {
-            Intent intent = new Intent(MyActivitiesActivity.this,ManageClubActivity.class);
+            Intent intent = new Intent(MyActivitiesActivity.this,Activity_detailActivity.class);
             Toast.makeText(MyActivitiesActivity.this," 点击了 "+position,Toast.LENGTH_SHORT).show();
             if (! Activities1.isEmpty()) {
                 Activities myactivities=new Activities();
@@ -87,8 +97,7 @@ public class MyActivitiesActivity extends AppCompatActivity {
                                 recyclerViewactivity.setAdapter(activityAdapter);
                                 System.out.println("this is  Activities1:"+ Activities1);
                             }else{
-                                Toast.makeText(MyActivitiesActivity.this, "查询失败", Toast.LENGTH_SHORT).show();
-                            }
+                                Log.e("查询失败","原因：",e);                            }
                         }
                     });
                 }

@@ -27,12 +27,12 @@ public class ImageAdapter extends BannerAdapter<ImageBean, ImageAdapter.ImageHol
     @Override
     public void onBindView(ImageHolder holder, ImageBean data, int position, int size) {
         holder.imageView.setImageResource(data.getImageViewID());
-        holder.imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context,"Test", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        holder.imageView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(context,"Test", Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     public class ImageHolder extends RecyclerView.ViewHolder{

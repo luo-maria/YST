@@ -5,24 +5,30 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#1E90FF"
-        android:layout_gravity="center_vertical"
-        >
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:orientation="horizontal" >
 
+        <ImageView
+            android:id="@+id/backPre"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            app:srcCompat="@android:drawable/ic_media_rew" />
         <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="22dp"
-            android:textStyle="bold"
+            android:layout_weight="1"
             android:gravity="center"
-            android:layout_centerInParent="true"
-            android:textColor="#F0FFFF"
-            android:text="修 改 社 团 信 息 "/>
-
-    </RelativeLayout>
+            android:textSize="@dimen/dimenPrimary"
+            android:textColor="@color/white"
+            android:layout_marginRight="40dp"
+            android:text="修改社团信息" />
+    </LinearLayout>
    <LinearLayout
        android:layout_width="match_parent"
        android:layout_height="match_parent"
@@ -93,6 +99,7 @@
            android:layout_marginLeft="10dp"
            android:layout_marginRight="10dp"
            />
+
        <RelativeLayout
            android:layout_width="match_parent"
            android:layout_height="30dp"
@@ -113,7 +120,9 @@
                android:layout_width="100dp"
                android:layout_height="25dp"
                android:layout_alignParentRight="true"
-               android:layout_marginLeft="20dp"></Spinner>
+               android:layout_marginLeft="20dp"/>
+
+
 
        </RelativeLayout>
        <View  android:layout_height="1dp"
@@ -151,6 +160,7 @@
            android:layout_marginLeft="10dp"
            android:layout_marginRight="10dp"
            />
+
        <RelativeLayout
            android:layout_width="match_parent"
            android:layout_height="30dp"
@@ -250,8 +260,9 @@
                android:inputType="textMultiLine" />
        </LinearLayout>
        <RelativeLayout
+           android:visibility="visible"
            android:layout_width="match_parent"
-           android:layout_height="100dp">
+           android:layout_height="70dp">
            <Button
                android:id="@+id/create_edit"
                android:layout_width="150dp"
@@ -264,6 +275,7 @@
                android:textColor="@color/white"
                android:textSize="20sp" />
        </RelativeLayout>
+
    </LinearLayout>
 
 </LinearLayout>

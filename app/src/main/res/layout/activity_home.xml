@@ -29,7 +29,8 @@
     <com.flyco.tablayout.CommonTabLayout
         android:id="@+id/commonTabLayout"
         android:layout_width="match_parent"
-        android:layout_height="66dp"
+        android:layout_height="70dp"
+        android:gravity="center"
         android:background="#ffffff"
         tl:tl_iconHeight="30dp"
         tl:tl_iconWidth="30dp"

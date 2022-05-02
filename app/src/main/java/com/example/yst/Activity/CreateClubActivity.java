@@ -17,6 +17,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -37,15 +38,17 @@ import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobObject;
+import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 
-public class CreateClubActivity extends AppCompatActivity {
+public class CreateClubActivity extends BaseActivity {
     private Button btncreate;
     private EditText et_club_name,et_leader_name,et_leader_call,et_club_intro;
-    private ImageView clublogo;
+    private ImageView clublogo,backPre;
     private Spinner sp,sp1,sp2;
     private String club_id,stu_id;
     private byte[] image1;
@@ -56,14 +59,26 @@ public class CreateClubActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_club);
         initView();
+        backPre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(CreateClubActivity.this, HomeActivity.class);
+                startActivity(intent1);
+            }
+        });
     }
     private void initView() {
+        Student userInfo = BmobUser.getCurrentUser(Student.class);
+        stu_id=userInfo.getObjectId();
+        backPre=findViewById(R.id.backPre);
         et_club_name=findViewById(R.id.clubname);
         et_leader_name=findViewById(R.id.leadername);
         et_leader_call=findViewById(R.id.leadercall);
         et_club_intro=findViewById(R.id.clubintro);
         clublogo=findViewById(R.id.clublogo);
         btncreate=findViewById(R.id.create);
+        et_leader_name.setText(userInfo.getRealname());
+        et_leader_call.setText(userInfo.getNumber());
         String[] ltype = new String[]{"校级", "院级"};
         sp = (Spinner) super.findViewById(R.id.level);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ltype);
@@ -146,8 +161,7 @@ public class CreateClubActivity extends AppCompatActivity {
         btncreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Student userInfo = BmobUser.getCurrentUser(Student.class);
-                stu_id=userInfo.getObjectId();
+
                 Club club = new Club();
                 club.setClub_name(et_club_name.getText().toString());
                 club.setClub_campus(campus);
@@ -157,27 +171,28 @@ public class CreateClubActivity extends AppCompatActivity {
                 club.setPre_number(et_leader_call.getText().toString());
                 club.setClub_intro(et_club_intro.getText().toString());
                 club.setStu_id(stu_id);
-                club.setLogo_url(imagePath);
-                club.setClub_state("在招募");
-                club.setAudit_state("未审核");
-                club.setClub_number(0);
-                club.save(new SaveListener<String>() {
-                    @Override
-                    public void done(String objectId, BmobException e) {
-                        if(e==null){
-                            Toast.makeText(CreateClubActivity.this,"申请成功，请耐心等待审核：",Toast.LENGTH_SHORT).show();
-                        }else{
-                            Toast.makeText(CreateClubActivity.this,"创建数据失败：" + e.getMessage(),Toast.LENGTH_SHORT).show();
+                if(imagePath==null){
+                    ShowToast("请上传社团logo！");
+                }else{
+                    club.setLogo_url(imagePath);
+                    club.setClub_state("在招募");
+                    club.setAudit_state("未审核");
+                    club.setClub_number(0);
+                    club.save(new SaveListener<String>() {
+                        @Override
+                        public void done(String objectId, BmobException e) {
+                            if(e==null){
+                                Toast.makeText(CreateClubActivity.this,"申请成功，请耐心等待审核",Toast.LENGTH_SHORT).show();
+                            }else{
+                                Log.e("创建数据失败","原因：",e);                        }
                         }
-                    }
-                });
+                    });
+                    //刷新本页面
+                    Intent intent=new Intent(CreateClubActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
 
-
-                Toast.makeText(CreateClubActivity.this,"创建成功",Toast.LENGTH_SHORT).show();
-                //刷新本页面
-                Intent intent=new Intent(CreateClubActivity.this, HomeActivity.class);
-                startActivity(intent);
-                finish();
             }
         });
     }

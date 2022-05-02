@@ -67,6 +67,7 @@ public class NewsFragment extends Fragment {
 
     private void queryData() {
         BmobQuery<News> newsBmobQuery = new BmobQuery<>();
+        newsBmobQuery.addWhereEqualTo("news_kind","公开资讯");
         newsBmobQuery.order("-heat");
         newsBmobQuery.findObjects(new FindListener<News>() {
             @Override

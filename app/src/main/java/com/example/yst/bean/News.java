@@ -10,6 +10,7 @@ public class News extends BmobObject {
     private Integer heat;
     private String club_name;
     private Integer likes;
+    private String news_kind;
 
     public String getClub_id() {
         return club_id;
@@ -65,5 +66,13 @@ public class News extends BmobObject {
 
     public void setLikes(Integer likes) {
         this.likes = likes;
+    }
+
+    public String getNews_kind() {
+        return news_kind;
+    }
+
+    public void setNews_kind(String news_kind) {
+        this.news_kind = news_kind;
     }
 }

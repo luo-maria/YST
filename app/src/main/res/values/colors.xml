@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <color name="colorPrimary">#008CFD</color>
+
+    <color name="colorPrimaryDark">#008CFD</color>
+    <color name="SplitLine">#AEABAB</color>
     <color name="skin_text_white_night">#000000</color>
     <color name="skin_topbar_bg_color_night">#00bfff</color>
-    <color name="colorPrimary">#2196F3</color>
-    <color name="colorPrimaryDark">#3700B3</color>
+
+
+
     <color name="colorAccent">#03DAC5</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="divider">#D9D6D6</color>
     <color name="skin_text_white">#ffffff</color>
     <color name="skin_topbar_bg_color">#2196F3</color>
-    <color name="gary">#B4B4B4</color>
+    <color name="gary">#525455</color>
+
+
     <color name="color_606060">#606060</color>
     <color name="sex">#9A9A9A</color>
     <color name="red">#FF0000</color>
@@ -19,7 +27,8 @@
     <color name="title_text_color">#38A5FB</color>
     <color name="hint_text">#bcbcbc</color>
     <color name="blueGray">#046F9F</color>
-    <color name="orange">#FD9A28</color>
+
+    <color name="orange">#F1AC1A</color>
     <color name="ss">#ffd6ba</color>
     <color name="backgroundGray">#F6F2F5F8</color>
     <color name="text">#323131</color>

@@ -12,13 +12,13 @@
         android:layout_height="50dp"
         android:orientation="horizontal"
         android:background="@color/white"
+        android:gravity="center"
         tools:ignore="MissingConstraints">
 
         <ImageView
             android:id="@+id/back"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             app:srcCompat="?attr/homeAsUpIndicator"
             tools:layout_editor_absoluteX="108dp"
@@ -30,10 +30,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="20dp"
+            android:textSize="@dimen/dimenPrimary"
             android:textColor="@color/text"
             android:layout_marginRight="40dp"
-            android:layout_marginTop="10dp"
             android:text="编辑资讯" />
     </LinearLayout>
 
@@ -75,7 +74,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:fadingEdge="vertical"
-        android:background="@color/backgroundGray"
+        android:background="@color/white"
         android:scrollbars="vertical">
         <LinearLayout
             android:layout_width="match_parent"
@@ -107,7 +106,30 @@
                        android:textSize="18dp"
                        android:layout_marginLeft="10dp"
                        android:gravity="center"/>
-
+                   <RadioGroup
+                       android:layout_alignParentRight="true"
+                       android:id="@+id/rg4"
+                       android:layout_height="wrap_content"
+                       android:layout_width="wrap_content"
+                       android:orientation="horizontal"
+                       android:layout_gravity="center_horizontal">
+                       <RadioButton
+                           android:id="@+id/open"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="公开资讯"
+                           android:textColor="@color/color_606060"
+                           android:layout_marginLeft="20dp"
+                           android:textSize="20dp"/>
+                       <RadioButton
+                           android:id="@+id/unopen"
+                           android:layout_marginLeft="10dp"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:textSize="20dp"
+                           android:textColor="@color/color_606060"
+                           android:text="社团内公告"/>
+                   </RadioGroup>
                </LinearLayout>
 
                <EditText

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.example.yst.R;
 
@@ -27,9 +28,10 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.QueryListener;
 
-public class MyVotesActivity extends AppCompatActivity {
+public class ManageVotesActivity extends BaseActivity {
     private ImageView addvotes;
     private RecyclerView recyclerViewvote;
+    private RelativeLayout create_votes;
     private VoteAdapter voteAdapter;
     private List<Vote> voteslist=new ArrayList<Vote>();
     private String club_id,vote_id,club_name,stu_id;
@@ -38,15 +40,7 @@ public class MyVotesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_votes);
         initView();
-        addvotes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(MyVotesActivity.this,AddVoteActivity.class);
-                intent.putExtra("clubname",club_name);
-                intent.putExtra("clubid",club_id);
-                startActivity(intent);
-            }
-        });
+
     }
     public VoteAdapter.OnRecyclerviewItemClickListener onRecyclerviewItemClickListener=new VoteAdapter.OnRecyclerviewItemClickListener(){
         @Override
@@ -70,7 +64,7 @@ public class MyVotesActivity extends AppCompatActivity {
                 public void done(List<Stu_Vote> list, BmobException e) {
                     if(e==null){
                         if(!list.isEmpty()){
-                            Intent intent=new Intent(MyVotesActivity.this,VoteResultsActivity.class);
+                            Intent intent=new Intent(ManageVotesActivity.this,VoteResultsActivity.class);
                             intent.putExtra("voteid",vote_id);
                             startActivity(intent);
                         }else{
@@ -80,11 +74,11 @@ public class MyVotesActivity extends AppCompatActivity {
                                 public void done(Club club, BmobException e) {
                                     if(e==null){
                                         if(club.getStu_id().equals(stu_id)){
-                                            Intent intent=new Intent(MyVotesActivity.this,VoteResultsActivity.class);
+                                            Intent intent=new Intent(ManageVotesActivity.this,VoteResultsActivity.class);
                                             intent.putExtra("voteid",vote_id);
                                             startActivity(intent);
                                         }else{
-                                            Intent intent=new Intent(MyVotesActivity.this,CastVoteActivity.class);
+                                            Intent intent=new Intent(ManageVotesActivity.this,CastVoteActivity.class);
                                             intent.putExtra("voteid",vote_id);
                                             intent.putExtra("clubid",club_id);
                                             startActivity(intent);
@@ -109,10 +103,33 @@ public class MyVotesActivity extends AppCompatActivity {
         Intent intent = getIntent();
         club_name = intent.getStringExtra("clubname");
         club_id = intent.getStringExtra("clubid");
+        create_votes=findViewById(R.id.create_votes);
         addvotes=findViewById(R.id.addvotes);
         recyclerViewvote=findViewById(R.id.recyclerview_my_vote);
-        voteAdapter=new VoteAdapter(MyVotesActivity.this,voteslist,onRecyclerviewItemClickListener);
+        voteAdapter=new VoteAdapter(ManageVotesActivity.this,voteslist,onRecyclerviewItemClickListener);
         recyclerViewvote.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+        BmobQuery<Club> clubQuery = new BmobQuery<Club>();
+        clubQuery.getObject(club_id, new QueryListener<Club>() {
+            @Override
+            public void done(Club club, BmobException e) {
+                if(e==null){
+                    if(stu_id.equals(club.getStu_id())){
+                        create_votes.setVisibility(View.VISIBLE);
+                        addvotes.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent=new Intent(ManageVotesActivity.this,AddVoteActivity.class);
+                                intent.putExtra("clubname",club_name);
+                                intent.putExtra("clubid",club_id);
+                                startActivity(intent);
+                            }
+                        });
+                    }
+                }else{
+                    Log.e("查询失败2", "原因: ", e);
+                }
+            }
+        });
         queryVoteData();
     }
 

@@ -25,7 +25,7 @@ import cn.bmob.v3.listener.QueryListener;
 
 import static java.util.Map.Entry.comparingByValue;
 
-public class VoteResultsActivity extends AppCompatActivity {
+public class VoteResultsActivity extends BaseActivity {
     private String vote_id,vote_option1,vote_option2,vote_option3;
     private Integer vote_option1num,vote_option2num,vote_option3num,sum;
     private TextView rnews_title,rnews_content,top_one,top_two,top_three,total_number,

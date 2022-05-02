@@ -9,18 +9,18 @@ import cn.bmob.v3.datatype.BmobFile;
 
 public class Club extends BmobObject implements Serializable {
     private String club_name;
+    private String logo_url;
     private String club_category;
     private String club_rank;
+    private String club_campus;
+    private String club_intro;
     private String club_president;
     private String club_colle;
     private String club_state;
     private String club_member;
     private Integer club_number;
-    private String club_campus;
     private String pre_number;
-    private String club_intro;
     private String stu_id;
-    private String logo_url;
     private String audit_state;
 
 

@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            app:srcCompat="@android:drawable/ic_media_rew" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="@dimen/dimenPrimary"
+            android:textColor="@color/white"
+            android:layout_marginRight="40dp"
+            android:text="管理社团" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/shape_create_portrait_bg">
+            <TextView
+                android:id="@+id/logotext"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="社团会标"
+                android:textSize="@dimen/commontext"
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_gravity="center"
+                />
+            <com.example.yst.util.XCRoundImageView
+                android:id="@+id/clublogo_edit1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="320dp"
+                android:src="@mipmap/san" />
+
+        </RelativeLayout>
+
+        <!--横线-->
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="10dp">
+            <TextView
+                android:id="@+id/clubnametxt"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="社团名称"
+                android:textSize="@dimen/commontext"
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/clubname_edit1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="2dp"
+                android:background="@null"
+                android:inputType="textNoSuggestions"
+                android:text="社团名称"
+                android:textColor="@color/color_606060"
+                android:textColorHint="#bcbcbc"
+                android:textSize="@dimen/commontext" />
+
+        </RelativeLayout>
+        <View  android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="#c8c8c8"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            />
+        <RelativeLayout
+            android:id="@+id/clubrank"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="10dp">
+            <TextView
+                android:id="@+id/clubleveltxt"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="社团级别"
+                android:textSize="@dimen/commontext"
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_gravity="center"/>
+            <RadioGroup
+                android:layout_alignParentRight="true"
+                android:id="@+id/rg3"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal">
+                <RadioButton
+                    android:id="@+id/coll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="院级"
+                    android:textColor="@color/color_606060"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="20dp"/>
+                <RadioButton
+                    android:id="@+id/uni"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textColor="@color/color_606060"
+                    android:text="校级"/>
+            </RadioGroup>
+
+        </RelativeLayout>
+        <View
+            android:id="@+id/rankview"
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="#c8c8c8"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="10dp">
+            <TextView
+                android:id="@+id/campustxt"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="所在校区"
+                android:textSize="@dimen/commontext"
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/clubcampus1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="20dp"
+                android:background="@null"
+                android:text="圣井校区"
+                android:inputType="textNoSuggestions"
+                android:textColor="@color/color_606060"
+                android:textColorHint="#bcbcbc"
+                android:textSize="@dimen/commontext" />
+        </RelativeLayout>
+        <View  android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="#c8c8c8"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="10dp">
+            <TextView
+                android:id="@+id/clubkindtxt"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="社团类别"
+                android:textSize="@dimen/commontext"
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/clubkind1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="20dp"
+                android:background="@null"
+                android:text="文体"
+                android:inputType="textNoSuggestions"
+                android:textColor="@color/color_606060"
+                android:textColorHint="#bcbcbc"
+                android:textSize="@dimen/commontext" />
+        </RelativeLayout>
+        <View  android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="#c8c8c8"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="10dp">
+            <TextView
+                android:id="@+id/start_fundtxt"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:text="负责人"
+                android:textSize="@dimen/commontext"
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/leadername_edit1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:background="@null"
+                android:inputType="textNoSuggestions"
+                android:layout_centerVertical="true"
+                android:text="000000"
+                android:textColor="@color/color_606060"
+                android:layout_alignParentRight="true"
+                android:textColorHint="#bcbcbc"
+                android:textSize="@dimen/commontext" />
+
+        </RelativeLayout>
+        <View  android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="#c8c8c8"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/leader_calltxt"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:text="负责人联系方式"
+                android:textSize="@dimen/commontext" />
+            <TextView
+                android:id="@+id/leadercall_edit1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:background="@null"
+                android:text="小雪"
+                android:inputType="textNoSuggestions"
+                android:layout_centerVertical="true"
+                android:textColor="@color/sex"
+                android:layout_alignParentRight="true"
+                android:textColorHint="#bcbcbc"
+                android:textSize="@dimen/commontext" />
+
+        </RelativeLayout>
+        <View  android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="#c8c8c8"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/club_introtxt"
+                android:layout_width="160dp"
+                android:layout_height="30dp"
+                android:text="社团介绍"
+                android:textSize="@dimen/commontext"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentLeft="true" />
+
+            <TextView
+                android:background="@drawable/border"
+                android:id="@+id/clubintro_edit1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/create_hint4"
+                android:ems="10"
+                android:gravity="start|top"
+                android:textColor="@color/color_606060"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:inputType="textMultiLine" />
+        </LinearLayout>
+        <RelativeLayout
+            android:visibility="visible"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/create_edit1"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_primary"
+                android:text="修改"
+
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+            <Button
+                android:id="@+id/cancellation"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_primary_orange"
+                android:text="注销"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

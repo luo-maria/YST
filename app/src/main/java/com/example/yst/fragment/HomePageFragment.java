@@ -30,6 +30,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.yst.Activity.CalenderSelectActivity;
+import com.example.yst.Activity.ClubUnionActivity;
 import com.example.yst.Activity.CreateClubActivity;
 import com.example.yst.Activity.EditUserActivity;
 import com.example.yst.Activity.HomeActivity;
@@ -37,15 +38,9 @@ import com.example.yst.Activity.MyActivitiesActivity;
 import com.example.yst.Activity.MyApplyListActivity;
 import com.example.yst.Activity.MyHonorActivity;
 import com.example.yst.Activity.MyclubsActivity;
-import com.example.yst.Activity.SelectPhotoActivity;
 import com.example.yst.R;
 import com.example.yst.bean.Student;
-import com.example.yst.util.ConstantConfig;
-import com.example.yst.util.ImageUtils;
-import com.facebook.drawee.backends.pipeline.Fresco;
-import com.facebook.drawee.view.SimpleDraweeView;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -64,9 +59,9 @@ public class HomePageFragment extends Fragment {
     private ImageView club,message1,imgHead;
     private TextView my_club;
     private LinearLayout myInfo,myclubs;
-    private String img_url;
+    private String img_url,stu_id;
     private String[] names = new String[]{"我的日程","我的活动", "我的荣誉", "社团入驻",  "退出"};
-    private int[] heads = new int[]{R.mipmap.cal};
+    private int[] heads = new int[]{R.mipmap.schedule,R.mipmap.act,R.mipmap.honor,R.mipmap.settled,R.mipmap.exit_my};
     private TextView my_name,signature;
 
     public void sendBroadcast(Intent intent) {
@@ -102,7 +97,6 @@ public class HomePageFragment extends Fragment {
                 String Account = intent.getStringExtra("Account");
                 Intent intent1 = new Intent(HomePageFragment.this.getActivity(), EditUserActivity.class);
                 intent1.putExtra("input_number", Account);
-                System.out.println("这里是homepagefragment_number的number：" + Account);
                 startActivity(intent1);
             }
         });
@@ -139,13 +133,25 @@ public class HomePageFragment extends Fragment {
     }
 
     private void initView() {
+        Student student=Student.getCurrentUser(Student.class);
+        stu_id=student.getObjectId();
+        if(stu_id.equals("0DPfMMMa")){
+            my_club.setText("我的社联");
+            my_club.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent=new Intent(HomePageFragment.this.getActivity(), ClubUnionActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
         List<Map<String, Object>> list = new ArrayList();
         for (int i = 0; i < names.length; i++) {
             Map<String, Object> item = new HashMap<>();
             item.put("name", names[i]);
-            item.put("head", heads[0]);
+            item.put("head", heads[i]);
             list.add(item);
-            SimpleAdapter simpleAdapter = new SimpleAdapter(getContext(), list, R.layout.item_simple,
+            SimpleAdapter simpleAdapter = new SimpleAdapter(getContext(), list, R.layout.item_my_simple,
                     new String[]{"name", "head"},
                     new int[]{R.id.tv_name, R.id.imageView1});
             listView.setAdapter(simpleAdapter);//绑定listView和simpleAdapter
@@ -218,6 +224,7 @@ public class HomePageFragment extends Fragment {
             int columnIndex = c.getColumnIndex(filePathColumns[0]);
             String imagePath = c.getString(columnIndex);
             showImage(imagePath);
+
             c.close();
         }else if(data==null){
         }
@@ -227,8 +234,7 @@ public class HomePageFragment extends Fragment {
     }
     //加载图片
     private void showImage(String imaePath) {
-        Bitmap bm = BitmapFactory.decodeFile(imaePath);
-        imgHead.setImageBitmap(bm);
+        imgHead.setImageBitmap(BitmapFactory.decodeFile(imaePath));
         Student userInfo = BmobUser.getCurrentUser(Student.class);
         Student new_stu =new Student();
         new_stu.setPhotoimageurl(imaePath);

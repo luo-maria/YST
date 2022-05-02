@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,11 +24,12 @@ import cn.bmob.v3.listener.QueryListener;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 
-public class ApplicationDetailsActivity extends AppCompatActivity {
+public class ApplicationDetailsActivity extends BaseActivity {
     private TextView applicantName,applicantGender,applicantNumber,applicantReason;
     private EditText feedback;
     private Button pass,refuse;
     private String apply_id,stu_id,club_id;
+    private Integer club_num;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +59,7 @@ public class ApplicationDetailsActivity extends AppCompatActivity {
                     stu_id=object.getStudent_id();
                     club_id=object.getClub_id();
                 }else{
-                    Toast.makeText(ApplicationDetailsActivity.this, "查询失败", Toast.LENGTH_SHORT).show();
-                }
+                    Log.e("查询失败","原因：",e);                }
             }
         });
         pass=findViewById(R.id.pass);
@@ -74,9 +75,33 @@ public class ApplicationDetailsActivity extends AppCompatActivity {
                         public void done(String objectId, BmobException e) {
                             if(e==null){
                                 Toast.makeText(ApplicationDetailsActivity.this,"新成员已加入您的社团",Toast.LENGTH_SHORT).show();
+                                BmobQuery<Club> bmobQuery = new BmobQuery<Club>();
+                                bmobQuery.getObject(club_id, new QueryListener<Club>() {
+                                    @Override
+                                    public void done(Club club, BmobException e) {
+                                        if(e==null){
+                                            club_num=club.getClub_number();
+                                            club.setClub_number(club_num+1);
+                                            club.update(club_id, new UpdateListener() {
+                                                @Override
+                                                public void done(BmobException e) {
+                                                    if(e==null){
+                                                        System.out.println("参加社团人数加一");
+                                                    }else{
+                                                        Log.e("查询失败3","原因",e);
+                                                    }
+                                                }
+                                            });
+                                        }else{
+                                            System.out.println("查询失败");
+                                        }
+                                    }
+                                });
+
+
+
                             }else{
-                                Toast.makeText(ApplicationDetailsActivity.this,"创建数据失败：" + e.getMessage(),Toast.LENGTH_SHORT).show();
-                            }
+                                Log.e("创建失败","原因：",e);                            }
                         }
                     });
                     ApplyToClublnfo applyToClublnfo=new ApplyToClublnfo();
@@ -90,8 +115,7 @@ public class ApplicationDetailsActivity extends AppCompatActivity {
                                 intent1.putExtra("clubid",club_id);
                                 startActivity(intent1);
                             } else {
-                                Toast.makeText(ApplicationDetailsActivity.this,"status修改失败",Toast.LENGTH_SHORT).show();
-                            }
+                                Log.e("修改失败","原因：",e);                            }
                         }
                     });
                 }
@@ -123,8 +147,7 @@ public class ApplicationDetailsActivity extends AppCompatActivity {
                             intent1.putExtra("clubid",club_id);
                             startActivity(intent1);
                         } else {
-                            Toast.makeText(ApplicationDetailsActivity.this,"status修改失败",Toast.LENGTH_SHORT).show();
-                        }
+                            Log.e("修改失败","原因：",e);                        }
                     }
                 });
             }

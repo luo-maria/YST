@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -23,7 +24,7 @@ import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.QueryListener;
 import cn.bmob.v3.listener.UpdateListener;
 
-public class EditUserActivity extends AppCompatActivity {
+public class EditUserActivity extends BaseActivity {
     private EditText stuusernametxt1, stuunitxt, stunametxt, stucollegetxt, stuclasstxt, stusigtxt;
     private TextView savetxt,cancel;
     private RadioGroup rg;
@@ -41,6 +42,13 @@ public class EditUserActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 selectRadioBtn();
+            }
+        });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(EditUserActivity.this, HomeActivity.class);
+                startActivity(intent1);
             }
         });
         savetxt.setOnClickListener(new View.OnClickListener() {
@@ -65,11 +73,12 @@ public class EditUserActivity extends AppCompatActivity {
                     @Override
                     public void done(BmobException e) {
                         if (e == null) {
-                            Toast.makeText(EditUserActivity.this,"修改成功"+"my new nickname is:"+reusername,Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(EditUserActivity.this,"修改成功"+"my new nickname is:"+reusername,Toast.LENGTH_SHORT).show();
+                            System.out.println("EditUserActivity修改成功！my new nickname is"+reusername);
                             Intent intent1 = new Intent(EditUserActivity.this, HomeActivity.class);
                             startActivity(intent1);
                         } else {
-                            Toast.makeText(EditUserActivity.this,"修改失败",Toast.LENGTH_SHORT).show();
+                            Log.e("修改失败","原因：",e);
                             Intent intent1 = new Intent(EditUserActivity.this, HomeActivity.class);
                             startActivity(intent1);
                         }

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:background="@drawable/shape_white_shadow"
+    >
+      <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="120dp"
+           android:orientation="horizontal">
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:orientation="vertical">
+
+
+                   <LinearLayout
+                       android:layout_width="wrap_content"
+                       android:layout_height="40dp"
+                       android:orientation="horizontal">
+                       <TextView
+                           android:id="@+id/applicantClubName"
+                           android:layout_width="wrap_content"
+                           android:layout_height="28dp"
+                           android:layout_marginLeft="20dp"
+                           android:layout_marginTop="8dp"
+                           android:textColor="#56585A"
+                           android:text="环保公益社团"
+                           android:textSize="18dp" />
+                       <TextView
+                           android:id="@+id/infoClubTime"
+                           android:layout_width="match_parent"
+                           android:layout_height="28dp"
+                           android:layout_marginLeft="10dp"
+                           android:layout_marginTop="8dp"
+                           android:textColor="#56585A"
+                           android:text="社团入驻申请"
+                           android:textSize="16dp" />
+                   </LinearLayout>
+
+                   <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@color/gary"/>
+
+                   <LinearLayout
+                       android:layout_width="wrap_content"
+                       android:layout_height="30dp"
+                       android:layout_marginLeft="20dp"
+                       android:layout_marginTop="10dp"
+                       android:orientation="horizontal">
+
+                       <ImageView
+                           android:layout_width="20dp"
+                           android:layout_height="20dp"
+                           android:src="@mipmap/time"/>
+
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:paddingLeft="10dp"
+                           android:text="申请时间："
+                           android:textColor="#20887F"/>
+
+                       <TextView
+                           android:id="@+id/applicantTime"
+                           android:layout_width="wrap_content"
+                           android:layout_height="30dp"
+                           android:text="2022年4月11日"
+                           android:textColor="#20887F" />
+
+                   </LinearLayout>
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="30dp"
+                       android:layout_marginLeft="20dp"
+                       android:paddingTop="5dp"
+                       android:orientation="horizontal">
+
+                       <ImageView
+                           android:id="@+id/imageViewState"
+                           android:layout_width="20dp"
+                           android:layout_height="20dp"
+                           android:src="@mipmap/orangeitem"/>
+
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:paddingLeft="10dp"
+                           android:text="申请状态："
+                           android:textColor="#FD9A28"/>
+
+                       <TextView
+                           android:id="@+id/applicantState"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="未审核"
+                           android:textColor="#FD9A28"
+                           android:textStyle="bold" />
+
+                   </LinearLayout>
+
+           </LinearLayout>
+       </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

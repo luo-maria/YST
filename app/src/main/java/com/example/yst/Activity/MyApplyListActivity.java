@@ -10,12 +10,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.yst.R;
+import com.example.yst.adapter.ApplyClubAdapter;
 import com.example.yst.adapter.ApplyInfoAdapter;
 import com.example.yst.adapter.MyApplyInfoAdapter;
 import com.example.yst.bean.ApplyToClublnfo;
+import com.example.yst.bean.Club;
 import com.example.yst.bean.Student;
 
 import java.util.List;
@@ -26,27 +29,64 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.QueryListener;
 
-public class MyApplyListActivity extends AppCompatActivity {
+public class MyApplyListActivity extends BaseActivity {
     private RecyclerView recyclerViewclub;
     private MyApplyInfoAdapter myapplyInfoAdapter;
+    private ApplyClubAdapter applyClubAdapter;
     private List<ApplyToClublnfo> myinfos;
+    private List<Club> clubs;
+    private Button applyclubs,clubapply;
     private String applyToClublnfo_id,club_id4, stu_id,app_status;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_apply_list);
         initialize();
+        applyclubs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                 queryData();
+                applyclubs.setBackgroundResource(R.color.skin_topbar_bg_color_night);
+                clubapply.setBackgroundResource(R.color.colorPrimary);
+            }
+        });
+        clubapply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                queryData1();
+                clubapply.setBackgroundResource(R.color.skin_topbar_bg_color_night);
+                applyclubs.setBackgroundResource(R.color.colorPrimary);
+            }
+        });
     }
     private void initialize() {
+        Student userInfo = BmobUser.getCurrentUser(Student.class);
+        stu_id=userInfo.getObjectId();
+        applyclubs=findViewById(R.id.applyclubs);
+        clubapply=findViewById(R.id.clubapply);
         recyclerViewclub=findViewById(R.id.myapplys);
         myapplyInfoAdapter = new MyApplyInfoAdapter(this,myinfos,onRecyclerviewItemClickListener);
+        applyClubAdapter=new ApplyClubAdapter(this,clubs,onRecyclerviewItemClickListener1);
         recyclerViewclub.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         queryData();
     }
-
+    private void queryData1(){
+        BmobQuery<Club> clubBmobQuery=new BmobQuery<>();
+        clubBmobQuery.addWhereEqualTo("stu_id",stu_id);
+        clubBmobQuery.findObjects(new FindListener<Club>() {
+            @Override
+            public void done(List<Club> list, BmobException e) {
+                if (e == null) {
+                    clubs=list;
+                    applyClubAdapter.setApplyClubList(clubs);
+                    recyclerViewclub.setAdapter(applyClubAdapter);
+                }else{
+                    Log.e("查询失败2", "原因: ", e);
+                }
+            }
+        });
+    }
     private void queryData() {
-        Student userInfo = BmobUser.getCurrentUser(Student.class);
-        stu_id=userInfo.getObjectId();
         BmobQuery<ApplyToClublnfo> clubBmobQuery = new BmobQuery<>();
         clubBmobQuery.addWhereEqualTo("student_id",  stu_id);
         clubBmobQuery.findObjects(new FindListener<ApplyToClublnfo>() {
@@ -92,8 +132,7 @@ public class MyApplyListActivity extends AppCompatActivity {
                                 finish();
                             }
                         }else{
-                            Toast.makeText(MyApplyListActivity.this, "查询失败", Toast.LENGTH_SHORT).show();
-                        }
+                            Log.e("查询失败","原因：",e);                        }
                     }
                 });
 
@@ -101,4 +140,13 @@ public class MyApplyListActivity extends AppCompatActivity {
 
         }
     };
+    public ApplyClubAdapter.OnRecyclerviewItemClickListener onRecyclerviewItemClickListener1 = new ApplyClubAdapter.OnRecyclerviewItemClickListener() {
+        @Override
+        public void onItemClickListener(View v, int position) {
+
+        }
+
+
+    };
+
 }

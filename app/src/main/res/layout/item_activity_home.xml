@@ -72,7 +72,7 @@
                     android:padding="10dp"
                     android:textColor="#B3090909"
                     android:textStyle="italic"
-                    android:textSize="18sp" />
+                    android:textSize="20sp" />
             </RelativeLayout>
 
         </RelativeLayout>
@@ -117,6 +117,7 @@
                    android:layout_marginRight="5dp"
                    android:src="@mipmap/browse"/>
                <TextView
+                   android:id="@+id/act_views"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:text="130"

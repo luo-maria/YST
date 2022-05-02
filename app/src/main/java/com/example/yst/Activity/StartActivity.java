@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.yst.MainActivity;
 
 
-public class StartActivity extends AppCompatActivity {
+public class StartActivity extends BaseActivity {
     private Handler handler = new Handler();
 
     @Override

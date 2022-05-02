@@ -29,7 +29,7 @@ import cn.bmob.v3.listener.QueryListener;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 
-public class RegisterActivity extends Activity implements View.OnClickListener {
+public class RegisterActivity extends BaseActivity implements View.OnClickListener {
     private String realCode;
 
     private Button mBtRegisteractivityRegister;
@@ -101,8 +101,8 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                 //注册验证
                 if (TextUtils.isEmpty(password)){
                     Toast.makeText(RegisterActivity.this,"请填写密码",Toast.LENGTH_SHORT).show();
-                }else if (password.length()<6){
-                    Toast.makeText(RegisterActivity.this,"密码不得少于6位数",Toast.LENGTH_SHORT).show();
+                }else if (password.length()<1){
+                    Toast.makeText(RegisterActivity.this,"密码不得少于1位数",Toast.LENGTH_SHORT).show();
                 }else if (password.length()>16){
                     Toast.makeText(RegisterActivity.this,"密码不得多于16位数",Toast.LENGTH_SHORT).show();
                 }else if (!password.equals(password2)){
@@ -111,29 +111,45 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                     Toast.makeText(RegisterActivity.this,"请填写验证码",Toast.LENGTH_SHORT).show();
                 } else {
                     //短信验证码效验
-                    BmobSMS.verifySmsCode(phone, phoneCode, new UpdateListener() {
+//                    BmobSMS.verifySmsCode(phone, phoneCode, new UpdateListener() {
+//                        @Override
+//                        public void done(BmobException e) {
+//                            if (e == null) {
+//                                Student user = new Student();
+//                                user.setUsername(phone);
+//                                user.setPassword(password);
+//                                user.setPhotoimageurl("/storage/emulated/0/Pictures/poy.png");
+//                                user.signUp(new SaveListener<Student>() {
+//                                    @Override
+//                                    public void done(Student user, BmobException e) {
+//                                        if(e==null)
+//                                        { Toast.makeText(RegisterActivity.this,"验证通过，注册成功",Toast.LENGTH_SHORT).show();
+//                                            Intent intent2 = new Intent(RegisterActivity.this, LoginActivity.class);
+//                                            startActivity(intent2);
+//                                            finish(); }
+//                                        else { Log.e("注册失败", "原因: ",e );
+//                                        } }
+//                                });
+//                            }else {
+//                                smEtRegisteractivityPhonecode.setText("");
+//                                Toast.makeText(RegisterActivity.this,"验证码错误"+e.getErrorCode(),Toast.LENGTH_SHORT).show();
+//                            }
+//                        }
+//                    });
+                    Student user = new Student();
+                    user.setUsername(phone);
+                    user.setPassword(password);
+                    user.setPhotoimageurl("/storage/emulated/0/Pictures/poy.png");
+                    user.signUp(new SaveListener<Student>() {
                         @Override
-                        public void done(BmobException e) {
-                            if (e == null) {
-                                Student user = new Student();
-                                user.setUsername(phone);
-                                user.setPassword(password);
-                                user.signUp(new SaveListener<Student>() {
-                                    @Override
-                                    public void done(Student user, BmobException e) {
-                                        if(e==null)
-                                        { Toast.makeText(RegisterActivity.this,"验证通过，注册成功",Toast.LENGTH_SHORT).show();
-                                            Intent intent2 = new Intent(RegisterActivity.this, LoginActivity.class);
-                                            startActivity(intent2);
-                                            finish(); }
-                                        else { Log.e("注册失败", "原因: ",e );
-                                        } }
-                                });
-                            }else {
-                                smEtRegisteractivityPhonecode.setText("");
-                                Toast.makeText(RegisterActivity.this,"验证码错误"+e.getErrorCode(),Toast.LENGTH_SHORT).show();
-                            }
-                        }
+                        public void done(Student user, BmobException e) {
+                            if(e==null)
+                            { Toast.makeText(RegisterActivity.this,"验证通过，注册成功",Toast.LENGTH_SHORT).show();
+                                Intent intent2 = new Intent(RegisterActivity.this, LoginActivity.class);
+                                startActivity(intent2);
+                                finish(); }
+                            else { Log.e("注册失败", "原因: ",e );
+                            } }
                     });
                 }
         }

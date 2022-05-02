@@ -27,7 +27,7 @@ import cn.bmob.v3.datatype.BmobDate;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 
-public class AddVoteActivity extends AppCompatActivity implements View.OnClickListener{
+public class AddVoteActivity extends BaseActivity implements View.OnClickListener{
     private EditText vote_title,vote_intro,vote_item1,vote_item2,vote_item3;
     private Button vote_but;
     private TextView choose_day1,choose_time1;
@@ -135,8 +135,7 @@ public class AddVoteActivity extends AppCompatActivity implements View.OnClickLi
                     startActivity(intent);
                     finish();
                 }else{
-                    Toast.makeText(AddVoteActivity.this,"创建数据失败：" + e.getMessage(),Toast.LENGTH_SHORT).show();
-                }
+                    Log.e("创建数据失败","原因：",e); }
             }
         });
     }

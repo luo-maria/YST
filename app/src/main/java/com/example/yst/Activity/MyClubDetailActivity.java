@@ -33,8 +33,8 @@ import cn.bmob.v3.listener.QueryListener;
 import cn.bmob.v3.listener.SQLQueryListener;
 import cn.bmob.v3.listener.UpdateListener;
 
-public class MyClubDetailActivity extends AppCompatActivity implements View.OnClickListener{
-    private ImageView imageView4;
+public class MyClubDetailActivity extends BaseActivity implements View.OnClickListener{
+    private ImageView imageView4,backPre;
     private TextView myclub_name,myclub_leader_name,myclub_leader,myclub_category,myclub_campus,myclub_rank,club_numbers;
     private String club_id7,stu_id,sclub_id;
     private Button Quit;
@@ -45,7 +45,7 @@ public class MyClubDetailActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_club_joined);
         initialize();
         queryData();
-        queryData1();
+
 
     }
     @Override
@@ -58,23 +58,46 @@ public class MyClubDetailActivity extends AppCompatActivity implements View.OnCl
                 LookActivity();
                 break;
             case R.id.look_notice:
+                LookNotice();
                 break;
             case R.id.toVote:
                 findVote();
                 break;
             case R.id.exit:
-                QuitClub();
+                allMember();
+                break;
+            case R.id.backPre1:
+                backPre();
                 break;
         }
     }
 
+    private void LookNotice() {
+        Intent intent1 = new Intent(MyClubDetailActivity.this,NewsInClubActivity.class);
+        intent1.putExtra("clubid",club_id7);
+        startActivity(intent1);
+    }
+
+    private void backPre(){
+        Intent intent1 = new Intent(MyClubDetailActivity.this, MyclubsActivity.class);
+        intent1.putExtra("clubid",club_id7);
+        startActivity(intent1);
+    }
+
+    private void allMember() {
+        Intent intent=new Intent(MyClubDetailActivity.this,AllMembersActivity.class);
+        intent.putExtra("clubid",club_id7);
+        startActivity(intent);
+    }
+
     private void findVote() {
-        Intent intent=new Intent(MyClubDetailActivity.this,MyVotesActivity.class);
+        Intent intent=new Intent(MyClubDetailActivity.this,ManageVotesActivity.class);
         intent.putExtra("clubid",club_id7);
         startActivity(intent);
     }
 
     private void initialize() {
+        backPre=findViewById(R.id.backPre1);
         imageView4=findViewById(R.id.imageView4);
         myclub_name=findViewById(R.id.myclub_name);
         myclub_leader=findViewById(R.id.myclub_leader);
@@ -93,6 +116,7 @@ public class MyClubDetailActivity extends AppCompatActivity implements View.OnCl
         look_notice.setOnClickListener(this);
         toVote.setOnClickListener(this);
         exit.setOnClickListener(this);
+        backPre.setOnClickListener(this);
         Intent intent=getIntent();
         club_id7=intent.getStringExtra("clubid");
         Student userInfo = BmobUser.getCurrentUser(Student.class);
@@ -100,16 +124,6 @@ public class MyClubDetailActivity extends AppCompatActivity implements View.OnCl
     }
 
 
-    private void queryData1() {
-        BmobQuery<Stu_Club> sclubBmobQuery = new BmobQuery<>();
-        sclubBmobQuery.addWhereEqualTo("club_id",club_id7);
-        sclubBmobQuery.findObjects(new FindListener<Stu_Club>() {
-            @Override
-            public void done(List<Stu_Club> list, BmobException e) {
-                club_numbers.setText(String.valueOf(list.size()));
-            }
-        });
-    }
 
     private void queryData() {
         BmobQuery<Club> bmobQuery = new BmobQuery<Club>();
@@ -123,10 +137,10 @@ public class MyClubDetailActivity extends AppCompatActivity implements View.OnCl
                     myclub_name.setText(object.getClub_name());
                     myclub_leader_name.setText(object.getClub_president());
                     myclub_leader.setText(object.getClub_president());
+                    club_numbers.setText(String.valueOf(object.getClub_number()));
                     imageView4.setImageBitmap(BitmapFactory.decodeFile(object.getLogo_url()));
                 }else{
-                    Toast.makeText(MyClubDetailActivity.this, "查询失败", Toast.LENGTH_SHORT).show();
-                }
+                    Log.e("查询失败","原因：",e);                }
             }
         });
     }
@@ -167,8 +181,7 @@ public class MyClubDetailActivity extends AppCompatActivity implements View.OnCl
                                         }
                                     }
                                 }else{
-                                    Toast.makeText(MyClubDetailActivity.this, "查询失败2", Toast.LENGTH_SHORT).show();
-                                }
+                                    Log.e("查询失败2","原因：",e);                                }
                             }
                         });
                     }

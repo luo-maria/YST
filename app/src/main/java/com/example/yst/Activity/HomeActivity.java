@@ -1,6 +1,8 @@
 package com.example.yst.Activity;
 
 
+import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -19,7 +21,18 @@ import com.flyco.tablayout.listener.OnTabSelectListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.bmob.v3.Bmob;
+
 public class HomeActivity extends BaseActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Bmob.initialize(this, "f84563e89fdb95cdc3c135df0c5ffc25");
+        mContext = this;
+		setContentView(initLayout());
+		initView();
+		initData();
+    }
 
 
     private List<ImageBean> mList = new ArrayList<>();
@@ -39,20 +52,18 @@ public class HomeActivity extends BaseActivity {
     private ViewPager viewPager;
     private CommonTabLayout commonTabLayout;
 
-    @Override
-    protected int initLayout() {
+
+    private int initLayout() {
         return R.layout.activity_home;
     }
 
-    @Override
-    protected void initView() {
+
+    private void initView() {
         viewPager = findViewById(R.id.viewpager);
         commonTabLayout = findViewById(R.id.commonTabLayout);
-
     }
 
-    @Override
-    protected void initData() {
+    private void initData() {
         mList.add(new ImageBean(R.mipmap.a));
         mList.add(new ImageBean(R.mipmap.b));
         mList.add(new ImageBean(R.mipmap.a));

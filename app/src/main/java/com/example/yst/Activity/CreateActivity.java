@@ -45,7 +45,7 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.QueryListener;
 import cn.bmob.v3.listener.SaveListener;
 
-public class CreateActivity extends AppCompatActivity implements View.OnClickListener {
+public class CreateActivity extends BaseActivity implements View.OnClickListener {
 
     private TextView clubName;
     private ImageView activityImage;
@@ -72,8 +72,7 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
         activityDetails = findViewById(R.id.activity_details);
         activityPlace = findViewById(R.id.activityPlace);
         activityImage=findViewById(R.id.activityImage);
-        // 显示社团名称
-        clubName.setText(clubname);
+
 
         // 创建活动按钮
         createActivity = findViewById(R.id.createActivity);
@@ -93,6 +92,8 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
                 if(e==null){
                     clubLogo = object.getLogo_url();
                     clubname=object.getClub_name();
+                    // 显示社团名称
+                    clubName.setText(clubname);
                 }else{
                     Toast.makeText(CreateActivity.this, "查询失败", Toast.LENGTH_SHORT).show();
                 }
@@ -129,26 +130,32 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
                 activity.setStart_time(start_time);
                 activity.setEnd_time(end_time);
                 activity.setClub_id(club_id);
+                activity.setAct_status("在招募");
                 activity.setClub_logo(clubLogo);
-                activity.setActivity_imgurl(imagePath);
-                activity.setClub_name(clubname);
-                activity.setApplynum(0);
-                activity.save(new SaveListener<String>() {
-                    @Override
-                    public void done(String objectId, BmobException e) {
-                        if(e==null){
-                            Toast.makeText(CreateActivity.this,"创建活动成功",Toast.LENGTH_SHORT).show();
-                        }else{
-                            Toast.makeText(CreateActivity.this,"创建活动失败：" + e.getMessage(),Toast.LENGTH_SHORT).show();
+                if(imagePath==null){
+                    ShowToast("请上传活动图片！！！");
+                }else{
+                    activity.setActivity_imgurl(imagePath);
+                    activity.setClub_name(clubname);
+                    activity.setApplynum(0);
+                    activity.setViews(0);
+                    activity.save(new SaveListener<String>() {
+                        @Override
+                        public void done(String objectId, BmobException e) {
+                            if(e==null){
+                                Toast.makeText(CreateActivity.this,"创建活动成功",Toast.LENGTH_SHORT).show();
+                            }else{
+                                Log.e("创建失败","原因：",e);                        }
                         }
-                    }
-                });
-                Toast.makeText(CreateActivity.this,"创建成功",Toast.LENGTH_SHORT).show();
-                //刷新本页面
-                Intent intent=new Intent(CreateActivity.this, ManageClubActivity.class);
-                intent.putExtra("clubid",club_id);
-                startActivity(intent);
-                finish();
+                    });
+                    Toast.makeText(CreateActivity.this,"创建成功",Toast.LENGTH_SHORT).show();
+                    //刷新本页面
+                    Intent intent=new Intent(CreateActivity.this, ManageClubActivity.class);
+                    intent.putExtra("clubid",club_id);
+                    startActivity(intent);
+                    finish();
+                }
+
             }
         });
     }

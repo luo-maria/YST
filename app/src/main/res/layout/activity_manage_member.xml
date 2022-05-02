@@ -10,14 +10,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:background="@color/blue">
+        android:background="@color/colorPrimary"
+        android:gravity="center">
 
         <ImageView
             android:id="@+id/back"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             app:srcCompat="@android:drawable/ic_media_rew" />
         <TextView
@@ -26,11 +25,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="22dp"
-            android:textStyle="bold"
+            android:textSize="@dimen/dimenPrimary"
             android:textColor="@color/white"
             android:layout_marginRight="40dp"
-            android:layout_marginTop="10dp"
             android:text="管理社员" />
     </LinearLayout>
 
@@ -149,7 +146,10 @@
                 <!--    展示效果： Demo    -->
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/clubmembers"
-                    android:layout_width="match_parent"
+                    android:layout_width="380dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:paddingLeft="10dp"
                     android:layout_height="match_parent"
                     android:focusable="false" />
 
@@ -164,6 +164,7 @@
                 <GridLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
                     android:columnCount="4"
                     android:layout_gravity="center"
                     android:orientation="horizontal">
@@ -176,6 +177,29 @@
         </ScrollView>
 
     </LinearLayout>
-
+<LinearLayout
+    android:id="@+id/tips"
+    android:visibility="invisible"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="管理成员提示："
+        android:textColor="#F43652"
+        />
+    <TextView
+        android:layout_marginLeft="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="点击成员可以进行换届操作。"/>
+    <TextView
+        android:layout_marginLeft="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="长按成员可以进行清退操作。"/>
+</LinearLayout>
 
 </LinearLayout>

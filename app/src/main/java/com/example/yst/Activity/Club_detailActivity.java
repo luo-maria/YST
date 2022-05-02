@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -23,15 +24,24 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.QueryListener;
 
-public class Club_detailActivity extends AppCompatActivity {
+public class Club_detailActivity extends BaseActivity {
     private Button app_btn;
     private String club_id1,stu_id,club_state,club_name,club_stu;
-    private ImageView imglogo;
+    private ImageView imglogo,backPre;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_club_detail);
         initView();
+        backPre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Club_detailActivity.this,HomeActivity.class);
+                startActivity(intent);
+//                onPause();
+//                onDestroy();
+            }
+        });
         app_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,8 +64,7 @@ public class Club_detailActivity extends AppCompatActivity {
                                 Toast.makeText(Club_detailActivity.this,"您已经是该社团成员了！" ,Toast.LENGTH_SHORT).show();
                             }
                         }else{
-                            Toast.makeText(Club_detailActivity.this,"查询失败：" + e.getMessage(),Toast.LENGTH_SHORT).show();
-                        }
+                            Log.e("查询失败","原因：",e);                        }
                     }
                 });
             }
@@ -73,6 +82,7 @@ public class Club_detailActivity extends AppCompatActivity {
         TextView createname = (TextView)findViewById(R.id.createname);
         TextView club_intro = (TextView)findViewById(R.id.club_intro1);
         TextView call = (TextView)findViewById(R.id.call);
+        backPre=findViewById(R.id.backPre);
         imglogo =findViewById(R.id.logophoto);
         app_btn = (Button) findViewById(R.id.apply);
         Intent intent1=getIntent();
@@ -88,15 +98,14 @@ public class Club_detailActivity extends AppCompatActivity {
                     clubname.setText(object.getClub_name());
                     createname.setText(object.getClub_president());
                     club_intro .setText(object.getClub_intro());
-                    call.setText(object.getPre_number());
+
                     time.setText(object.getCreatedAt().substring(0,10));
                     club_name=object.getClub_name();
                     if(object.getLogo_url()!=null){
                         imglogo.setImageBitmap(BitmapFactory.decodeFile(object.getLogo_url()));
                     }
                 }else{
-                    Toast.makeText(Club_detailActivity.this, "查询失败", Toast.LENGTH_SHORT).show();
-                }
+                    Log.e("查询失败","原因：",e);                }
             }
         });
     }
@@ -119,8 +128,7 @@ public class Club_detailActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 }else{
-                    Toast.makeText(Club_detailActivity.this, "查询失败", Toast.LENGTH_SHORT).show();
-                }
+                    Log.e("查询失败","原因：",e);                }
             }
         });
     }

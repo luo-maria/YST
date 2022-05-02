@@ -44,7 +44,7 @@ import cn.bmob.v3.listener.QueryListener;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 
-public class EditActivitiesActivity extends AppCompatActivity {
+public class EditActivitiesActivity extends BaseActivity {
     private RelativeLayout status;
     private View view1;
     private RadioGroup activitystatus;

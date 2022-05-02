@@ -23,13 +23,13 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.QueryListener;
 
-public class ActivitiesInClubsActivity extends AppCompatActivity {
+public class ActivitiesInClubsActivity extends BaseActivity {
 
     private RecyclerView recyclerviewActivities;
     private ActivityAdapter activityAdapter;
     private List<Activities> activities;
     private String activity_id, club_id,stu_id,club_name;
-    private ImageView add;
+    private ImageView add,back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +39,14 @@ public class ActivitiesInClubsActivity extends AppCompatActivity {
         Student student =Student.getCurrentUser(Student.class);
         stu_id=student.getObjectId();
         initialize();
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivitiesInClubsActivity.this,MyClubDetailActivity.class);
+                intent.putExtra("clubid",club_id);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -60,6 +68,7 @@ public class ActivitiesInClubsActivity extends AppCompatActivity {
     };
 
     private void initialize() {
+        back=findViewById(R.id.back);
         Intent intent = getIntent();
         club_name = intent.getStringExtra("clubname");
         club_id = intent.getStringExtra("clubid");

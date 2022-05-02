@@ -23,12 +23,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		Bmob.initialize(this, Bmob_AppId);
+		Bmob.initialize(this, "f84563e89fdb95cdc3c135df0c5ffc25");
 		mContext = this;
-		setContentView(initLayout());
-		initView();
-		initData();
-		// 创建活动时，将其加入管理器中
 		ActivityCollector.addActivity(this);
 	}
 
@@ -45,12 +41,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 			mToast.show();
 		}
 	}
-
-    protected abstract int initLayout();
-
-	protected abstract void initView();
-
-	protected abstract void initData();
 
 	@Override
 	protected void onResume() {

@@ -21,6 +21,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,18 +37,26 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.QueryListener;
 import cn.bmob.v3.listener.SaveListener;
 
-public class AddNewsActivity extends AppCompatActivity {
+public class AddNewsActivity extends BaseActivity {
     private ImageView my_image,news_image;
     private TextView edit_man;
     private EditText news_title,news_content;
     private LinearLayout upload;
     private Button release;
-    private String club_id,stu_id,stu_name,new_image,club_name;
+    private String club_id,stu_id,stu_name,new_image,club_name,news_kind;
+    private RadioGroup rg4;
+    private RadioButton radioButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_news);
         initView();
+        rg4.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                selectRadioBtn();
+            }
+        });
         news_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,12 +77,16 @@ public class AddNewsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 News news=new News();
                 news.setClub_id(club_id);
+                if(new_image==null){
+                    news.setNews_image("");
+                }
                 news.setNews_image(new_image);
                 news.setNews_title(news_title.getText().toString());
                 news.setNews_content(news_content.getText().toString());
                 news.setClub_name(club_name);
                 news.setHeat(0);
                 news.setLikes(0);
+                news.setNews_kind(news_kind);
                 news.save(new SaveListener<String>() {
                     @Override
                     public void done(String s, BmobException e) {
@@ -89,8 +103,12 @@ public class AddNewsActivity extends AppCompatActivity {
             }
         });
     }
-
+    private void selectRadioBtn(){
+        radioButton = findViewById(rg4.getCheckedRadioButtonId());
+        news_kind = radioButton.getText().toString();
+    }
     private void initView() {
+        rg4=findViewById(R.id.rg4);
         my_image=findViewById(R.id.my_image1);
         edit_man=findViewById(R.id.edit_man1);
         news_title=findViewById(R.id.news_title1);

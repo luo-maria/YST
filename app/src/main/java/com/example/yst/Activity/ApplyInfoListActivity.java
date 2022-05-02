@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.yst.R;
@@ -21,19 +22,29 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 
 
-public class ApplyInfoListActivity extends AppCompatActivity {
+public class ApplyInfoListActivity extends BaseActivity {
     private RecyclerView recyclerViewclub;
     private ApplyInfoAdapter applyInfoAdapter;
     private List<ApplyToClublnfo> infos;
     private String applyToClublnfo_id,club_id4;
+    private ImageView backPre;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apply_info_list);
         initialize();
+        backPre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(ApplyInfoListActivity.this,ManageClubActivity.class);
+                intent.putExtra("clubid",club_id4);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initialize() {
+        backPre=findViewById(R.id.backPre);
         recyclerViewclub=findViewById(R.id.applyinfos);
         applyInfoAdapter = new ApplyInfoAdapter(this,infos,onRecyclerviewItemClickListener);
         recyclerViewclub.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));

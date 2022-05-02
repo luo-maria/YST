@@ -19,6 +19,7 @@ public class Activities extends BmobObject {
     private String activity_imgurl;
     private Integer applynum;
     private String act_status;
+    private Integer views;
 
     public String getActivity_name() {
         return activity_name;
@@ -130,5 +131,13 @@ public class Activities extends BmobObject {
 
     public void setAct_status(String act_status) {
         this.act_status = act_status;
+    }
+
+    public Integer getViews() {
+        return views;
+    }
+
+    public void setViews(Integer views) {
+        this.views = views;
     }
 }

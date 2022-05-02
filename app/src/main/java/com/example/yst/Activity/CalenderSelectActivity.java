@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,9 +40,10 @@ import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 
-public class CalenderSelectActivity extends AppCompatActivity implements OnDateSelectedListener {
+public class CalenderSelectActivity extends BaseActivity implements OnDateSelectedListener {
     private MaterialCalendarView widget;
     private EditText message_cal;
+    private ImageView backPre;
     private TextView mess_hold,mess_del;
     private String time,time1;
     private List<CalendarDay> calendarDays = new ArrayList<>();
@@ -68,21 +70,22 @@ public class CalenderSelectActivity extends AppCompatActivity implements OnDateS
                             Intent intent=new Intent(CalenderSelectActivity.this, CalenderSelectActivity.class);
                             startActivity(intent);
                         }else{
-                            Toast.makeText(CalenderSelectActivity.this,"添加日程失败：" + e.getMessage(),Toast.LENGTH_SHORT).show();
-                        }
+                            Log.e("添加失败","原因：",e);                        }
                     }
                 });
-                mess_del.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                    }
-                });
+            }
+        });
+        backPre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(CalenderSelectActivity.this, HomeActivity.class);
+                startActivity(intent1);
             }
         });
     }
 
     private void initView() {
+        backPre=findViewById(R.id.backPre);
         message_cal=findViewById(R.id.message_cal);
         mess_hold=findViewById(R.id.mess_hold);
         mess_del=findViewById(R.id.mess_del);
@@ -147,8 +150,7 @@ public class CalenderSelectActivity extends AppCompatActivity implements OnDateS
                                                 Intent intent=new Intent(CalenderSelectActivity.this, CalenderSelectActivity.class);
                                                 startActivity(intent);
                                             }else{
-                                                Toast.makeText(CalenderSelectActivity.this,"删除失败" + e.getMessage(),Toast.LENGTH_SHORT).show();
-                                            }
+                                                Log.e("删除失败","原因：",e);                                            }
                                         }
                                     });
                                 }

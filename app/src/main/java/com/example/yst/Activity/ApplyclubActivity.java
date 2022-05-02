@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,7 +29,7 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
 
-public class ApplyclubActivity extends AppCompatActivity {
+public class ApplyclubActivity extends BaseActivity {
     private EditText applyname, applyclass, applynumber,apply_reason_club;
     private RadioGroup rg1 ;
     private RadioButton radioButton1;
@@ -89,8 +90,7 @@ public class ApplyclubActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }else{
-                    Toast.makeText(ApplyclubActivity.this,"创建数据失败：" + e.getMessage(),Toast.LENGTH_SHORT).show();
-                }
+                    Log.e("查询失败","原因：",e);                }
             }
         });
     }

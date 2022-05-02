@@ -37,8 +37,8 @@ import cn.bmob.v3.listener.QueryListener;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 
-public class Activity_detailActivity extends AppCompatActivity {
-    private ImageView image;
+public class Activity_detailActivity extends BaseActivity {
+    private ImageView image,backPre;
     private TextView activity_name,activity_create_name,activity_place,start_time,end_time,activity_intro,numtxt,numact;
     private String act_id,stu_id,club_id, activityName,startTime;
     private Button appacbut,act_edit;
@@ -48,6 +48,13 @@ public class Activity_detailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activity_detail);
         initialize();
+        backPre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Activity_detailActivity.this,HomeActivity.class);
+                startActivity(intent);
+            }
+        });
         act_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -134,7 +141,7 @@ public class Activity_detailActivity extends AppCompatActivity {
                         @Override
                         public void done(String s, BmobException e) {
                             if(e==null){
-                                Toast.makeText(Activity_detailActivity.this,"您已加入该活动！",Toast.LENGTH_LONG);
+//                                Toast.makeText(Activity_detailActivity.this,"您已加入该活动！",Toast.LENGTH_LONG);
                                 new AlertDialog.Builder(Activity_detailActivity.this).setTitle("信息提示")//设置对话框标题
                                         .setMessage("您已加入成功该活动！")
                                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {//添加确定按钮
@@ -145,14 +152,14 @@ public class Activity_detailActivity extends AppCompatActivity {
                                         }).show();//在按键响应事件中显示此对话框
 //
                             }else{
-                                Toast.makeText(Activity_detailActivity.this,"加入活动失败！",Toast.LENGTH_LONG);
+//                                Toast.makeText(Activity_detailActivity.this,"加入活动失败！",Toast.LENGTH_LONG);
                             }
                         }
                     });
-                    Toast.makeText(Activity_detailActivity.this,"您已加入该活动！",Toast.LENGTH_LONG);
+//                    Toast.makeText(Activity_detailActivity.this,"您已加入该活动！",Toast.LENGTH_LONG);
 
                 }else{
-                    Toast.makeText(Activity_detailActivity.this,"加入活动失败！",Toast.LENGTH_LONG);
+//                    Toast.makeText(Activity_detailActivity.this,"加入活动失败！",Toast.LENGTH_LONG);
                 }
             }
         });
@@ -176,6 +183,7 @@ public class Activity_detailActivity extends AppCompatActivity {
     private void initialize() {
         Student student=Student.getCurrentUser(Student.class);
         stu_id=student.getObjectId();
+        backPre=findViewById(R.id.backPre);
         image=findViewById(R.id.image);
         activity_name=findViewById(R.id.activity_name);
         activity_create_name=findViewById(R.id.activity_create_name);

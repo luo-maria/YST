@@ -10,26 +10,23 @@
   >
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#1792F3"
-        android:gravity="center" >
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center">
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="首 页"
-            android:layout_marginLeft="5dp"
-            android:textSize="22sp"
+            android:layout_height="wrap_content"
             android:gravity="center"
+            android:textSize="@dimen/dimenPrimary"
             android:textColor="@color/white"
-            android:background="#2196F3"/>
+            android:text="首 页" />
     </LinearLayout>
 
     <com.youth.banner.Banner
         android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:background="@drawable/bluebg" />
+        android:layout_height="200dp"  />
 
     <LinearLayout
         android:layout_width="match_parent"

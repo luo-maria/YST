@@ -27,7 +27,7 @@ import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
 
 
-public class LoginActivity extends Activity implements View.OnClickListener {
+public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
 
     private TextView mTvLoginactivityRegister;
@@ -97,8 +97,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                                 intent.putExtra("Account",Account);
                                 startActivity(intent);
                             }else {
-                                Toast.makeText(LoginActivity.this,"登录失败",Toast.LENGTH_SHORT).show();
-                            }
+                                Log.e("登录失败","原因：",e);                            }
                         }
                     });
                 }

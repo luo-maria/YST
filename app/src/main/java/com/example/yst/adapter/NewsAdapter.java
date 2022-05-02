@@ -52,10 +52,10 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> im
             mholder.news_author.setText(news.getClub_name());
             mholder.news_create_time.setText(news.getCreatedAt().substring(0,10));
             mholder.news_heat.setText(String.valueOf(news.getHeat()));
-        if(!news.getNews_image().equals("")){
+        if(!news.getNews_image().isEmpty()){
             mholder.new_image.setImageBitmap(BitmapFactory.decodeFile(news.getNews_image()));
         }else{
-            mholder.new_image.setImageResource(R.mipmap.san);
+//            mholder.new_image.setImageResource(R.mipmap.san);
         }
         mholder.itemView.setTag(position);//给view设置tag以作为参数传递到监听回调方法中
     }

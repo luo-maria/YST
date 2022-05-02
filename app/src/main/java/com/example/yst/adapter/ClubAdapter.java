@@ -38,7 +38,6 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ViewHolder> im
 
     public interface OnRecyclerviewItemClickListener {
         void onItemClickListener(View v,int position);
-        void onItemLongClick(View view , int pos);
 
     }
     public ClubAdapter(Context context,List<Club> ClubList,OnRecyclerviewItemClickListener mOnRecyclerviewItemClickListener) {
@@ -73,13 +72,6 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ViewHolder> im
             mholder.logo.setImageResource(R.mipmap.san);
         }
         mholder.itemView.setTag(position);//给view设置tag以作为参数传递到监听回调方法中
-        mholder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                mOnRecyclerviewItemClickListener.onItemLongClick(mholder.itemView,position);
-                return false;
-            }
-        });
     }
 
     @Override

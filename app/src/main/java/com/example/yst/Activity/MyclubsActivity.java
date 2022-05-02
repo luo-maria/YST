@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.yst.R;
@@ -29,7 +30,7 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.QueryListener;
 
-public class MyclubsActivity extends AppCompatActivity {
+public class MyclubsActivity extends BaseActivity {
     private List<Club> clubs;
     private List<Club> clubs1=new ArrayList<Club>();
     private List<Stu_Club> stu_clubs;
@@ -38,6 +39,7 @@ public class MyclubsActivity extends AppCompatActivity {
     private ClubAdapter clubAdapter,clubAdapter1 ;
     private Button club_created,club_entered;
     private List<String> club_ids= new ArrayList<String>();
+    private ImageView backPre;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,22 +47,30 @@ public class MyclubsActivity extends AppCompatActivity {
         club_created=findViewById(R.id.createclub);
         club_entered=findViewById(R.id.enterclub);
         recyclerViewclub=findViewById(R.id.myclubs1);
+        backPre=findViewById(R.id.backPre);
         initialize();
+        backPre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MyclubsActivity.this,HomeActivity.class);
+                startActivity(intent);
+            }
+        });
         club_created.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 queryData();
+                club_created.setBackgroundResource(R.color.skin_topbar_bg_color_night);
+                club_entered.setBackgroundResource(R.color.colorPrimary);
             }
         });
         club_entered.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(clubs1.isEmpty()){
-                    queryData1();
-                }else{
-                    System.out.println(clubs1);
-                }
-
+                System.out.println(clubs1);
+                queryData1();
+                club_entered.setBackgroundResource(R.color.skin_topbar_bg_color_night);
+                club_created.setBackgroundResource(R.color.colorPrimary);
             }
         });
 
@@ -81,10 +91,7 @@ public class MyclubsActivity extends AppCompatActivity {
             finish();
         }
 
-        @Override
-        public void onItemLongClick(View view, int pos) {
-            System.out.println("ssssssssssssssssss");
-        }
+
     };
     public ClubAdapter.OnRecyclerviewItemClickListener onRecyclerviewItemClickListener1 = new ClubAdapter.OnRecyclerviewItemClickListener() {
         @Override
@@ -102,25 +109,28 @@ public class MyclubsActivity extends AppCompatActivity {
             finish();
         }
 
-        @Override
-        public void onItemLongClick(View view, int pos) {
-            System.out.println("ssssssssssssssssss");
-        }
+
     };
     private void initialize() {
         clubAdapter = new ClubAdapter(this,clubs,onRecyclerviewItemClickListener);
         clubAdapter1 = new ClubAdapter(this,clubs,onRecyclerviewItemClickListener1);
         recyclerViewclub.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
-        queryData1();
+        queryData();
     }
 
     private void queryData() {
         Student userInfo = BmobUser.getCurrentUser(Student.class);
         stu_id=userInfo.getObjectId();
-
+        BmobQuery<Club> clubBmobQuery1 = new BmobQuery<>();
+        clubBmobQuery1.addWhereEqualTo("audit_state", "审核通过");
         BmobQuery<Club> clubBmobQuery = new BmobQuery<>();
         clubBmobQuery.addWhereEqualTo("stu_id", stu_id);
-        clubBmobQuery.findObjects(new FindListener<Club>() {
+        List<BmobQuery<Club>> queries = new ArrayList<BmobQuery<Club>>();
+        queries.add(clubBmobQuery);
+        queries.add(clubBmobQuery1);
+        BmobQuery<Club> query = new BmobQuery<Club>();
+        query.and(queries);
+        query.findObjects(new FindListener<Club>() {
             @Override
             public void done(List<Club> object, BmobException e) {
                 if (e == null) {
@@ -134,6 +144,7 @@ public class MyclubsActivity extends AppCompatActivity {
         });
     }
     private void queryData1() {
+        System.out.println("this is clubs1111111111111111111111"+clubs1.isEmpty());
         Student userInfo = BmobUser.getCurrentUser(Student.class);
         stu_id=userInfo.getObjectId();
         BmobQuery<Stu_Club> clubBmobQuery = new BmobQuery<>();
@@ -148,22 +159,24 @@ public class MyclubsActivity extends AppCompatActivity {
                             club_ids.add(club_id5);
                         }
                         }
-                    for(String clubid:club_ids){
-                        BmobQuery<Club> bmobQuery = new BmobQuery<Club>();
-                        bmobQuery.getObject(clubid, new QueryListener<Club>() {
-                            @Override
-                            public void done(Club object,BmobException e) {
-                                if(e==null){
-                                    clubs1.add(object);
-                                    clubAdapter1.setClubList(clubs1);
-                                    recyclerViewclub.setAdapter(clubAdapter1);
-                                }else{
-                                    Log.e("查询失败2", "原因: ", e);
+                    if(clubs1.isEmpty()){
+                        for(String clubid:club_ids){
+                            BmobQuery<Club> bmobQuery = new BmobQuery<Club>();
+                            bmobQuery.getObject(clubid, new QueryListener<Club>() {
+                                @Override
+                                public void done(Club object,BmobException e) {
+                                    if(e==null){
+                                        clubs1.add(object);
+                                    }else{
+                                        Log.e("查询失败2", "原因: ", e);
 //                                    Toast.makeText(MyclubsActivity.this, "查询失败", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
-                            }
-                        });
+                            });
+                        }
                     }
+                    clubAdapter1.setClubList(clubs1);
+                    recyclerViewclub.setAdapter(clubAdapter1);
 
                 } else {
                     Log.e("查询失败3", "原因: ", e);
